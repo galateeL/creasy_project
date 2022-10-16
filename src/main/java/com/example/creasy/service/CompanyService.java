@@ -1,5 +1,6 @@
 package com.example.creasy.service;
 
+import com.example.creasy.exception.CompanyNotFoundException;
 import com.example.creasy.repository.CompanyRepository;
 import com.example.creasy.repository.entity.Company;
 import org.springframework.stereotype.Service;
@@ -18,4 +19,18 @@ public class CompanyService {
     public List<Company> getAllCompany(){
         return (List<Company>) this.companyRepository.findAll();
     }
+
+    public Company getCompanyById(long id) throws CompanyNotFoundException{
+        return this.companyRepository
+                .findById(id)
+                .orElseThrow(() -> new CompanyNotFoundException(id));
+    }
+
+    public List<Company> searchByName(String searchValue){
+        return this.companyRepository.findCompanyByNameContaining(searchValue);
+    }
+
+
+
+
 }
