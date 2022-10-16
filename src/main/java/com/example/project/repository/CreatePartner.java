@@ -19,10 +19,8 @@ public class CreatePartner {
 
     private String positionHeld;
 
-// private boolean isClient;
 
     private StateProspect stateProspect;
-
 
     public CreatePartner() {
     }
@@ -52,14 +50,6 @@ public class CreatePartner {
         this.positionHeld = positionHeld;
         this.stateProspect = stateProspect;
     }
-
-//    public boolean isClient() {
-//        return isClient;
-//    }
-//
-//    public void setClient(boolean client) {
-//        isClient = client;
-//    }
 
     public String getLastname() {
         return lastname;

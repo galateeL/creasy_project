@@ -91,6 +91,20 @@ public class PartnerController {
         return "redirect:/partners/all-customers";
     }
 
+    // Delete specific prospect
+    @PostMapping("/delete-prospect/{id}")
+    public String deleteProspect(@PathVariable(value="id") Long id) {
+        partnerService.deletePartner(id);
+        return "redirect:/partners/all-prospects";
+    }
+
+    // Delete specific customer
+    @PostMapping("/delete-customer/{id}")
+    public String deleteCustomer(@PathVariable(value="id") Long id) {
+        partnerService.deletePartner(id);
+        return "redirect:/partners/all-customers";
+    }
+
 
 
 

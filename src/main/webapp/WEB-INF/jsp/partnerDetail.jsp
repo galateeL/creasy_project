@@ -18,6 +18,13 @@
     <p>${partner.firstname}</p>
     <p>${partner.lastname}</p>
 
+    <jsp:include page="./customer/deleteCustomerModal.jsp"/>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Delete
+    </button>
+
 
 </main>
 
