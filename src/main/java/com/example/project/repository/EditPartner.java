@@ -1,13 +1,8 @@
-package com.example.project.repository.entity;
+package com.example.project.repository;
 
-import javax.persistence.*;
+public class EditPartner {
 
-@Entity
-public class Partner {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String lastname;
 
@@ -26,16 +21,13 @@ public class Partner {
     private String positionHeld;
 
     private boolean isClient;
-    @Enumerated(EnumType.STRING)
-    private StateProspect stateProspect;
 
+    private String stateProspect;
 
-
-    public Partner() {
+    public EditPartner() {
     }
 
-
-    public Partner(Long id, String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, boolean isClient, StateProspect stateProspect) {
+    public EditPartner(int id, String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, boolean isClient, String stateProspect) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -49,24 +41,11 @@ public class Partner {
         this.stateProspect = stateProspect;
     }
 
-    public Partner(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, boolean isClient, StateProspect stateProspect) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.address = address;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.isClient = isClient;
-        this.stateProspect = stateProspect;
-    }
-
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -142,11 +121,11 @@ public class Partner {
         isClient = client;
     }
 
-    public StateProspect getStateProspect() {
+    public String getStateProspect() {
         return stateProspect;
     }
 
-    public void setStateProspect(StateProspect stateProspect) {
+    public void setStateProspect(String stateProspect) {
         this.stateProspect = stateProspect;
     }
 }
