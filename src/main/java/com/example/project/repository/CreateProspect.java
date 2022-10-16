@@ -1,15 +1,9 @@
-package com.example.project.repository.entity;
+package com.example.project.repository;
 
-import com.sun.istack.NotNull;
+import com.example.project.repository.entity.Partner;
+import com.example.project.repository.entity.StateProspect;
 
-import javax.persistence.*;
-
-@Entity
-public class Partner {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class CreateProspect {
 
     private String lastname;
 
@@ -24,18 +18,30 @@ public class Partner {
     private String mobilePhoneNumber;
 
     private String positionHeld;
-    @NotNull
-    @Enumerated(EnumType.STRING)
+
+
     private StateProspect stateProspect;
 
 
-
-    public Partner() {
+    public CreateProspect() {
     }
 
+    public Partner toProspect() {
+        Partner p = new Partner();
+        p.setFirstname(this.firstname);
+        p.setLastname(this.lastname);
+        p.setEmail(this.email);
+        p.setPictureUrl(this.pictureUrl);
+        p.setFixedPhoneNumber(this.fixedPhoneNumber);
+        p.setMobilePhoneNumber(this.mobilePhoneNumber);
+        p.setPositionHeld(this.positionHeld);
+        p.setStateProspect(this.stateProspect);
 
-    public Partner(Long id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
-        this.id = id;
+        return p;
+
+    }
+
+    public CreateProspect(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
@@ -44,26 +50,10 @@ public class Partner {
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
         this.stateProspect = stateProspect;
+
+
     }
 
-    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.stateProspect = stateProspect;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getLastname() {
         return lastname;
@@ -121,7 +111,6 @@ public class Partner {
     public void setPositionHeld(String positionHeld) {
         this.positionHeld = positionHeld;
     }
-
 
     public StateProspect getStateProspect() {
         return stateProspect;

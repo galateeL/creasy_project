@@ -17,7 +17,6 @@
 
     <p>${partner.firstname}</p>
     <p>${partner.lastname}</p>
-    <p>${partner.address}</p>
 
 
 </main>

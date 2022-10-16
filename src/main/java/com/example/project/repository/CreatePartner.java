@@ -11,8 +11,6 @@ public class CreatePartner {
 
     private String email;
 
-    private String address;
-
     private String pictureUrl;
 
     private String fixedPhoneNumber;
@@ -34,7 +32,6 @@ public class CreatePartner {
         p.setFirstname(this.firstname);
         p.setLastname(this.lastname);
         p.setEmail(this.email);
-        p.setAddress(this.address);
         p.setPictureUrl(this.pictureUrl);
         p.setFixedPhoneNumber(this.fixedPhoneNumber);
         p.setMobilePhoneNumber(this.mobilePhoneNumber);
@@ -49,7 +46,6 @@ public class CreatePartner {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
-        this.address = address;
         this.pictureUrl = pictureUrl;
         this.fixedPhoneNumber = fixedPhoneNumber;
         this.mobilePhoneNumber = mobilePhoneNumber;
@@ -89,13 +85,6 @@ public class CreatePartner {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getPictureUrl() {
         return pictureUrl;

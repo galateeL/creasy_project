@@ -1,14 +1,20 @@
 package com.example.project.controller;
 
+import com.example.project.repository.CreateCustomer;
+import com.example.project.repository.CreatePartner;
+import com.example.project.repository.CreateProspect;
 import com.example.project.repository.entity.Partner;
+import com.example.project.repository.entity.StateProspect;
 import com.example.project.service.PartnerService;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -53,6 +59,41 @@ public class PartnerController {
         model.addAttribute("partner", partner);
         return "partnerDetail";
     }
+
+    // Add prospect - Display addProspect Form
+    @GetMapping("/add-prospect")
+    public String displayAddProspectForm(Model model) {
+        StateProspect[] stateProspectsArray = StateProspect.values();
+        List<StateProspect> stateProspectList = Arrays.asList(stateProspectsArray);
+        model.addAttribute("stateProspects", stateProspectList);
+        return "prospect/addProspect";
+    }
+
+    // Add prospect - Save in DB
+    @PostMapping("/add-prospect")
+    public String addProspect(CreateProspect createProspect) {
+        partnerService.createProspect(createProspect);
+        return "redirect:/partners/all-prospects";
+
+    }
+
+    // Add customer - Display addCustomer Form
+   @GetMapping("/add-customer")
+    public String displayAddCustomerForm(Model model) {
+        return "customer/addCustomer";
+   }
+
+
+    // Add customer - Save in DB
+    @PostMapping("/add-customer")
+    public String addCustomer(CreateProspect createProspect) {
+        partnerService.createCustomer(createProspect);
+        return "redirect:/partners/all-customers";
+    }
+
+
+
+
 
 
 

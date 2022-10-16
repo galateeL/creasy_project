@@ -10,7 +10,6 @@ public class EditPartner {
 
     private String email;
 
-    private String address;
 
     private String pictureUrl;
 
@@ -32,7 +31,6 @@ public class EditPartner {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
-        this.address = address;
         this.pictureUrl = pictureUrl;
         this.fixedPhoneNumber = fixedPhoneNumber;
         this.mobilePhoneNumber = mobilePhoneNumber;
@@ -73,13 +71,6 @@ public class EditPartner {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getPictureUrl() {
         return pictureUrl;

@@ -1,15 +1,18 @@
 package com.example.project.service;
 
 import com.example.project.exception.PartnerNotFoundException;
+import com.example.project.repository.CreatePartner;
+import com.example.project.repository.CreateProspect;
 import com.example.project.repository.EditPartner;
 import com.example.project.repository.PartnerRepository;
 import com.example.project.repository.entity.Partner;
 import com.example.project.repository.entity.StateProspect;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.Part;
 import java.awt.print.Book;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -44,6 +47,38 @@ public class PartnerService {
                 .orElseThrow(() -> new PartnerNotFoundException(id));
     }
 
+    public void createProspect (CreateProspect createProspect) {
+
+        Partner prospect = new Partner();
+        prospect.setFirstname(createProspect.getFirstname());
+        prospect.setLastname(createProspect.getLastname());
+        prospect.setEmail(createProspect.getEmail());
+        prospect.setPictureUrl(createProspect.getPictureUrl());
+        prospect.setMobilePhoneNumber(createProspect.getMobilePhoneNumber());
+        prospect.setFixedPhoneNumber(createProspect.getFixedPhoneNumber());
+        prospect.setPositionHeld(createProspect.getPositionHeld());
+        prospect.setStateProspect(createProspect.getStateProspect());
+
+        this.partnerRepository.save(prospect);
+
+    }
+
+    public void createCustomer (CreateProspect createProspect) {
+
+        Partner customer = new Partner();
+        customer.setFirstname(createProspect.getFirstname());
+        customer.setLastname(createProspect.getLastname());
+        customer.setEmail(createProspect.getEmail());
+        customer.setPictureUrl(createProspect.getPictureUrl());
+        customer.setMobilePhoneNumber(createProspect.getMobilePhoneNumber());
+        customer.setFixedPhoneNumber(createProspect.getFixedPhoneNumber());
+        customer.setPositionHeld(createProspect.getPositionHeld());
+        customer.setStateProspect(StateProspect.ENDED);
+
+        this.partnerRepository.save(customer);
+
+    }
+
     public void deletePartner(Long id) {
         this.partnerRepository.deleteById(id);
     }
@@ -56,7 +91,6 @@ public class PartnerService {
         partner.setFirstname(editPartner.getFirstname());
         partner.setLastname(editPartner.getLastname());
         partner.setEmail(editPartner.getEmail());
-        partner.setAddress(editPartner.getAddress());
         partner.setPictureUrl(editPartner.getPictureUrl());
         partner.setFixedPhoneNumber(editPartner.getFixedPhoneNumber());
         partner.setMobilePhoneNumber(editPartner.getMobilePhoneNumber());
