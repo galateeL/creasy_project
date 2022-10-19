@@ -71,7 +71,7 @@ public class CompanyController {
     }
 
     @PostMapping("/edit/{id}")
-    public RedirectView editBook(@PathVariable("id") Long id, CreateCompany company){
+    public RedirectView editCompany(@PathVariable("id") Long id, CreateCompany company){
         companyService.editCompany(id, company );
 
         return new RedirectView(("/companies/details/" + id));
