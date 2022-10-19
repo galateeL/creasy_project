@@ -46,6 +46,8 @@ public class CompanyService {
         company.setPostalCode(createCompany.getPostalCode());
         company.setSiret(createCompany.getSiret());
         company.setWebSite(createCompany.getWebSite());
+        company.setLatitude(createCompany.getLatitude());
+        company.setLongitude(createCompany.getLongitude());
 
         this.companyRepository.save(company);
     }
@@ -72,6 +74,8 @@ public class CompanyService {
         company.setPostalCode(editCompany.getPostalCode());
         company.setSiret(editCompany.getSiret());
         company.setWebSite(editCompany.getWebSite());
+        company.setLatitude(editCompany.getLatitude());
+        company.setLongitude(editCompany.getLongitude());
 
         return this.companyRepository.save(company);
 

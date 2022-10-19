@@ -5,11 +5,10 @@ import com.example.creasy.repository.entity.Company;
 import com.example.creasy.service.CompanyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.jnlp.ClipboardService;
 import java.util.List;
 
 @Controller
@@ -41,4 +40,41 @@ public class CompanyController {
         model.addAttribute("company", company);
         return "companyDetailsView";
     }
+
+    @GetMapping("/add")
+    public String createCompanyForm(){
+        return "companyAddView";
+    }
+
+    @PostMapping("/add")
+    public String createCompany(CreateCompany createCompany){
+
+        companyService.addCompany(createCompany);
+
+        return "redirect:/companies/list";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteCompany(@PathVariable("id") Long id){
+
+        Company company = companyService.getCompanyById(id);
+        companyService.deleteCompany(company);
+        return "redirect:/companies/list";
+
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editCompanyForm(Model model, @PathVariable("id") Long id){
+        Company company = companyService.getCompanyById(id);
+        model.addAttribute("company",company);
+        return "companyEditView";
+    }
+
+    @PostMapping("/edit/{id}")
+    public RedirectView editBook(@PathVariable("id") Long id, CreateCompany company){
+        companyService.editCompany(id, company );
+
+        return new RedirectView(("/companies/details/" + id));
+    }
+
 }
