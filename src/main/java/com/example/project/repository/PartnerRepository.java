@@ -14,4 +14,6 @@ public interface PartnerRepository extends CrudRepository<Partner, Long> {
     List<Partner> findByStateProspectIsNot (StateProspect stateProspect);
 
     List<Partner> findByStateProspectIs (StateProspect stateProspect);
+
+
 }

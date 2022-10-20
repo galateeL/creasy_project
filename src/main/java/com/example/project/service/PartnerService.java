@@ -47,7 +47,7 @@ public class PartnerService {
                 .orElseThrow(() -> new PartnerNotFoundException(id));
     }
 
-    public void createProspect (CreateProspect createProspect) {
+    public void createProspect(CreateProspect createProspect) {
 
         Partner prospect = new Partner();
         prospect.setFirstname(createProspect.getFirstname());
@@ -63,7 +63,7 @@ public class PartnerService {
 
     }
 
-    public void createCustomer (CreateProspect createProspect) {
+    public void createCustomer(CreateProspect createProspect) {
 
         Partner customer = new Partner();
         customer.setFirstname(createProspect.getFirstname());
@@ -86,7 +86,7 @@ public class PartnerService {
     public void editPartner(Long id, EditPartner editPartner) {
         Partner partner = this.partnerRepository
                 .findById(id)
-                .orElseThrow(()-> new PartnerNotFoundException(id));
+                .orElseThrow(() -> new PartnerNotFoundException(id));
 
         partner.setFirstname(editPartner.getFirstname());
         partner.setLastname(editPartner.getLastname());
@@ -95,12 +95,10 @@ public class PartnerService {
         partner.setFixedPhoneNumber(editPartner.getFixedPhoneNumber());
         partner.setMobilePhoneNumber(editPartner.getMobilePhoneNumber());
         partner.setPositionHeld(editPartner.getPositionHeld());
-        partner.setStateProspect(StateProspect.valueOf(editPartner.getStateProspect()));
 
         this.partnerRepository.save(partner);
 
     }
-
 
 
 }

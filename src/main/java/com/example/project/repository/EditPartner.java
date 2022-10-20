@@ -10,7 +10,6 @@ public class EditPartner {
 
     private String email;
 
-
     private String pictureUrl;
 
     private String fixedPhoneNumber;
@@ -19,14 +18,14 @@ public class EditPartner {
 
     private String positionHeld;
 
-    private boolean isClient;
+    //private boolean isClient;
 
     private String stateProspect;
 
     public EditPartner() {
     }
 
-    public EditPartner(int id, String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, boolean isClient, String stateProspect) {
+    public EditPartner(int id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, String stateProspect) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -35,7 +34,7 @@ public class EditPartner {
         this.fixedPhoneNumber = fixedPhoneNumber;
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
-        this.isClient = isClient;
+        //this.isClient = isClient;
         this.stateProspect = stateProspect;
     }
 
@@ -102,14 +101,6 @@ public class EditPartner {
 
     public void setPositionHeld(String positionHeld) {
         this.positionHeld = positionHeld;
-    }
-
-    public boolean isClient() {
-        return isClient;
-    }
-
-    public void setClient(boolean client) {
-        isClient = client;
     }
 
     public String getStateProspect() {

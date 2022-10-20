@@ -3,6 +3,7 @@ package com.example.project.controller;
 import com.example.project.repository.CreateCustomer;
 import com.example.project.repository.CreatePartner;
 import com.example.project.repository.CreateProspect;
+import com.example.project.repository.EditPartner;
 import com.example.project.repository.entity.Partner;
 import com.example.project.repository.entity.StateProspect;
 import com.example.project.service.PartnerService;
@@ -104,6 +105,39 @@ public class PartnerController {
         partnerService.deletePartner(id);
         return "redirect:/partners/all-customers";
     }
+
+    // Edit specific customer - Display form
+    @GetMapping("/edit-customer/{id}")
+    public String displayEditCustomerForm(Model model,@PathVariable Long id) {
+        Partner customer = partnerService.findPartnerById(id);
+        model.addAttribute("customer", customer);
+        return "customer/editCustomer";
+    }
+
+    // Edit specific customer
+    @PostMapping("/edit-customer/{id}")
+    public String editCustomer(EditPartner editPartner, @PathVariable Long id){
+        partnerService.editPartner(id, editPartner);
+        return "redirect:/partners/details/{id}";
+    }
+
+    // Edit specific prospect - Display form
+    @GetMapping("/edit-prospect/{id}")
+    public String displayEditProspectForm(Model model,@PathVariable Long id) {
+        Partner prospect = partnerService.findPartnerById(id);
+        model.addAttribute("prospect", prospect);
+        return "prospect/editProspect";
+    }
+
+    // Edit specific prospect
+    @PostMapping("/edit-prospect/{id}")
+    public String editProspect(EditPartner editPartner, @PathVariable Long id){
+        partnerService.editPartner(id, editPartner);
+        return "redirect:/partners/details/{id}";
+    }
+
+
+
 
 
 
