@@ -1,4 +1,4 @@
-package com.example.project.exception;
+package com.example.creasy.exception;
 
 public class PartnerNotFoundException extends RuntimeException {
     public PartnerNotFoundException(Long id) {

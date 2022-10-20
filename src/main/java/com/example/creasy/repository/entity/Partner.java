@@ -1,8 +1,15 @@
-package com.example.project.repository;
+package com.example.creasy.repository.entity;
 
-public class EditPartner {
+import com.sun.istack.NotNull;
 
-    private int id;
+import javax.persistence.*;
+
+@Entity
+public class Partner {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String lastname;
 
@@ -17,15 +24,17 @@ public class EditPartner {
     private String mobilePhoneNumber;
 
     private String positionHeld;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private StateProspect stateProspect;
 
-    //private boolean isClient;
 
-    private String stateProspect;
 
-    public EditPartner() {
+    public Partner() {
     }
 
-    public EditPartner(int id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, String stateProspect) {
+
+    public Partner(Long id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -34,15 +43,25 @@ public class EditPartner {
         this.fixedPhoneNumber = fixedPhoneNumber;
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
-        //this.isClient = isClient;
         this.stateProspect = stateProspect;
     }
 
-    public int getId() {
+    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.email = email;
+        this.pictureUrl = pictureUrl;
+        this.fixedPhoneNumber = fixedPhoneNumber;
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.positionHeld = positionHeld;
+        this.stateProspect = stateProspect;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -103,11 +122,12 @@ public class EditPartner {
         this.positionHeld = positionHeld;
     }
 
-    public String getStateProspect() {
+
+    public StateProspect getStateProspect() {
         return stateProspect;
     }
 
-    public void setStateProspect(String stateProspect) {
+    public void setStateProspect(StateProspect stateProspect) {
         this.stateProspect = stateProspect;
     }
 }

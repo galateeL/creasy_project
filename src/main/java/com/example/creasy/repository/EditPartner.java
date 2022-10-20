@@ -1,9 +1,8 @@
-package com.example.project.repository;
+package com.example.creasy.repository;
 
-import com.example.project.repository.entity.Partner;
-import com.example.project.repository.entity.StateProspect;
+public class EditPartner {
 
-public class CreateProspect {
+    private int id;
 
     private String lastname;
 
@@ -19,29 +18,15 @@ public class CreateProspect {
 
     private String positionHeld;
 
+    //private boolean isClient;
 
-    private StateProspect stateProspect;
+    private String stateProspect;
 
-
-    public CreateProspect() {
+    public EditPartner() {
     }
 
-    public Partner toProspect() {
-        Partner p = new Partner();
-        p.setFirstname(this.firstname);
-        p.setLastname(this.lastname);
-        p.setEmail(this.email);
-        p.setPictureUrl(this.pictureUrl);
-        p.setFixedPhoneNumber(this.fixedPhoneNumber);
-        p.setMobilePhoneNumber(this.mobilePhoneNumber);
-        p.setPositionHeld(this.positionHeld);
-        p.setStateProspect(this.stateProspect);
-
-        return p;
-
-    }
-
-    public CreateProspect(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
+    public EditPartner(int id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, String stateProspect) {
+        this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
@@ -49,11 +34,17 @@ public class CreateProspect {
         this.fixedPhoneNumber = fixedPhoneNumber;
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
+        //this.isClient = isClient;
         this.stateProspect = stateProspect;
-
-
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getLastname() {
         return lastname;
@@ -112,11 +103,11 @@ public class CreateProspect {
         this.positionHeld = positionHeld;
     }
 
-    public StateProspect getStateProspect() {
+    public String getStateProspect() {
         return stateProspect;
     }
 
-    public void setStateProspect(StateProspect stateProspect) {
+    public void setStateProspect(String stateProspect) {
         this.stateProspect = stateProspect;
     }
 }

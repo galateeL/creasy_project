@@ -1,7 +1,7 @@
-package com.example.project.repository;
+package com.example.creasy.repository;
 
-import com.example.project.repository.entity.Partner;
-import com.example.project.repository.entity.StateProspect;
+import com.example.creasy.repository.entity.Partner;
+import com.example.creasy.repository.entity.StateProspect;
 
 public class CreateCustomer {
 

@@ -1,9 +1,9 @@
-package com.example.project.repository;
+package com.example.creasy.repository;
 
-import com.example.project.repository.entity.Partner;
-import com.example.project.repository.entity.StateProspect;
+import com.example.creasy.repository.entity.Partner;
+import com.example.creasy.repository.entity.StateProspect;
 
-public class CreatePartner {
+public class CreateProspect {
 
     private String lastname;
 
@@ -22,10 +22,11 @@ public class CreatePartner {
 
     private StateProspect stateProspect;
 
-    public CreatePartner() {
+
+    public CreateProspect() {
     }
 
-    public Partner toPartner() {
+    public Partner toProspect() {
         Partner p = new Partner();
         p.setFirstname(this.firstname);
         p.setLastname(this.lastname);
@@ -40,7 +41,7 @@ public class CreatePartner {
 
     }
 
-    public CreatePartner(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
+    public CreateProspect(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
@@ -49,7 +50,10 @@ public class CreatePartner {
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
         this.stateProspect = stateProspect;
+
+
     }
+
 
     public String getLastname() {
         return lastname;

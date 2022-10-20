@@ -1,8 +1,7 @@
-package com.example.project.repository;
+package com.example.creasy.repository;
 
-import com.example.project.repository.entity.Partner;
-import com.example.project.repository.entity.StateProspect;
-import org.springframework.data.jpa.repository.Query;
+import com.example.creasy.repository.entity.Partner;
+import com.example.creasy.repository.entity.StateProspect;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

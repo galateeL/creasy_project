@@ -1,18 +1,13 @@
-package com.example.project.service;
+package com.example.creasy.service;
 
-import com.example.project.exception.PartnerNotFoundException;
-import com.example.project.repository.CreatePartner;
-import com.example.project.repository.CreateProspect;
-import com.example.project.repository.EditPartner;
-import com.example.project.repository.PartnerRepository;
-import com.example.project.repository.entity.Partner;
-import com.example.project.repository.entity.StateProspect;
-import org.springframework.security.core.parameters.P;
+import com.example.creasy.exception.PartnerNotFoundException;
+import com.example.creasy.repository.CreateProspect;
+import com.example.creasy.repository.EditPartner;
+import com.example.creasy.repository.PartnerRepository;
+import com.example.creasy.repository.entity.Partner;
+import com.example.creasy.repository.entity.StateProspect;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.print.Book;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service

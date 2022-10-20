@@ -1,13 +1,10 @@
-package com.example.project.controller;
+package com.example.creasy.controller;
 
-import com.example.project.repository.CreateCustomer;
-import com.example.project.repository.CreatePartner;
-import com.example.project.repository.CreateProspect;
-import com.example.project.repository.EditPartner;
-import com.example.project.repository.entity.Partner;
-import com.example.project.repository.entity.StateProspect;
-import com.example.project.service.PartnerService;
-import org.springframework.data.repository.query.Param;
+import com.example.creasy.repository.CreateProspect;
+import com.example.creasy.repository.EditPartner;
+import com.example.creasy.repository.entity.Partner;
+import com.example.creasy.repository.entity.StateProspect;
+import com.example.creasy.service.PartnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
