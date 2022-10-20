@@ -1,9 +1,8 @@
-package com.example.project.repository.entity;
+package com.example.creasy.repository.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.istack.NotNull;
+
+import javax.persistence.*;
 
 @Entity
 public class Partner {
@@ -18,8 +17,6 @@ public class Partner {
 
     private String email;
 
-    private String address;
-
     private String pictureUrl;
 
     private String fixedPhoneNumber;
@@ -27,10 +24,9 @@ public class Partner {
     private String mobilePhoneNumber;
 
     private String positionHeld;
-
-    private boolean isClient;
-
-    private String stateProspect;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private StateProspect stateProspect;
 
 
 
@@ -38,34 +34,28 @@ public class Partner {
     }
 
 
-    public Partner(Long id, String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, boolean isClient, String stateProspect) {
+    public Partner(Long id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
-        this.address = address;
         this.pictureUrl = pictureUrl;
         this.fixedPhoneNumber = fixedPhoneNumber;
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
-        this.isClient = isClient;
         this.stateProspect = stateProspect;
     }
 
-
-    public Partner(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, boolean isClient, String stateProspect) {
+    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
-        this.address = address;
         this.pictureUrl = pictureUrl;
         this.fixedPhoneNumber = fixedPhoneNumber;
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
-        this.isClient = isClient;
         this.stateProspect = stateProspect;
     }
-
 
     public Long getId() {
         return id;
@@ -99,13 +89,6 @@ public class Partner {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getPictureUrl() {
         return pictureUrl;
@@ -139,19 +122,12 @@ public class Partner {
         this.positionHeld = positionHeld;
     }
 
-    public boolean isClient() {
-        return isClient;
-    }
 
-    public void setClient(boolean client) {
-        isClient = client;
-    }
-
-    public String getStateProspect() {
+    public StateProspect getStateProspect() {
         return stateProspect;
     }
 
-    public void setStateProspect(String stateProspect) {
+    public void setStateProspect(StateProspect stateProspect) {
         this.stateProspect = stateProspect;
     }
 }
