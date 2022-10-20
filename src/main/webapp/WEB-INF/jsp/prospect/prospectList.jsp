@@ -18,6 +18,8 @@
         <c:forEach items="${prospects}" var="prospect">
             <p>${prospect.firstname}</p>
             <p>${prospect.lastname}</p>
+            <a href="${pageContext.request.contextPath}/partners/details/${prospect.id}" class="btn"
+               style="background-color: #05516b; color:white ">Detail</a>
         </c:forEach>
 
 
