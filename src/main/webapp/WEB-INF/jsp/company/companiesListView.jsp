@@ -67,7 +67,7 @@
                     <div class="card-body d-md-flex justify-content-between overflow-auto">
                         <div class="align-items-start">
                             <h5 class="card-title fw-bold text-break">${company.name}</h5>
-                            <p class="card-text">${company.address}</p>
+                            <p class="card-text">${company.webSite}</p>
                         </div>
                         <a class="btn align-self-center ms-2"
                            href="${pageContext.request.contextPath}/companies/details/${company.id}">Details</a>
