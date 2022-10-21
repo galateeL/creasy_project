@@ -13,6 +13,10 @@
 <body>
 <main>
 
+    <header>
+        <jsp:include page="./header.jsp"/>
+    </header>
+
     <h1>Partner detail</h1>
 
     <p>${partner.firstname}</p>

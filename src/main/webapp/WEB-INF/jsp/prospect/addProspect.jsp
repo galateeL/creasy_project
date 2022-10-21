@@ -13,6 +13,10 @@
 <body>
 <main>
 
+    <header>
+        <jsp:include page="../header.jsp"/>
+    </header>
+
     <h1>Add prospect</h1>
 
     <form action="${pageContext.request.contextPath}/partners/add-prospect" method="post">

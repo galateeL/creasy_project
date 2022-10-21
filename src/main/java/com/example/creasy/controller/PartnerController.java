@@ -24,7 +24,6 @@ public class PartnerController {
         this.partnerService = partnerService;
     }
 
-
     // Display all partners
 //    @GetMapping("/all")
 //    public String displayAllPartners(Model model) {
@@ -132,17 +131,6 @@ public class PartnerController {
         partnerService.editPartner(id, editPartner);
         return "redirect:/partners/details/{id}";
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
