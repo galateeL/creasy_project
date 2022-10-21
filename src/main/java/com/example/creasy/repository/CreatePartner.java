@@ -1,5 +1,6 @@
 package com.example.creasy.repository;
 
+import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 
@@ -24,6 +25,8 @@ public class CreatePartner {
 
     private StateProspect stateProspect;
 
+    private Company company;
+
 
 
     public CreatePartner() {
@@ -39,12 +42,13 @@ public class CreatePartner {
         p.setMobilePhoneNumber(this.mobilePhoneNumber);
         p.setPositionHeld(this.positionHeld);
         p.setStateProspect(this.stateProspect);
+        p.setCompany(this.company);
 
         return p;
 
     }
 
-    public CreatePartner(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
+    public CreatePartner(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
@@ -55,6 +59,13 @@ public class CreatePartner {
         this.stateProspect = stateProspect;
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
     public String getLastname() {
         return lastname;

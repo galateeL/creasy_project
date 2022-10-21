@@ -19,11 +19,15 @@
 
         <h1>Prospect List</h1>
 
+        <a href="${pageContext.request.contextPath}/partners/add-prospect" class="btn"
+           style="background-color: #05516b; color:white ">Add new prospect</a>
+
+
         <c:forEach items="${prospects}" var="prospect">
             <p>${prospect.firstname}</p>
             <p>${prospect.lastname}</p>
             <p>${prospect.company.name}</p>
-            <a href="${pageContext.request.contextPath}/partners/details/${prospect.id}" class="btn"
+            <a href="${pageContext.request.contextPath}/partners/details-prospect/${prospect.id}" class="btn"
                style="background-color: #05516b; color:white ">Detail</a>
         </c:forEach>
 

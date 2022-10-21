@@ -38,6 +38,7 @@ public class PartnerService {
         return this.partnerRepository.findById(id).get();
     }
 
+
     public Partner getPartner(Long id) {
         return this.partnerRepository
                 .findById(id)

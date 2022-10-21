@@ -57,13 +57,23 @@ public class PartnerController {
         return "customer/customerList";
     }
 
-    // Display specific partner
-    @GetMapping("/details/{id}")
-    public String displaySpecificPartner(Model model, @PathVariable Long id){
+
+    // Display specific prospect
+    @GetMapping("/details-prospect/{id}")
+    public String displaySpecificProspect(Model model, @PathVariable Long id){
         Partner partner = partnerService.findPartnerById(id);
         model.addAttribute("partner", partner);
-        return "partnerDetail";
+        return "prospect/prospectDetail";
     }
+
+    // Display specific customer
+    @GetMapping("/details-customer/{id}")
+    public String displaySpecificCustomer(Model model, @PathVariable Long id){
+        Partner partner = partnerService.findPartnerById(id);
+        model.addAttribute("partner", partner);
+        return "customer/customerDetail";
+    }
+
 
     // Add prospect - Display addProspect Form
     @GetMapping("/add-prospect")
@@ -129,7 +139,7 @@ public class PartnerController {
     @PostMapping("/edit-customer/{id}")
     public String editCustomer(EditPartner editPartner, @PathVariable Long id, Model model){
         partnerService.editPartner(id, editPartner);
-        return "redirect:/partners/details/{id}";
+        return "redirect:/partners/details-customer/{id}";
     }
 
     // Edit specific prospect - Display form
@@ -146,7 +156,7 @@ public class PartnerController {
     @PostMapping("/edit-prospect/{id}")
     public String editProspect(EditPartner editPartner, @PathVariable Long id){
         partnerService.editPartner(id, editPartner);
-        return "redirect:/partners/details/{id}";
+        return "redirect:/partners/details-prospect/{id}";
     }
 
 
