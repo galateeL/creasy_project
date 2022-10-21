@@ -40,13 +40,24 @@ h5, h1{
     color: #D9D9D9;
 }
 
-.headBar{
-    height: 100px;
-}
-
 .imgLogoC{
     object-fit: cover;
     height: 100px;
+}
+
+.fa-map-marker{
+    color: red;
+    text-shadow: 2px 2px #C3C3C3;
+}
+
+.fa-envelope-o{
+    color: #A7A7A7;
+    text-shadow: 2px 2px #C3C3C3;
+}
+
+.fa-phone{
+    color: #3AE1B1;
+    text-shadow: 2px 2px #C3C3C3;
 }
 
 

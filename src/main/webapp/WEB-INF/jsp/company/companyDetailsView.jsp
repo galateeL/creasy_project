@@ -53,14 +53,22 @@
     <%----------------------------%>
 
         <div class="col row m-5 p-3">
-            <div class="headBar col-12  justify-content-md-between bg-white mb-5">
+            <div class="headBar col-12 d-md-flex justify-content-md-between bg-white mb-5">
 
                 <div class="d-md-flex">
                     <img class="imgLogoC img-fluid" src="${company.logo}">
-                    <div class="">
+                    <div >
                         <h5>${company.name}</h5>
                         <p>${company.webSite}</p>
                     </div>
+                </div>
+
+                <div class="d-md-flex align-self-center ">
+                    <i class="fa fa-phone fa-3x me-md-2" aria-hidden="true"></i>
+                    <i class="fa fa-envelope-o fa-3x ms-md-4 me-md-2" aria-hidden="true"></i>
+                    <i class="fa fa-map-marker fa-3x ms-md-4 me-md-5" aria-hidden="true"></i>
+                    <a class="btn btn-primary shadow-sm align-self-center border-0 "
+                       href="${pageContext.request.contextPath}/companies/edit/${company.id}">Edit</a>
                 </div>
 
             </div>
