@@ -120,12 +120,14 @@ public class PartnerController {
     public String displayEditCustomerForm(Model model,@PathVariable Long id) {
         Partner customer = partnerService.findPartnerById(id);
         model.addAttribute("customer", customer);
+        List<Company> companyList  = companyService.getAllCompany();
+        model.addAttribute("companies", companyList);
         return "customer/editCustomer";
     }
 
     // Edit specific customer
     @PostMapping("/edit-customer/{id}")
-    public String editCustomer(EditPartner editPartner, @PathVariable Long id){
+    public String editCustomer(EditPartner editPartner, @PathVariable Long id, Model model){
         partnerService.editPartner(id, editPartner);
         return "redirect:/partners/details/{id}";
     }
@@ -135,6 +137,8 @@ public class PartnerController {
     public String displayEditProspectForm(Model model,@PathVariable Long id) {
         Partner prospect = partnerService.findPartnerById(id);
         model.addAttribute("prospect", prospect);
+        List<Company> companyList  = companyService.getAllCompany();
+        model.addAttribute("companies", companyList);
         return "prospect/editProspect";
     }
 

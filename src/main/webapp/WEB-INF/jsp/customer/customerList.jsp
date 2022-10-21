@@ -21,6 +21,7 @@
     <c:forEach items="${customers}" var="customer">
         <p>${customer.firstname}</p>
         <p>${customer.lastname}</p>
+        <p>${customer.company.name}</p>
         <a href="${pageContext.request.contextPath}/partners/details/${customer.id}" class="btn"
            style="background-color: #05516b; color:white ">Detail</a>
     </c:forEach>

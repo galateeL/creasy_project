@@ -68,10 +68,10 @@
                 </c:forEach>
             </select>
         </div>
-        
+
         <div class="mb-2">
-            <label for="author">Company</label>
-            <select class="forms-select d-block w-100" id="author" required name="company">
+            <label for="company">Company</label>
+            <select class="forms-select d-block w-100" id="company" required name="company">
                 <option disabled selected>Choose...</option>
                 <c:forEach items="${companies}" var="company">
                     <option value="${company.id}">${company.name}</option>

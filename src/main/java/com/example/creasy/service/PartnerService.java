@@ -94,6 +94,7 @@ public class PartnerService {
         partner.setFixedPhoneNumber(editPartner.getFixedPhoneNumber());
         partner.setMobilePhoneNumber(editPartner.getMobilePhoneNumber());
         partner.setPositionHeld(editPartner.getPositionHeld());
+        partner.setCompany(editPartner.getCompany());
 
         this.partnerRepository.save(partner);
 

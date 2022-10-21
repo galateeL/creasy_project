@@ -21,6 +21,7 @@
 
     <p>${partner.firstname}</p>
     <p>${partner.lastname}</p>
+    <p>${partner.company.name}</p>
 
     <jsp:include page="./customer/deleteCustomerModal.jsp"/>
 
