@@ -13,7 +13,6 @@ public class CreateNote {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate registerDate;
 
-    private Partner partner;
 
 
     public CreateNote() {
@@ -22,7 +21,6 @@ public class CreateNote {
     public Note toNote() {
         Note n = new Note();
         n.setExchange(this.exchange);
-        n.setPartner(this.partner);
         n.setRegisterDate(this.registerDate);
         return n;
     }
@@ -30,7 +28,6 @@ public class CreateNote {
     public CreateNote(String exchange, LocalDate registerDate, Partner partner) {
         this.exchange = exchange;
         this.registerDate = registerDate;
-        this.partner = partner;
     }
 
     public String getExchange() {
@@ -49,11 +46,4 @@ public class CreateNote {
         this.registerDate = registerDate;
     }
 
-    public Partner getPartner() {
-        return partner;
-    }
-
-    public void setPartner(Partner partner) {
-        this.partner = partner;
-    }
 }

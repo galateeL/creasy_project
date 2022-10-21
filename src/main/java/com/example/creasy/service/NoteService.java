@@ -5,8 +5,10 @@ import com.example.creasy.repository.CreateNote;
 import com.example.creasy.repository.EditNote;
 import com.example.creasy.repository.NoteRepository;
 import com.example.creasy.repository.entity.Note;
+import com.example.creasy.repository.entity.Partner;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -22,19 +24,23 @@ public class NoteService {
         return (List<Note>) this.noteRepository.findAll();
     }
 
+    public List<Note> getAllNotesByPartner(Partner partner){
+        return (List<Note>) this.noteRepository.getAllByPartner(partner);
+
+    }
+
     public Note getNoteById(Long id) throws NoteNotFoundException {
         return this.noteRepository
                 .findById(id)
                 .orElseThrow(() -> new NoteNotFoundException(id));
     }
 
-
-    public void addNote(CreateNote createNote){
+    public void addNote(CreateNote createNote, Partner partner){
 
         Note note = new Note();
         note.setExchange(createNote.getExchange());
-        note.setRegisterDate(createNote.getRegisterDate());
-        note.setPartner(createNote.getPartner());
+        note.setRegisterDate(LocalDate.now());
+        note.setPartner(partner);
 
         this.noteRepository.save(note);
     }
