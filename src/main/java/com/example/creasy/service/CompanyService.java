@@ -77,7 +77,6 @@ public class CompanyService {
         company.setAddress(editCompany.getAddress());
         company.setCity(editCompany.getCity());
         company.setEmail(editCompany.getEmail());
-        company.setLogo(editCompany.getLogo());
         company.setName(editCompany.getName());
         company.setPhoneNumberFixr(editCompany.getPhoneNumberFixr());
         company.setPostalCode(editCompany.getPostalCode());
@@ -86,6 +85,14 @@ public class CompanyService {
         company.setLatitude(editCompany.getLatitude());
         company.setLongitude(editCompany.getLongitude());
         company.setCreationDate(editCompany.getCreationDate());
+
+        MultipartFile picture = editCompany.getLogoFile();
+        if (picture == null || picture.isEmpty()) {
+            company.setLogo(editCompany.getLogo());
+        } else {
+            storageService.store(picture);
+            company.setLogo("http://localhost:8080/images/" + picture.getOriginalFilename());
+        }
 
         return this.companyRepository.save(company);
 

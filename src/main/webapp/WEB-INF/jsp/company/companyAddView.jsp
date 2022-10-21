@@ -41,24 +41,24 @@
 
 <div class="fluid-container col-12 justify-content-center">
 
+    <%-----Title block-----%>
     <div class="ms-md-4 me-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
 
         <h1 class="mt-3 fw-bold ms-5 align-self-center">Add company :</h1>
 
-        <%--Back to list button--%>
         <a class="btn mt-3 btn-secondary shadow-sm align-self-center border-0"
            href="${pageContext.request.contextPath}/companies/list">Back to company list</a>
-        <%---------%>
 
     </div>
+    <%----------------------------%>
 
-
-    <%----%>
     <div class="col row m-5 p-3">
 
         <form class="col-12 " action="${pageContext.request.contextPath}/companies/add" method="POST" enctype="multipart/form-data">
 
             <div class="d-flex flex-column flex-md-row justify-content-between">
+
+                <%-----Block on the left-----%>
                 <div class="col col-md-5 p-5 bg-white">
                     <div class="mb-3">
                         <label for="name" class="form-label">COMPANY NAME</label>
@@ -98,42 +98,42 @@
                         </div>
                     </div>
                 </div>
+                <%----------------------------%>
 
+                <%-----Block on the right-----%>
                 <div class="col col-md-5 p-5 bg-white">
 
-                    <div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">ADDRESS</label>
+                        <input id="address" name="address" type="text" class="form-control"
+                               placeholder="ex : Rue des Rosiers">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="postalCode" class="form-label">POSTAL CODE</label>
+                        <input id="postalCode" name="postalCode" type="text" class="form-control"
+                               placeholder="ex : 75000">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="city" class="form-label">CITY</label>
+                        <input id="city" name="city" type="text" class="form-control" placeholder="ex : Paris">
+                    </div>
+
+                    <div class="d-md-flex justify-content-between">
                         <div class="mb-3">
-                            <label for="address" class="form-label">ADDRESS</label>
-                            <input id="address" name="address" type="text" class="form-control"
-                                   placeholder="ex : Rue des Rosiers">
+                            <label for="latitude" class="form-label">LATITUDE</label>
+                            <input id="latitude" name="latitude" type="text" class="form-control"
+                                   placeholder="ex : 48.866667">
                         </div>
 
                         <div class="mb-3">
-                            <label for="postalCode" class="form-label">POSTAL CODE</label>
-                            <input id="postalCode" name="postalCode" type="text" class="form-control"
-                                   placeholder="ex : 75000">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="city" class="form-label">CITY</label>
-                            <input id="city" name="city" type="text" class="form-control" placeholder="ex : Paris">
-                        </div>
-
-                        <div class="d-md-flex justify-content-between">
-                            <div class="mb-3">
-                                <label for="latitude" class="form-label">LATITUDE</label>
-                                <input id="latitude" name="latitude" type="text" class="form-control" placeholder="ex : 48.866667">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="longitude" class="form-label">LONGITUDE</label>
-                                <input id="longitude" name="longitude" type="text" class="form-control" placeholder="ex : 2.333333">
-                            </div>
-
+                            <label for="longitude" class="form-label">LONGITUDE</label>
+                            <input id="longitude" name="longitude" type="text" class="form-control"
+                                   placeholder="ex : 2.333333">
                         </div>
 
                     </div>
-
 
                     <div class="mb-3">
                         <label for="phoneNumberFixr" class="form-label">PHONE NUMBER</label>
@@ -152,17 +152,14 @@
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary shadow-sm align-self-center border-0">Add</button>
                     </div>
+
                 </div>
-
-
+                <%----------------------------%>
             </div>
-
-
 
         </form>
 
     </div>
-    <%---------%>
 
 </div>
 </body>
