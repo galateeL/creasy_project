@@ -1,9 +1,9 @@
 package com.example.creasy.service;
 
+import com.example.creasy.controller.CreateCompany;
 import com.example.creasy.exception.PartnerNotFoundException;
-import com.example.creasy.repository.CreateProspect;
-import com.example.creasy.repository.EditPartner;
-import com.example.creasy.repository.PartnerRepository;
+import com.example.creasy.repository.*;
+import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 import org.springframework.stereotype.Service;
@@ -14,9 +14,11 @@ import java.util.List;
 public class PartnerService {
 
     private PartnerRepository partnerRepository;
+    private CompanyRepository companyRepository;
 
-    public PartnerService(PartnerRepository partnerRepository) {
+    public PartnerService(PartnerRepository partnerRepository, CompanyRepository companyRepository) {
         this.partnerRepository = partnerRepository;
+        this.companyRepository = companyRepository;
     }
 
     public List<Partner> getAllPartner() {
@@ -36,6 +38,7 @@ public class PartnerService {
         return this.partnerRepository.findById(id).get();
     }
 
+
     public Partner getPartner(Long id) {
         return this.partnerRepository
                 .findById(id)
@@ -53,22 +56,24 @@ public class PartnerService {
         prospect.setFixedPhoneNumber(createProspect.getFixedPhoneNumber());
         prospect.setPositionHeld(createProspect.getPositionHeld());
         prospect.setStateProspect(createProspect.getStateProspect());
+        prospect.setCompany(createProspect.getCompany());
 
         this.partnerRepository.save(prospect);
 
     }
 
-    public void createCustomer(CreateProspect createProspect) {
+    public void createCustomer(CreateCustomer createCustomer) {
 
         Partner customer = new Partner();
-        customer.setFirstname(createProspect.getFirstname());
-        customer.setLastname(createProspect.getLastname());
-        customer.setEmail(createProspect.getEmail());
-        customer.setPictureUrl(createProspect.getPictureUrl());
-        customer.setMobilePhoneNumber(createProspect.getMobilePhoneNumber());
-        customer.setFixedPhoneNumber(createProspect.getFixedPhoneNumber());
-        customer.setPositionHeld(createProspect.getPositionHeld());
+        customer.setFirstname(createCustomer.getFirstname());
+        customer.setLastname(createCustomer.getLastname());
+        customer.setEmail(createCustomer.getEmail());
+        customer.setPictureUrl(createCustomer.getPictureUrl());
+        customer.setMobilePhoneNumber(createCustomer.getMobilePhoneNumber());
+        customer.setFixedPhoneNumber(createCustomer.getFixedPhoneNumber());
+        customer.setPositionHeld(createCustomer.getPositionHeld());
         customer.setStateProspect(StateProspect.ENDED);
+        customer.setCompany(createCustomer.getCompany());
 
         this.partnerRepository.save(customer);
 
@@ -90,6 +95,7 @@ public class PartnerService {
         partner.setFixedPhoneNumber(editPartner.getFixedPhoneNumber());
         partner.setMobilePhoneNumber(editPartner.getMobilePhoneNumber());
         partner.setPositionHeld(editPartner.getPositionHeld());
+        partner.setCompany(editPartner.getCompany());
 
         this.partnerRepository.save(partner);
 

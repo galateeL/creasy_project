@@ -1,9 +1,7 @@
 package com.example.creasy.repository.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Company {
@@ -40,7 +38,53 @@ public class Company {
 
     private String longitude;
 
+    @OneToMany(mappedBy = "company")
+    private List<Partner> partnerList;
+
     public Company() {
+    }
+
+    public Company(String activityArea, String additionalAddress, String adress, String city, String email, String logo, String name, String phoneNumberFixr, String phoneNumberPortable, String postalCode, String siret, String webSite, String latitude, String longitude) {
+        this.activityArea = activityArea;
+        this.additionalAddress = additionalAddress;
+        this.adress = adress;
+        this.city = city;
+        this.email = email;
+        this.logo = logo;
+        this.name = name;
+        this.phoneNumberFixr = phoneNumberFixr;
+        this.phoneNumberPortable = phoneNumberPortable;
+        this.postalCode = postalCode;
+        this.siret = siret;
+        this.webSite = webSite;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public Company(String activityArea, String additionalAddress, String adress, String city, String email, String logo, String name, String phoneNumberFixr, String phoneNumberPortable, String postalCode, String siret, String webSite, String latitude, String longitude, List<Partner> partnerList) {
+        this.activityArea = activityArea;
+        this.additionalAddress = additionalAddress;
+        this.adress = adress;
+        this.city = city;
+        this.email = email;
+        this.logo = logo;
+        this.name = name;
+        this.phoneNumberFixr = phoneNumberFixr;
+        this.phoneNumberPortable = phoneNumberPortable;
+        this.postalCode = postalCode;
+        this.siret = siret;
+        this.webSite = webSite;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.partnerList = partnerList;
+    }
+
+    public List<Partner> getPartnerList() {
+        return partnerList;
+    }
+
+    public void setPartnerList(List<Partner> partnerList) {
+        this.partnerList = partnerList;
     }
 
     public String getLatitude() {

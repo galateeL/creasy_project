@@ -1,9 +1,13 @@
 package com.example.creasy.controller;
 
+import com.example.creasy.repository.CompanyRepository;
+import com.example.creasy.repository.CreateCustomer;
 import com.example.creasy.repository.CreateProspect;
 import com.example.creasy.repository.EditPartner;
+import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
+import com.example.creasy.service.CompanyService;
 import com.example.creasy.service.PartnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +24,12 @@ import java.util.List;
 public class PartnerController {
     private PartnerService partnerService;
 
-    public PartnerController(PartnerService partnerService) {
+    private CompanyService companyService;
+
+    public PartnerController(PartnerService partnerService, CompanyService companyService) {
+
         this.partnerService = partnerService;
+        this.companyService = companyService;
     }
 
     // Display all partners
@@ -49,20 +57,32 @@ public class PartnerController {
         return "customer/customerList";
     }
 
-    // Display specific partner
-    @GetMapping("/details/{id}")
-    public String displaySpecificPartner(Model model, @PathVariable Long id){
+
+    // Display specific prospect
+    @GetMapping("/details-prospect/{id}")
+    public String displaySpecificProspect(Model model, @PathVariable Long id){
         Partner partner = partnerService.findPartnerById(id);
         model.addAttribute("partner", partner);
-        return "partnerDetail";
+        return "prospect/prospectDetail";
     }
+
+    // Display specific customer
+    @GetMapping("/details-customer/{id}")
+    public String displaySpecificCustomer(Model model, @PathVariable Long id){
+        Partner partner = partnerService.findPartnerById(id);
+        model.addAttribute("partner", partner);
+        return "customer/customerDetail";
+    }
+
 
     // Add prospect - Display addProspect Form
     @GetMapping("/add-prospect")
     public String displayAddProspectForm(Model model) {
         StateProspect[] stateProspectsArray = StateProspect.values();
         List<StateProspect> stateProspectList = Arrays.asList(stateProspectsArray);
+        List<Company> companyList  = companyService.getAllCompany();
         model.addAttribute("stateProspects", stateProspectList);
+        model.addAttribute("companies", companyList);
         return "prospect/addProspect";
     }
 
@@ -77,16 +97,19 @@ public class PartnerController {
     // Add customer - Display addCustomer Form
    @GetMapping("/add-customer")
     public String displayAddCustomerForm(Model model) {
+      List<Company> companyList  = companyService.getAllCompany();
+      model.addAttribute("companies", companyList);
         return "customer/addCustomer";
    }
 
 
     // Add customer - Save in DB
     @PostMapping("/add-customer")
-    public String addCustomer(CreateProspect createProspect) {
-        partnerService.createCustomer(createProspect);
+    public String addCustomer(CreateCustomer createCustomer) {
+        partnerService.createCustomer(createCustomer);
         return "redirect:/partners/all-customers";
     }
+
 
     // Delete specific prospect
     @PostMapping("/delete-prospect/{id}")
@@ -107,14 +130,16 @@ public class PartnerController {
     public String displayEditCustomerForm(Model model,@PathVariable Long id) {
         Partner customer = partnerService.findPartnerById(id);
         model.addAttribute("customer", customer);
+        List<Company> companyList  = companyService.getAllCompany();
+        model.addAttribute("companies", companyList);
         return "customer/editCustomer";
     }
 
     // Edit specific customer
     @PostMapping("/edit-customer/{id}")
-    public String editCustomer(EditPartner editPartner, @PathVariable Long id){
+    public String editCustomer(EditPartner editPartner, @PathVariable Long id, Model model){
         partnerService.editPartner(id, editPartner);
-        return "redirect:/partners/details/{id}";
+        return "redirect:/partners/details-customer/{id}";
     }
 
     // Edit specific prospect - Display form
@@ -122,6 +147,8 @@ public class PartnerController {
     public String displayEditProspectForm(Model model,@PathVariable Long id) {
         Partner prospect = partnerService.findPartnerById(id);
         model.addAttribute("prospect", prospect);
+        List<Company> companyList  = companyService.getAllCompany();
+        model.addAttribute("companies", companyList);
         return "prospect/editProspect";
     }
 
@@ -129,7 +156,7 @@ public class PartnerController {
     @PostMapping("/edit-prospect/{id}")
     public String editProspect(EditPartner editPartner, @PathVariable Long id){
         partnerService.editPartner(id, editPartner);
-        return "redirect:/partners/details/{id}";
+        return "redirect:/partners/details-prospect/{id}";
     }
 
 
