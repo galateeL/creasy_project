@@ -34,9 +34,13 @@
 </head>
 <body>
 
-<div class="cont fluid-container col-12 justify-content-center">
+<header>
+    <jsp:include page="../header.jsp"/>
+</header>
 
-    <h1 class="fw-bold ms-5">Companies :</h1>
+<div class="fluid-container col-12 justify-content-center">
+
+    <h1 class="mt-3 fw-bold ms-5">Companies :</h1>
 
     <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
 

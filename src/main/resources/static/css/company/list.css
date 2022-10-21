@@ -9,9 +9,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 body{
     font-family: 'Inter', sans-serif;
-}
-
-.cont{
     background: #F1F1F1;
 }
 

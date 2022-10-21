@@ -9,9 +9,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 body{
     font-family: 'Inter', sans-serif;
-}
-
-.cont{
     background: #F1F1F1;
 }
 
@@ -25,6 +22,16 @@ body{
     color: white;
 }
 
+.btn-primary{
+    background: #3AE1B1;
+    color: white;
+}
+
+.btn-primary:hover{
+    background: #1ec898;
+    color: white;
+}
+
 h5, h1{
     color: #757575;
 }
@@ -33,11 +40,13 @@ h5, h1{
     color: #3AE1B1;
 }
 
-/*search icon*/
-.fa-search{
-    display: block;
-    margin-left: -15%;
-
+.form-label{
+    color: #D9D9D9;
 }
+
+#logoFile{
+    display: none;
+}
+
 
 

@@ -1,9 +1,12 @@
 package com.example.creasy.repository.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class Company {
@@ -13,8 +16,6 @@ public class Company {
     private Long id;
 
     private String activityArea;
-
-    private String additionalAddress;
 
     private String address;
 
@@ -28,8 +29,6 @@ public class Company {
 
     private String phoneNumberFixr;
 
-    private String phoneNumberPortable;
-
     private String postalCode;
 
     private String siret;
@@ -40,24 +39,34 @@ public class Company {
 
     private String longitude;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate creationDate;
+
     public Company() {
     }
 
-    public Company(String activityArea, String additionalAddress, String address, String city, String email, String logo, String name, String phoneNumberFixr, String phoneNumberPortable, String postalCode, String siret, String webSite, String latitude, String longitude) {
+    public Company(String activityArea, String address, String city, String email, String logo, String name, String phoneNumberFixr, String postalCode, String siret, String webSite, String latitude, String longitude, LocalDate creationDate) {
         this.activityArea = activityArea;
-        this.additionalAddress = additionalAddress;
         this.address = address;
         this.city = city;
         this.email = email;
         this.logo = logo;
         this.name = name;
         this.phoneNumberFixr = phoneNumberFixr;
-        this.phoneNumberPortable = phoneNumberPortable;
         this.postalCode = postalCode;
         this.siret = siret;
         this.webSite = webSite;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.creationDate = creationDate;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getLatitude() {
@@ -91,15 +100,6 @@ public class Company {
     public void setActivityArea(String activityArea) {
         this.activityArea = activityArea;
     }
-
-    public String getAdditionalAddress() {
-        return additionalAddress;
-    }
-
-    public void setAdditionalAddress(String additionalAddress) {
-        this.additionalAddress = additionalAddress;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -146,14 +146,6 @@ public class Company {
 
     public void setPhoneNumberFixr(String phoneNumberFixr) {
         this.phoneNumberFixr = phoneNumberFixr;
-    }
-
-    public String getPhoneNumberPortable() {
-        return phoneNumberPortable;
-    }
-
-    public void setPhoneNumberPortable(String phoneNumberPortable) {
-        this.phoneNumberPortable = phoneNumberPortable;
     }
 
     public String getPostalCode() {
