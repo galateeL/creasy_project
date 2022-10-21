@@ -12,6 +12,9 @@
 </head>
 <body>
 <main>
+    <header>
+        <jsp:include page="../header.jsp"/>
+    </header>
 
     <h1>Customer List</h1>
 

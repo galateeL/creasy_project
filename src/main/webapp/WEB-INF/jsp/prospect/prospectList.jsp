@@ -13,6 +13,10 @@
     <body>
     <main>
 
+        <header>
+            <jsp:include page="../header.jsp"/>
+        </header>
+
         <h1>Prospect List</h1>
 
         <c:forEach items="${prospects}" var="prospect">

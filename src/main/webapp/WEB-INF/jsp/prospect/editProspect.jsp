@@ -16,6 +16,10 @@
 <body>
 <main>
 
+    <header>
+        <jsp:include page="../header.jsp"/>
+    </header>
+
     <h1>Edit prospect</h1>
 
     <form action="${pageContext.request.contextPath}/partners/edit-prospect/${prospect.id}" method="post">
