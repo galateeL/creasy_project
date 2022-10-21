@@ -68,18 +68,16 @@
                 </c:forEach>
             </select>
         </div>
-
-
-
-
-<%--        <ul class="list-group list-group-horizontal m-3">--%>
-<%--            <c:forEach items="${companies}" var="company">--%>
-<%--                <li style="color: #ff5630; background-color: #ffffff" class="list-group-item m-3">--%>
-<%--                    <c:out value="${company.name}"/>--%>
-<%--                </li>--%>
-<%--            </c:forEach>--%>
-<%--        </ul>--%>
-
+        
+        <div class="mb-2">
+            <label for="author">Company</label>
+            <select class="forms-select d-block w-100" id="author" required name="company">
+                <option disabled selected>Choose...</option>
+                <c:forEach items="${companies}" var="company">
+                    <option value="${company.id}">${company.name}</option>
+                </c:forEach>
+            </select>
+        </div>
 
         <button type="submit" class="btn" style="background: #ff5630; color: white">Add
         </button>

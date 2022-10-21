@@ -3,6 +3,8 @@ package com.example.creasy.repository;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 
+import java.util.List;
+
 public class CreatePartner {
 
     private String lastname;
@@ -21,6 +23,8 @@ public class CreatePartner {
 
 
     private StateProspect stateProspect;
+
+
 
     public CreatePartner() {
     }
@@ -50,6 +54,7 @@ public class CreatePartner {
         this.positionHeld = positionHeld;
         this.stateProspect = stateProspect;
     }
+
 
     public String getLastname() {
         return lastname;

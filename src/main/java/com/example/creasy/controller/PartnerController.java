@@ -1,9 +1,13 @@
 package com.example.creasy.controller;
 
+import com.example.creasy.repository.CompanyRepository;
+import com.example.creasy.repository.CreateCustomer;
 import com.example.creasy.repository.CreateProspect;
 import com.example.creasy.repository.EditPartner;
+import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
+import com.example.creasy.service.CompanyService;
 import com.example.creasy.service.PartnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +24,12 @@ import java.util.List;
 public class PartnerController {
     private PartnerService partnerService;
 
-    public PartnerController(PartnerService partnerService) {
+    private CompanyService companyService;
+
+    public PartnerController(PartnerService partnerService, CompanyService companyService) {
+
         this.partnerService = partnerService;
+        this.companyService = companyService;
     }
 
     // Display all partners
@@ -62,7 +70,9 @@ public class PartnerController {
     public String displayAddProspectForm(Model model) {
         StateProspect[] stateProspectsArray = StateProspect.values();
         List<StateProspect> stateProspectList = Arrays.asList(stateProspectsArray);
+        List<Company> companyList  = companyService.getAllCompany();
         model.addAttribute("stateProspects", stateProspectList);
+        model.addAttribute("companies", companyList);
         return "prospect/addProspect";
     }
 
@@ -77,16 +87,19 @@ public class PartnerController {
     // Add customer - Display addCustomer Form
    @GetMapping("/add-customer")
     public String displayAddCustomerForm(Model model) {
+      List<Company> companyList  = companyService.getAllCompany();
+      model.addAttribute("companies", companyList);
         return "customer/addCustomer";
    }
 
 
     // Add customer - Save in DB
     @PostMapping("/add-customer")
-    public String addCustomer(CreateProspect createProspect) {
-        partnerService.createCustomer(createProspect);
+    public String addCustomer(CreateCustomer createCustomer) {
+        partnerService.createCustomer(createCustomer);
         return "redirect:/partners/all-customers";
     }
+
 
     // Delete specific prospect
     @PostMapping("/delete-prospect/{id}")

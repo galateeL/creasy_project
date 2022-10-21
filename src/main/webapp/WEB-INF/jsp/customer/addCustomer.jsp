@@ -6,8 +6,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
     <title>CREASY | Add customer</title>
 </head>
 <body>
@@ -57,16 +60,15 @@
             <input id="positionHeld-p" type="text" class="form-control" name="positionHeld">
         </div>
 
-
-
-        <%--        <ul class="list-group list-group-horizontal m-3">--%>
-        <%--            <c:forEach items="${companies}" var="company">--%>
-        <%--                <li style="color: #ff5630; background-color: #ffffff" class="list-group-item m-3">--%>
-        <%--                    <c:out value="${company.name}"/>--%>
-        <%--                </li>--%>
-        <%--            </c:forEach>--%>
-        <%--        </ul>--%>
-
+        <div class="mb-2">
+            <label for="author">Company</label>
+            <select class="forms-select d-block w-100" id="author" required name="company">
+                <option disabled selected>Choose...</option>
+                <c:forEach items="${companies}" var="company">
+                    <option value="${company.id}">${company.name}</option>
+                </c:forEach>
+            </select>
+        </div>
 
         <button type="submit" class="btn" style="background: #ff5630; color: white">Add
         </button>
