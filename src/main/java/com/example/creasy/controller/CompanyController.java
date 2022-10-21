@@ -31,19 +31,19 @@ public class CompanyController {
             List<Company> companyList = companyService.getAllCompany();
             model.addAttribute("companies", companyList);
         }
-        return "companiesListView";
+        return "company/companiesListView";
     }
 
     @GetMapping(path = "/details/{id}")
     public String displaySpecificCompany(Model model, @PathVariable("id") Long id){
         Company company = companyService.getCompanyById(id);
         model.addAttribute("company", company);
-        return "companyDetailsView";
+        return "company/companyDetailsView";
     }
 
     @GetMapping("/add")
     public String createCompanyForm(){
-        return "companyAddView";
+        return "company/companyAddView";
     }
 
     @PostMapping("/add")
@@ -67,7 +67,7 @@ public class CompanyController {
     public String editCompanyForm(Model model, @PathVariable("id") Long id){
         Company company = companyService.getCompanyById(id);
         model.addAttribute("company",company);
-        return "companyEditView";
+        return "company/companyEditView";
     }
 
     @PostMapping("/edit/{id}")

@@ -36,7 +36,7 @@ public class CompanyService {
         Company company = new Company();
         company.setActivityArea(createCompany.getActivityArea());
         company.setAdditionalAddress(createCompany.getAdditionalAddress());
-        company.setAdress(createCompany.getAdress());
+        company.setAddress(createCompany.getAdress());
         company.setCity(createCompany.getCity());
         company.setEmail(createCompany.getEmail());
         company.setLogo(createCompany.getLogo());
@@ -64,7 +64,7 @@ public class CompanyService {
 
         company.setActivityArea(editCompany.getActivityArea());
         company.setAdditionalAddress(editCompany.getAdditionalAddress());
-        company.setAdress(editCompany.getAdress());
+        company.setAddress(editCompany.getAdress());
         company.setCity(editCompany.getCity());
         company.setEmail(editCompany.getEmail());
         company.setLogo(editCompany.getLogo());

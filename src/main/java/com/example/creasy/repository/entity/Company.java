@@ -16,7 +16,7 @@ public class Company {
 
     private String additionalAddress;
 
-    private String adress;
+    private String address;
 
     private String city;
 
@@ -41,6 +41,23 @@ public class Company {
     private String longitude;
 
     public Company() {
+    }
+
+    public Company(String activityArea, String additionalAddress, String address, String city, String email, String logo, String name, String phoneNumberFixr, String phoneNumberPortable, String postalCode, String siret, String webSite, String latitude, String longitude) {
+        this.activityArea = activityArea;
+        this.additionalAddress = additionalAddress;
+        this.address = address;
+        this.city = city;
+        this.email = email;
+        this.logo = logo;
+        this.name = name;
+        this.phoneNumberFixr = phoneNumberFixr;
+        this.phoneNumberPortable = phoneNumberPortable;
+        this.postalCode = postalCode;
+        this.siret = siret;
+        this.webSite = webSite;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getLatitude() {
@@ -83,12 +100,12 @@ public class Company {
         this.additionalAddress = additionalAddress;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {
