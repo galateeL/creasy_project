@@ -19,14 +19,22 @@
 
         <h1>Prospect List</h1>
 
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-sm-6">
+
+
+
+
+
         <a href="${pageContext.request.contextPath}/partners/add-prospect" class="btn"
-           style="background-color: #05516b; color:white ">Add new prospect</a>
+           style="background-color: #8109CB; color:white ">Add prospect</a>
 
 
-        <h2>Search prospect</h2>
         <form class="d-flex" method="GET" action="${pageContext.request.contextPath}/partners/all-prospects">
             <input class="form-control me-2" type="text" placeholder="Search customer" name="keywordProspect" value="${keywordProspect}" id="keywordProspect">
-
 
             <input type="radio" id="AZ" name="sort" value="AZ">
             <label for="AZ">AZ</label><br>
@@ -52,6 +60,10 @@
             <button class="btn btn" type="submit" style="background-color: white;color:gray">Search</button>
         </form>
 
+                </div>
+
+                <div class="col-sm-6">
+
 
         <c:forEach items="${prospects}" var="prospect">
             <p>${prospect.firstname}</p>
@@ -60,7 +72,9 @@
             <a href="${pageContext.request.contextPath}/partners/details-prospect/${prospect.id}" class="btn"
                style="background-color: #05516b; color:white ">Detail</a>
         </c:forEach>
-
+                </div>
+            </div>
+        </div>
 
     </main>
 
