@@ -26,16 +26,19 @@
     <p>${partner.company.name}</p>
 
     <c:forEach items="${notes}" var="note">
-
-      <p>${note.registerDate}</p>
-
-
-
+        <p>${note.registerDate}</p>
         <p>${note.exchange}</p>
-        <a href="#" class="btn"
-           style="background-color: #05516b; color:white ">Edit</a>
-        <a href="#" class="btn"
-           style="background-color: #05516b; color:white ">Delite</a>
+
+        <%--        Edit note--%>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <a href="${pageContext.request.contextPath}/partners/edit-note/${note.id}" class="btn btn-primary">Edit note</a>
+
+
+        <%--        Delete note--%>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <a href="${pageContext.request.contextPath}/partners/delete-note/${note.id}" class="btn btn-primary">Delete
+            note</a>
+
     </c:forEach>
 
     <jsp:include page="./deleteCustomerModal.jsp"/>

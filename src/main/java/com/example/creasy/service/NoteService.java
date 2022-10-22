@@ -46,7 +46,6 @@ public class NoteService {
         this.noteRepository.save(note);
     }
 
-
     public void deleteNote(Note note){
         this. noteRepository.delete(note);
     }

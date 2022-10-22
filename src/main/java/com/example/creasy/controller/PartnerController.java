@@ -203,9 +203,37 @@ public class PartnerController {
         Partner partner = note.getPartner();
 
         if(partner.getStateProspect() == StateProspect.ENDED) {
-            return "redirect:/partners/details-customer/{id}"+ partner.getId();
+            return "redirect:/partners/details-customer/" + partner.getId();
         } else {
-            return "redirect:/partners/details-prospect/"+partner.getId();
+            return "redirect:/partners/details-prospect/" +partner.getId();
+        }
+    }
+
+
+    // Delete specific note - Display form
+    @GetMapping("/delete-note/{id}")
+    public String displayDeleteNoteForm(Model model,@PathVariable Long id) {
+        Note note = noteService.getNoteById(id);
+
+        Partner partner = note.getPartner();
+        model.addAttribute("partner", partner);
+        model.addAttribute("note", note);
+
+        return "deleteNoteForm";
+    }
+
+
+    // Delete specific note
+    @PostMapping("/delete-note/{id}")
+    public String deleteNote(@PathVariable(value="id") Long id) {
+        Note note = noteService.getNoteById(id);
+        Partner partner = note.getPartner();
+        noteService.deleteNote(note);
+
+        if(partner.getStateProspect() == StateProspect.ENDED) {
+            return "redirect:/partners/details-customer/" + partner.getId();
+        } else {
+            return "redirect:/partners/details-prospect/" + partner.getId();
         }
     }
 
