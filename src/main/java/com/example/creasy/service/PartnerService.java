@@ -26,11 +26,18 @@ public class PartnerService {
         return (List<Partner>) this.partnerRepository.findAll();
     }
 
-    public List<Partner> getAllProspect() {
+    public List<Partner> getAllProspect(String keywordProspect) {
+        if(keywordProspect != null) {
+            return this.partnerRepository.findProspectByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordProspect);
+        }
+
         return this.partnerRepository.findByStateProspectIsNot(StateProspect.ENDED);
     }
 
-    public List<Partner> getAllCustomer() {
+    public List<Partner> getAllCustomer(String keywordCustomer) {
+        if(keywordCustomer != null) {
+            return this.partnerRepository.findCustomerByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordCustomer);
+        }
         return this.partnerRepository.findByStateProspectIs(StateProspect.ENDED);
     }
 
@@ -38,7 +45,6 @@ public class PartnerService {
     public Partner findPartnerById(Long id) {
         return this.partnerRepository.findById(id).get();
     }
-
 
 
     public Partner getPartner(Long id) {

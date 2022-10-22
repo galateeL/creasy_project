@@ -8,6 +8,7 @@ import com.example.creasy.repository.entity.StateProspect;
 import com.example.creasy.service.CompanyService;
 import com.example.creasy.service.NoteService;
 import com.example.creasy.service.PartnerService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,16 +46,16 @@ public class PartnerController {
 
     // Display clients
     @GetMapping("/all-prospects")
-    public String displayAllProspects(Model model) {
-        List<Partner> prospectList = partnerService.getAllProspect();
+    public String displayAllProspects(Model model, @Param("keywordProspect") String keywordProspect) {
+        List<Partner> prospectList = partnerService.getAllProspect(keywordProspect);
         model.addAttribute("prospects", prospectList);
         return "prospect/prospectList";
     }
 
     // Display prospects
     @GetMapping("/all-customers")
-    public String displayAllCustomers(Model model) {
-        List<Partner> customerList = partnerService.getAllCustomer();
+    public String displayAllCustomers(Model model, @Param("keywordCustomer") String keywordCustomer){
+        List<Partner> customerList = partnerService.getAllCustomer(keywordCustomer);
         model.addAttribute("customers", customerList);
         return "customer/customerList";
     }

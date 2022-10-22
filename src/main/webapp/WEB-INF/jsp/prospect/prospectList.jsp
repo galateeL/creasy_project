@@ -23,6 +23,13 @@
            style="background-color: #05516b; color:white ">Add new prospect</a>
 
 
+        <h2>Search prospect</h2>
+        <form class="d-flex" method="GET" action="${pageContext.request.contextPath}/partners/all-prospects">
+            <input class="form-control me-2" type="text" placeholder="Search customer" name="keywordProspect" value="${keywordProspect}" id="keywordProspect">
+            <button class="btn btn" type="submit" style="background-color: white;color:gray">Search</button>
+        </form>
+
+
         <c:forEach items="${prospects}" var="prospect">
             <p>${prospect.firstname}</p>
             <p>${prospect.lastname}</p>

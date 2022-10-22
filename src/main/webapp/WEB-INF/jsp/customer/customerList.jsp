@@ -21,6 +21,13 @@
     <a href="${pageContext.request.contextPath}/partners/add-customer" class="btn"
        style="background-color: #05516b; color:white ">Add new customer</a>
 
+
+    <h2>Search customer</h2>
+        <form class="d-flex" method="GET" action="${pageContext.request.contextPath}/partners/all-customers">
+            <input class="form-control me-2" type="text" placeholder="Search customer" name="keywordCustomer" value="${keywordCustomer}" id="keywordCustomer">
+            <button class="btn btn" type="submit" style="background-color: white;color:gray">Search</button>
+        </form>
+
     <c:forEach items="${customers}" var="customer">
         <p>${customer.firstname}</p>
         <p>${customer.lastname}</p>
