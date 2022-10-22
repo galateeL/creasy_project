@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,7 +26,11 @@
     <p>${partner.company.name}</p>
 
     <c:forEach items="${notes}" var="note">
-        <p>${note.registerDate}</p>
+
+      <p>${note.registerDate}</p>
+
+
+
         <p>${note.exchange}</p>
         <a href="#" class="btn"
            style="background-color: #05516b; color:white ">Edit</a>

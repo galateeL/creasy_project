@@ -22,14 +22,25 @@
     <p>${partner.firstname}</p>
     <p>${partner.lastname}</p>
     <p>${partner.company.name}</p>
-
     <c:forEach items="${notes}" var="note">
         <p>${note.registerDate}</p>
         <p>${note.exchange}</p>
-        <a href="#" class="btn"
-           style="background-color: #05516b; color:white ">Edit</a>
-        <a href="#" class="btn"
-           style="background-color: #05516b; color:white ">Delite</a>
+
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <a href="${pageContext.request.contextPath}/partners/edit-note/${note.id}" class="btn btn-primary">Edit note</a>
+
+<%--        <jsp:include page="../editNoteModal.jsp"/>--%>
+
+        <!-- Button trigger modal -->
+<%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+<%--        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editNoteModal">--%>
+<%--            Edit note--%>
+<%--        </button>--%>
+
+
+<%--        <a href="#" class="btn"--%>
+<%--           style="background-color: #05516b; color:white ">Delete</a>--%>
+
     </c:forEach>
 
     <jsp:include page="./deleteProspectModal.jsp"/>
@@ -51,6 +62,8 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noteModal">
         New note
     </button>
+
+
 
 </main>
 

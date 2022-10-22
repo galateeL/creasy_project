@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @SpringBootApplication
 public class CreasyApplication implements CommandLineRunner {
@@ -75,15 +76,15 @@ public class CreasyApplication implements CommandLineRunner {
         partnerRepository.save(prospect1);
 
         // Note instanciation + save in DB
-        Note note1 = new Note("First note with this customer ...... lorem ipsum", LocalDate.now(), client1);
+        Note note1 = new Note("First note with this customer ...... lorem ipsum", LocalDateTime.now(), client1);
         noteRepository.save(note1);
 
         // Note instanciation + save in DB
-        Note note2 = new Note("Second note with this customer ...... lorem ipsum", LocalDate.now(), client1);
+        Note note2 = new Note("Second note with this customer ...... lorem ipsum", LocalDateTime.now(), client1);
         noteRepository.save(note2);
 
         // Note instanciation + save in DB
-        Note note3 = new Note("Second note with this customer ...... lorem ipsum", LocalDate.now(), prospect1);
+        Note note3 = new Note("Second note with this customer ...... lorem ipsum", LocalDateTime.now(), prospect1);
         noteRepository.save(note3);
 
     }

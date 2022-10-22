@@ -2,6 +2,7 @@ package com.example.creasy.repository.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Note {
@@ -12,7 +13,7 @@ public class Note {
 
     private String exchange;
 
-    private LocalDate registerDate;
+    private LocalDateTime registerDate;
 
     @ManyToOne
     private Partner partner;
@@ -20,14 +21,14 @@ public class Note {
     public Note() {
     }
 
-    public Note(Long id, String exchange, LocalDate registerDate, Partner partner) {
+    public Note(Long id, String exchange, LocalDateTime registerDate, Partner partner) {
         this.id = id;
         this.exchange = exchange;
         this.registerDate = registerDate;
         this.partner = partner;
     }
 
-    public Note(String exchange, LocalDate registerDate, Partner partner) {
+    public Note(String exchange, LocalDateTime registerDate, Partner partner) {
         this.exchange = exchange;
         this.registerDate = registerDate;
         this.partner = partner;
@@ -49,11 +50,12 @@ public class Note {
         this.exchange = exchange;
     }
 
-    public LocalDate getRegisterDate() {
+
+    public LocalDateTime getRegisterDate() {
         return registerDate;
     }
 
-    public void setRegisterDate(LocalDate registerDate) {
+    public void setRegisterDate(LocalDateTime registerDate) {
         this.registerDate = registerDate;
     }
 

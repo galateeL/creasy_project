@@ -14,4 +14,6 @@ public interface NoteRepository extends CrudRepository<Note, Long> {
 
 List<Note> getAllByPartner(Partner partner);
 
+List<Note> getAllByPartnerOrderByRegisterDateDesc(Partner partner);
+
 }

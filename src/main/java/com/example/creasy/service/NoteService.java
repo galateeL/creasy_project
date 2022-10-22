@@ -9,6 +9,7 @@ import com.example.creasy.repository.entity.Partner;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -25,7 +26,7 @@ public class NoteService {
     }
 
     public List<Note> getAllNotesByPartner(Partner partner){
-        return (List<Note>) this.noteRepository.getAllByPartner(partner);
+        return (List<Note>) this.noteRepository.getAllByPartnerOrderByRegisterDateDesc(partner);
 
     }
 
@@ -39,7 +40,7 @@ public class NoteService {
 
         Note note = new Note();
         note.setExchange(createNote.getExchange());
-        note.setRegisterDate(LocalDate.now());
+        note.setRegisterDate(LocalDateTime.now());
         note.setPartner(partner);
 
         this.noteRepository.save(note);
@@ -52,12 +53,13 @@ public class NoteService {
 
     public Note editNote(Long id, EditNote editNote){
 
-        Note note = this.noteRepository.findById(id)
+        Note note = this.noteRepository
+                .findById(id)
                 .orElseThrow(() -> new NoteNotFoundException(id));
 
         note.setExchange(editNote.getExchange());
-        note.setRegisterDate(editNote.getRegisterDate());
-        note.setPartner(editNote.getPartner());
+       // note.setRegisterDate(LocalDateTime.now());
+       // note.setPartner(editNote.getPartner());
 
         return this.noteRepository.save(note);
 

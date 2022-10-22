@@ -4,6 +4,7 @@ import com.example.creasy.controller.CreateCompany;
 import com.example.creasy.exception.PartnerNotFoundException;
 import com.example.creasy.repository.*;
 import com.example.creasy.repository.entity.Company;
+import com.example.creasy.repository.entity.Note;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ public class PartnerService {
     public Partner findPartnerById(Long id) {
         return this.partnerRepository.findById(id).get();
     }
+
 
 
     public Partner getPartner(Long id) {

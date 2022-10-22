@@ -1,9 +1,6 @@
 package com.example.creasy.controller;
 
-import com.example.creasy.repository.CreateCustomer;
-import com.example.creasy.repository.CreateNote;
-import com.example.creasy.repository.CreateProspect;
-import com.example.creasy.repository.EditPartner;
+import com.example.creasy.repository.*;
 import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Note;
 import com.example.creasy.repository.entity.Partner;
@@ -103,8 +100,6 @@ public class PartnerController {
     }
 
 
-
-
     // Add prospect - Display addProspect Form
     @GetMapping("/add-prospect")
     public String displayAddProspectForm(Model model) {
@@ -189,5 +184,29 @@ public class PartnerController {
         return "redirect:/partners/details-prospect/{id}";
     }
 
+    // Edit specific note - Display form
+    @GetMapping("/edit-note/{id}")
+    public String displayEditNoteForm (Model model, @PathVariable Long id) {
+        Note note = noteService.getNoteById(id);
+        Partner partner = note.getPartner();
+        model.addAttribute("note", note);
+        model.addAttribute("partner", partner);
+        return "editNoteForm";
+    }
+
+    // Edit specific note
+    @PostMapping("/edit-note/{id}")
+    public String editNote(EditNote editNote, @PathVariable Long id){
+        noteService.editNote(id, editNote);
+
+        Note note = noteService.getNoteById(id);
+        Partner partner = note.getPartner();
+
+        if(partner.getStateProspect() == StateProspect.ENDED) {
+            return "redirect:/partners/details-customer/{id}"+ partner.getId();
+        } else {
+            return "redirect:/partners/details-prospect/"+partner.getId();
+        }
+    }
 
 }

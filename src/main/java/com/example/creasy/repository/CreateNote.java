@@ -4,14 +4,14 @@ import com.example.creasy.repository.entity.Note;
 import com.example.creasy.repository.entity.Partner;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class CreateNote {
 
     private String exchange;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate registerDate;
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")
+    private LocalDateTime registerDate;
 
 
 
@@ -25,7 +25,7 @@ public class CreateNote {
         return n;
     }
 
-    public CreateNote(String exchange, LocalDate registerDate, Partner partner) {
+    public CreateNote(String exchange, LocalDateTime registerDate, Partner partner) {
         this.exchange = exchange;
         this.registerDate = registerDate;
     }
@@ -38,11 +38,11 @@ public class CreateNote {
         this.exchange = exchange;
     }
 
-    public LocalDate getRegisterDate() {
+    public LocalDateTime getRegisterDate() {
         return registerDate;
     }
 
-    public void setRegisterDate(LocalDate registerDate) {
+    public void setRegisterDate(LocalDateTime registerDate) {
         this.registerDate = registerDate;
     }
 

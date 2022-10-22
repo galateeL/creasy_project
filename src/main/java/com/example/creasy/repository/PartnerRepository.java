@@ -1,5 +1,6 @@
 package com.example.creasy.repository;
 
+import com.example.creasy.repository.entity.Note;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 import org.springframework.data.repository.CrudRepository;
@@ -13,6 +14,7 @@ public interface PartnerRepository extends CrudRepository<Partner, Long> {
     List<Partner> findByStateProspectIsNot (StateProspect stateProspect);
 
     List<Partner> findByStateProspectIs (StateProspect stateProspect);
+
 
 
 }
