@@ -32,8 +32,14 @@ body{
     color: white;
 }
 
-h5, h1{
+/*partners and companies info*/
+.part-info, .comp-inf{
     color: #757575;
+}
+
+/*company name title*/
+.comp-name{
+    color: #3AE1B1;
 }
 
 .form-label{

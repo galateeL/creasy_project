@@ -58,8 +58,8 @@
                 <div class="d-md-flex text-center text-md-start">
                     <img class="imgLogoC img-fluid ms-md-2 me-md-2 border" src="${company.logo}">
                     <div >
-                        <h5 class="ms-md-2">${company.name}</h5>
-                        <p class="ms-md-2">${company.webSite}</p>
+                        <h5 class="comp-name ms-md-2">${company.name}</h5>
+                        <a class="ms-md-2 text-decoration-none link-dark" href="${company.webSite}" target="_blank" rel="noopener noreferrer">${company.webSite}</a>
                     </div>
                 </div>
 
@@ -89,32 +89,32 @@
 
                 <div class="mb-3">
                     <label class="form-label p-2">SECTOR OF ACTIVITY</label>
-                    <div>${company.activityArea}</div>
+                    <div class="comp-inf fw-bold">${company.activityArea}</div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label p-2">SIRET</label>
-                    <div>${company.siret}</div>
+                    <div class="comp-inf fw-bold">${company.siret}</div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label p-2">ADDRESS</label>
-                    <div>${company.address}</div>
+                    <div class="comp-inf fw-bold">${company.address}</div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label p-2">POSTAL CODE</label>
-                    <div>${company.postalCode}</div>
+                    <div class="comp-inf fw-bold">${company.postalCode}</div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label p-2">CITY</label>
-                    <div>${company.city}</div>
+                    <div class="comp-inf fw-bold">${company.city}</div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label p-2">DATE OF CREATION</label>
-                    <div>${company.creationDate}</div>
+                    <div class="comp-inf fw-bold">${company.creationDate}</div>
                 </div>
 
             </div>
@@ -127,7 +127,7 @@
                     <label class="form-label p-2">CLIENTS AND PROSPECTS</label>
                     <div>
                         <c:forEach items="${partner}" var="partner">
-                                  <h5 class="card-title fw-bold text-break">${partner.lastname} ${partner.firstname}</h5>
+                                  <h5 class="part-info fw-bold text-break">${partner.lastname} ${partner.firstname}</h5>
                                 </div>
                             </div>
                         </c:forEach>
