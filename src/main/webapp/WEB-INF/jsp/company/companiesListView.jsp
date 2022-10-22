@@ -40,12 +40,12 @@
 
 <div class="fluid-container col-12 justify-content-center">
 
-    <h1 class="mt-3 fw-bold ms-5">Companies :</h1>
+    <h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Companies :</h1>
 
     <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
 
         <%--Add company button--%>
-        <a class="btn shadow-sm align-self-center"
+        <a class="btn shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0"
            href="${pageContext.request.contextPath}/companies/add">Add Company</a>
             <%---------%>
 
@@ -69,7 +69,7 @@
                             <h5 class="card-title fw-bold text-break">${company.name}</h5>
                             <p class="card-text">${company.webSite}</p>
                         </div>
-                        <a class="btn align-self-center ms-2"
+                        <a class="btn align-self-center ms-md-2 mt-3 mt-md-0 ps-3 pe-3"
                            href="${pageContext.request.contextPath}/companies/details/${company.id}">Details</a>
                     </div>
                 </div>

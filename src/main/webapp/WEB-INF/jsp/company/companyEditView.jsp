@@ -44,9 +44,9 @@
     <%-----Title block-----%>
     <div class="ms-md-4 me-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
 
-        <h1 class="mt-3 fw-bold ms-5 align-self-center">Edit company : ${company.name} </h1>
+        <h1 class="mt-3 fw-bold ms-md-5 align-self-center">Edit company : ${company.name} </h1>
 
-        <a class="btn mt-3 btn-secondary shadow-sm align-self-center border-0"
+        <a class="btn mt-3 btn-secondary shadow-sm align-self-center border-0 ps-3 pe-3"
            href="${pageContext.request.contextPath}/companies/list">Back to company list</a>
 
     </div>
@@ -92,7 +92,7 @@
                     <div class="mb-3">
                         <label for="logoFile" class="form-label">LOGO</label>
                         <div>
-                            <label for="logoFile" class="btn btn-secondary shadow-sm border-0">Choose
+                            <label for="logoFile" class="btn btn-secondary shadow-sm border-0 ps-3 pe-3">Choose
                                 file</label>
                             <input id="logoFile" type="file" name="logoFile" class="form-control">
                         </div>
@@ -150,7 +150,7 @@
 
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary shadow-sm align-self-center border-0">Validate</button>
+                        <button type="submit" class="btn btn-primary shadow-sm align-self-center border-0 ps-3 pe-3">Validate</button>
                     </div>
 
                 </div>

@@ -44,30 +44,35 @@
     <%-----Title block-----%>
     <div class="ms-md-4 me-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
 
-        <h1 class="mt-3 fw-bold ms-5 align-self-center">Company details</h1>
+        <h1 class="mt-3 fw-bold ms-md-5 align-self-center">Company details</h1>
 
-        <a class="btn mt-3 btn-secondary shadow-sm align-self-center border-0"
+        <a class="btn mt-3 btn-secondary shadow-sm align-self-center border-0 ps-3 pe-3"
            href="${pageContext.request.contextPath}/companies/list">Back to company list</a>
 
     </div>
     <%----------------------------%>
 
         <div class="col row m-5 p-3">
-            <div class="headBar col-12 d-md-flex justify-content-md-between bg-white mb-5">
+            <div class="headBar col-12 d-md-flex justify-content-md-between bg-white mb-5 pt-md-3 pb-md-3">
 
-                <div class="d-md-flex">
-                    <img class="imgLogoC img-fluid" src="${company.logo}">
+                <div class="d-md-flex text-center text-md-start">
+                    <img class="imgLogoC img-fluid ms-md-2 me-md-2 border" src="${company.logo}">
                     <div >
-                        <h5>${company.name}</h5>
-                        <p>${company.webSite}</p>
+                        <h5 class="ms-md-2">${company.name}</h5>
+                        <p class="ms-md-2">${company.webSite}</p>
                     </div>
                 </div>
 
-                <div class="d-md-flex align-self-center ">
-                    <i class="fa fa-phone fa-3x me-md-2" aria-hidden="true"></i>
-                    <i class="fa fa-envelope-o fa-3x ms-md-4 me-md-2" aria-hidden="true"></i>
-                    <i class="fa fa-map-marker fa-3x ms-md-4 me-md-5" aria-hidden="true"></i>
-                    <a class="btn btn-primary shadow-sm align-self-center border-0 "
+                <div class="d-flex flex-column flex-md-row text-center  align-self-center ">
+                    <a class="fa fa-phone fa-3x me-md-2 text-decoration-none" aria-hidden="true" href="tel:${company.phoneNumberFixr}"></a>
+
+                    <a class="fa fa-envelope-o fa-3x mt-4 mt-md-0 ms-md-4 me-md-2 text-decoration-none" aria-hidden="true" href = "mailto: ${company.email}"></a>
+
+                    <a class="fa fa-map-marker fa-3x mt-4 mb-4 mt-md-0 mb-md-0 ms-md-4 me-md-5 text-decoration-none"
+                       aria-hidden="true" href="http://maps.google.com?q=${company.latitude},${company.longitude}"
+                       target="_blank" rel="noopener noreferrer"></a>
+
+                    <a class="btn btn-primary shadow-sm align-self-center border-0 ps-3 pe-3 me-md-3 mb-md-0 mb-4"
                        href="${pageContext.request.contextPath}/companies/edit/${company.id}">Edit</a>
                 </div>
 
@@ -80,100 +85,51 @@
         <div class="d-flex flex-column flex-md-row justify-content-between">
 
             <%-----Block on the left-----%>
-            <div class="col col-md-5 p-5 bg-white">
+            <div class="col col-md-7 p-4 bg-white">
+
                 <div class="mb-3">
-                    <label for="name" class="form-label">COMPANY NAME</label>
-                    <input id="name" name="name" type="text" class="form-control"
-                           value="${company.name}">
+                    <label class="form-label p-2">SECTOR OF ACTIVITY</label>
+                    <div>${company.activityArea}</div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="activityArea" class="form-label">SECTOR OF ACTIVITY</label>
-                    <input id="activityArea" name="activityArea" type="text" class="form-control"
-                           value="${company.activityArea}">
+                    <label class="form-label p-2">SIRET</label>
+                    <div>${company.siret}</div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="webSite" class="form-label">WEB SITE</label>
-                    <input id="webSite" name="webSite" type="text" class="form-control" value="${company.webSite}">
+                    <label class="form-label p-2">ADDRESS</label>
+                    <div>${company.address}</div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="siret" class="form-label">SIRET</label>
-                    <input id="siret" name="siret" type="text" class="form-control"
-                           pattern="[0-9]{3}[0-9]{3}[0-9]{3}[0-9]{5}"
-                           value="${company.siret}">
+                    <label class="form-label p-2">POSTAL CODE</label>
+                    <div>${company.postalCode}</div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="creationDate" class="form-label">DATE OF CREATION</label>
-                    <input id="creationDate" name="creationDate" type="date" class="form-control"
-                           value="${company.creationDate}">
+                    <label class="form-label p-2">CITY</label>
+                    <div>${company.city}</div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="logoFile" class="form-label">LOGO</label>
-                    <div>
-                        <label for="logoFile" class="btn btn-secondary shadow-sm border-0">Choose
-                            file</label>
-                        <input id="logoFile" type="file" name="logoFile" class="form-control">
-                    </div>
+                    <label class="form-label p-2">DATE OF CREATION</label>
+                    <div>${company.creationDate}</div>
                 </div>
+
             </div>
             <%----------------------------%>
 
             <%-----Block on the right-----%>
-            <div class="col col-md-5 p-5 bg-white">
+            <div class="col col-md-4 p-4 bg-white">
 
                 <div class="mb-3">
-                    <label for="address" class="form-label">ADDRESS</label>
-                    <input id="address" name="address" type="text" class="form-control"
-                           value="${company.address}">
-                </div>
-
-                <div class="mb-3">
-                    <label for="postalCode" class="form-label">POSTAL CODE</label>
-                    <input id="postalCode" name="postalCode" type="text" class="form-control"
-                           value="${company.postalCode}">
-                </div>
-
-                <div class="mb-3">
-                    <label for="city" class="form-label">CITY</label>
-                    <input id="city" name="city" type="text" class="form-control" value="${company.city}">
-                </div>
-
-                <div class="d-md-flex justify-content-between">
-                    <div class="mb-3">
-                        <label for="latitude" class="form-label">LATITUDE</label>
-                        <input id="latitude" name="latitude" type="text" class="form-control"
-                               value="${company.latitude}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="longitude" class="form-label">LONGITUDE</label>
-                        <input id="longitude" name="longitude" type="text" class="form-control"
-                               value="${company.longitude}">
-                    </div>
-
-                </div>
-
-                <div class="mb-3">
-                    <label for="phoneNumberFixr" class="form-label">PHONE NUMBER</label>
-                    <input id="phoneNumberFixr" name="phoneNumberFixr" type="tel" class="form-control"
-                           pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" value="${company.phoneNumberFixr}">
-                </div>
-
-                <div class="mb-3">
-                    <label for="email" class="form-label">EMAIL</label>
-                    <input id="email" name="email" type="text" class="form-control"
-                           value="${company.email}">
+                    <label class="form-label p-2">CLIENTS AND PROSPECTS</label>
+                    <div></div>
                 </div>
 
 
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary shadow-sm align-self-center border-0">Validate</button>
-                </div>
+
 
             </div>
             <%----------------------------%>
