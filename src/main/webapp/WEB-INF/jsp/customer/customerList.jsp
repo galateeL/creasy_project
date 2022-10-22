@@ -24,8 +24,25 @@
 
     <h2>Search customer</h2>
         <form class="d-flex" method="GET" action="${pageContext.request.contextPath}/partners/all-customers">
+
             <input class="form-control me-2" type="text" placeholder="Search customer" name="keywordCustomer" value="${keywordCustomer}" id="keywordCustomer">
+
+
+            <input type="radio" id="AZ" name="sort" value="AZ">
+            <label for="AZ">AZ</label><br>
+
+            <input type="radio" id="ZA" name="sort" value="ZA">
+            <label for="ZA">ZA</label><br>
+
+            <input type="radio" id="ON" name="sort" value="ON">
+            <label for="ON">ON</label><br><br>
+
+            <input type="radio" id="NO" name="sort" value="NO">
+            <label for="NO">NO</label><br><br>
+
+
             <button class="btn btn" type="submit" style="background-color: white;color:gray">Search</button>
+
         </form>
 
     <c:forEach items="${customers}" var="customer">

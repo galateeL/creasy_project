@@ -44,18 +44,18 @@ public class PartnerController {
 //
 //    }
 
-    // Display clients
+    // Display prospects
     @GetMapping("/all-prospects")
-    public String displayAllProspects(Model model, @Param("keywordProspect") String keywordProspect) {
-        List<Partner> prospectList = partnerService.getAllProspect(keywordProspect);
+    public String displayAllProspects(Model model, @Param("keywordProspect") String keywordProspect, @Param("sort") String sort) {
+        List<Partner> prospectList = partnerService.getAllProspect(keywordProspect, sort);
         model.addAttribute("prospects", prospectList);
         return "prospect/prospectList";
     }
 
-    // Display prospects
+    // Display customers
     @GetMapping("/all-customers")
-    public String displayAllCustomers(Model model, @Param("keywordCustomer") String keywordCustomer){
-        List<Partner> customerList = partnerService.getAllCustomer(keywordCustomer);
+    public String displayAllCustomers(Model model, @Param("keywordCustomer") String keywordCustomer, @Param("sort") String sort){
+        List<Partner> customerList = partnerService.getAllCustomer(keywordCustomer, sort);
         model.addAttribute("customers", customerList);
         return "customer/customerList";
     }

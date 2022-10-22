@@ -4,6 +4,7 @@ import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class CreatePartner {
@@ -26,6 +27,8 @@ public class CreatePartner {
     private StateProspect stateProspect;
 
     private Company company;
+
+    private LocalDateTime registerDate;
 
 
 
@@ -57,6 +60,15 @@ public class CreatePartner {
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
         this.stateProspect = stateProspect;
+    }
+
+
+    public LocalDateTime getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(LocalDateTime registerDate) {
+        this.registerDate = registerDate;
     }
 
     public Company getCompany() {
