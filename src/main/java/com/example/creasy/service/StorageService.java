@@ -1,8 +1,8 @@
 package com.example.creasy.service;
 
-
 import com.example.creasy.exception.StorageException;
 import com.example.creasy.exception.StorageFileNotFoundException;
+
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -16,13 +16,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-
 @Service
 public class StorageService {
 
     private final Path rootLocation;
 
-    public StorageService() throws IOException {
+    public StorageService() throws IOException{
         this.rootLocation = Paths.get("uploads");
         if(!rootLocation.toFile().exists()){
             Files.createDirectories(this.rootLocation);
@@ -30,16 +29,8 @@ public class StorageService {
     }
 
     public void store(MultipartFile file) {
-        /*try{
-            Path destinationFile =
-                    this.rootLocation.resolve("PICTURE_" + new Timestamp(System.currentTimeMillis()).getTime() +
-                    ".jpg");
-            Files.copy(file.getInputStream(),destinationFile,StandardCopyOption.REPLACE_EXISTING);
-        }catch (IOException e){
-            throw  new RuntimeException(e);
-        }*/
         try {
-            if (file == null ||file.isEmpty()) {
+            if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file.");
             }
             Path destinationFile = this.rootLocation.resolve(
@@ -54,16 +45,16 @@ public class StorageService {
                 Files.copy(inputStream, destinationFile,
                         StandardCopyOption.REPLACE_EXISTING);
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new StorageException("Failed to store file.", e);
         }
     }
-    public Path load(String filename) {
-        return rootLocation.resolve(filename);
-    }
+
     public Resource loadAsResource(String filename) {
+
         try {
-            Path file = load(filename);
+            Path file = rootLocation.resolve(filename);
             Resource resource = new UrlResource(file.toUri());
             if (resource.exists() || resource.isReadable()) {
                 return resource;
