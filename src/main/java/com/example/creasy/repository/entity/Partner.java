@@ -3,6 +3,7 @@ package com.example.creasy.repository.entity;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Partner {
@@ -28,6 +29,8 @@ public class Partner {
     @Enumerated(EnumType.STRING)
     private StateProspect stateProspect;
 
+    @OneToMany(mappedBy = "partner")
+    private List<Event> events;
 
 
     public Partner() {
