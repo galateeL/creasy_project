@@ -40,6 +40,14 @@
             <input type="radio" id="NO" name="sort" value="NO">
             <label for="NO">NO</label><br><br>
 
+            <input type="radio" id="NOT_STARTED" name="state" value="NOT_STARTED">
+            <label for="NOT_STARTED">Not started</label><br>
+
+            <input type="radio" id="IN_PROGRESS" name="state" value="IN_PROGRESS">
+            <label for="IN_PROGRESS">In progress</label><br><br>
+
+            <input type="radio" id="TO_FOLLOW_UP" name="state" value="TO_FOLLOW_UP">
+            <label for="TO_FOLLOW_UP">To follow up</label><br><br>
 
             <button class="btn btn" type="submit" style="background-color: white;color:gray">Search</button>
         </form>
