@@ -8,6 +8,7 @@ import com.example.creasy.repository.entity.StateProspect;
 import com.example.creasy.service.CompanyService;
 import com.example.creasy.service.NoteService;
 import com.example.creasy.service.PartnerService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,18 +44,22 @@ public class PartnerController {
 //
 //    }
 
-    // Display clients
+    // Display prospects
     @GetMapping("/all-prospects")
-    public String displayAllProspects(Model model) {
-        List<Partner> prospectList = partnerService.getAllProspect();
+    public String displayAllProspects(Model model, @Param("keywordProspect") String keywordProspect, @Param("sort") String sort, @Param("state") String state) {
+        List<Partner> prospectList = partnerService.getAllProspect(keywordProspect, sort);
+        if(state != null && !state.isEmpty()) {
+            prospectList.removeIf(partner -> !partner.getStateProspect().name().equals(state));
+        }
         model.addAttribute("prospects", prospectList);
         return "prospect/prospectList";
     }
 
-    // Display prospects
+    // Display customers
     @GetMapping("/all-customers")
-    public String displayAllCustomers(Model model) {
-        List<Partner> customerList = partnerService.getAllCustomer();
+    public String displayAllCustomers(Model model, @Param("keywordCustomer") String keywordCustomer, @Param("sort") String sort){
+        List<Partner> customerList = partnerService.getAllCustomer(keywordCustomer, sort);
+
         model.addAttribute("customers", customerList);
         return "customer/customerList";
     }
