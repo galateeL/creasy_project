@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,6 +25,22 @@
     <p>${partner.lastname}</p>
     <p>${partner.company.name}</p>
 
+    <c:forEach items="${notes}" var="note">
+        <p>${note.registerDate}</p>
+        <p>${note.exchange}</p>
+
+        <%--        Edit note--%>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <a href="${pageContext.request.contextPath}/partners/edit-note/${note.id}" class="btn btn-primary">Edit note</a>
+
+
+        <%--        Delete note--%>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <a href="${pageContext.request.contextPath}/partners/delete-note/${note.id}" class="btn btn-primary">Delete
+            note</a>
+
+    </c:forEach>
+
     <jsp:include page="./deleteCustomerModal.jsp"/>
 
     <!-- Button trigger modal -->
@@ -34,6 +52,15 @@
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <a href="${pageContext.request.contextPath}/partners/edit-customer/${partner.id}" class="btn btn-primary">Edit</a>
+
+
+    <jsp:include page="../addNoteModal.jsp"/>
+
+    <!-- Button trigger modal -->
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noteModal">
+      New note
+    </button>
 
 
 </main>

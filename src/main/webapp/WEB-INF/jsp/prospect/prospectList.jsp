@@ -23,6 +23,36 @@
            style="background-color: #05516b; color:white ">Add new prospect</a>
 
 
+        <h2>Search prospect</h2>
+        <form class="d-flex" method="GET" action="${pageContext.request.contextPath}/partners/all-prospects">
+            <input class="form-control me-2" type="text" placeholder="Search customer" name="keywordProspect" value="${keywordProspect}" id="keywordProspect">
+
+
+            <input type="radio" id="AZ" name="sort" value="AZ">
+            <label for="AZ">AZ</label><br>
+
+            <input type="radio" id="ZA" name="sort" value="ZA">
+            <label for="ZA">ZA</label><br>
+
+            <input type="radio" id="ON" name="sort" value="ON">
+            <label for="ON">ON</label><br><br>
+
+            <input type="radio" id="NO" name="sort" value="NO">
+            <label for="NO">NO</label><br><br>
+
+            <input type="radio" id="NOT_STARTED" name="state" value="NOT_STARTED">
+            <label for="NOT_STARTED">Not started</label><br>
+
+            <input type="radio" id="IN_PROGRESS" name="state" value="IN_PROGRESS">
+            <label for="IN_PROGRESS">In progress</label><br><br>
+
+            <input type="radio" id="TO_FOLLOW_UP" name="state" value="TO_FOLLOW_UP">
+            <label for="TO_FOLLOW_UP">To follow up</label><br><br>
+
+            <button class="btn btn" type="submit" style="background-color: white;color:gray">Search</button>
+        </form>
+
+
         <c:forEach items="${prospects}" var="prospect">
             <p>${prospect.firstname}</p>
             <p>${prospect.lastname}</p>

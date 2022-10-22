@@ -1,14 +1,14 @@
 package com.example.creasy.controller;
 
-import com.example.creasy.repository.CompanyRepository;
-import com.example.creasy.repository.CreateCustomer;
-import com.example.creasy.repository.CreateProspect;
-import com.example.creasy.repository.EditPartner;
+import com.example.creasy.repository.*;
 import com.example.creasy.repository.entity.Company;
+import com.example.creasy.repository.entity.Note;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 import com.example.creasy.service.CompanyService;
+import com.example.creasy.service.NoteService;
 import com.example.creasy.service.PartnerService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,10 +26,13 @@ public class PartnerController {
 
     private CompanyService companyService;
 
-    public PartnerController(PartnerService partnerService, CompanyService companyService) {
+    private NoteService noteService;
+
+    public PartnerController(PartnerService partnerService, CompanyService companyService, NoteService noteService) {
 
         this.partnerService = partnerService;
         this.companyService = companyService;
+        this.noteService = noteService;
     }
 
     // Display all partners
@@ -41,18 +44,22 @@ public class PartnerController {
 //
 //    }
 
-    // Display clients
+    // Display prospects
     @GetMapping("/all-prospects")
-    public String displayAllProspects(Model model) {
-        List<Partner> prospectList = partnerService.getAllProspect();
+    public String displayAllProspects(Model model, @Param("keywordProspect") String keywordProspect, @Param("sort") String sort, @Param("state") String state) {
+        List<Partner> prospectList = partnerService.getAllProspect(keywordProspect, sort);
+        if(state != null && !state.isEmpty()) {
+            prospectList.removeIf(partner -> !partner.getStateProspect().name().equals(state));
+        }
         model.addAttribute("prospects", prospectList);
         return "prospect/prospectList";
     }
 
-    // Display prospects
+    // Display customers
     @GetMapping("/all-customers")
-    public String displayAllCustomers(Model model) {
-        List<Partner> customerList = partnerService.getAllCustomer();
+    public String displayAllCustomers(Model model, @Param("keywordCustomer") String keywordCustomer, @Param("sort") String sort){
+        List<Partner> customerList = partnerService.getAllCustomer(keywordCustomer, sort);
+
         model.addAttribute("customers", customerList);
         return "customer/customerList";
     }
@@ -63,15 +70,38 @@ public class PartnerController {
     public String displaySpecificProspect(Model model, @PathVariable Long id){
         Partner partner = partnerService.findPartnerById(id);
         model.addAttribute("partner", partner);
+
+        List<Note> noteList  = noteService.getAllNotesByPartner(partner);
+        model.addAttribute("notes", noteList);
+
         return "prospect/prospectDetail";
     }
 
     // Display specific customer
     @GetMapping("/details-customer/{id}")
     public String displaySpecificCustomer(Model model, @PathVariable Long id){
+
         Partner partner = partnerService.findPartnerById(id);
         model.addAttribute("partner", partner);
+
+        List<Note> noteList  = noteService.getAllNotesByPartner(partner);
+        model.addAttribute("notes", noteList);
         return "customer/customerDetail";
+    }
+
+    // Add new note to partner - Save in DB
+    @PostMapping("/{id}/add-note")
+    public String addNote(CreateNote createNote, @PathVariable Long id,Model model) {
+        Partner partner = partnerService.findPartnerById(id);
+        model.addAttribute("partner", partner);
+
+        noteService.addNote(createNote, partner);
+        if(partner.getStateProspect() == StateProspect.ENDED) {
+            return "redirect:/partners/details-customer/{id}";
+        } else {
+            return "redirect:/partners/details-prospect/{id}";
+        }
+
     }
 
 
@@ -159,5 +189,57 @@ public class PartnerController {
         return "redirect:/partners/details-prospect/{id}";
     }
 
+    // Edit specific note - Display form
+    @GetMapping("/edit-note/{id}")
+    public String displayEditNoteForm (Model model, @PathVariable Long id) {
+        Note note = noteService.getNoteById(id);
+        Partner partner = note.getPartner();
+        model.addAttribute("note", note);
+        model.addAttribute("partner", partner);
+        return "editNoteForm";
+    }
+
+    // Edit specific note
+    @PostMapping("/edit-note/{id}")
+    public String editNote(EditNote editNote, @PathVariable Long id){
+        noteService.editNote(id, editNote);
+
+        Note note = noteService.getNoteById(id);
+        Partner partner = note.getPartner();
+
+        if(partner.getStateProspect() == StateProspect.ENDED) {
+            return "redirect:/partners/details-customer/" + partner.getId();
+        } else {
+            return "redirect:/partners/details-prospect/" +partner.getId();
+        }
+    }
+
+
+    // Delete specific note - Display form
+    @GetMapping("/delete-note/{id}")
+    public String displayDeleteNoteForm(Model model,@PathVariable Long id) {
+        Note note = noteService.getNoteById(id);
+
+        Partner partner = note.getPartner();
+        model.addAttribute("partner", partner);
+        model.addAttribute("note", note);
+
+        return "deleteNoteForm";
+    }
+
+
+    // Delete specific note
+    @PostMapping("/delete-note/{id}")
+    public String deleteNote(@PathVariable(value="id") Long id) {
+        Note note = noteService.getNoteById(id);
+        Partner partner = note.getPartner();
+        noteService.deleteNote(note);
+
+        if(partner.getStateProspect() == StateProspect.ENDED) {
+            return "redirect:/partners/details-customer/" + partner.getId();
+        } else {
+            return "redirect:/partners/details-prospect/" + partner.getId();
+        }
+    }
 
 }

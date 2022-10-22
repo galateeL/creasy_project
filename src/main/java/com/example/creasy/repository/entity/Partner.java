@@ -3,6 +3,8 @@ package com.example.creasy.repository.entity;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Partner {
@@ -31,11 +33,16 @@ public class Partner {
     @ManyToOne
     private Company company;
 
+    @OneToMany(mappedBy = "partner")
+    private List<Note> noteList;
+
+    private LocalDateTime registerDate;
+
     public Partner() {
     }
 
 
-    public Partner(Long id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
+    public Partner(Long id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, LocalDateTime registerDate) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -45,9 +52,10 @@ public class Partner {
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
         this.stateProspect = stateProspect;
+        this.registerDate = registerDate;
     }
 
-    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
+    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, LocalDateTime registerDate) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
@@ -56,9 +64,10 @@ public class Partner {
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
         this.stateProspect = stateProspect;
+        this.registerDate = registerDate;
     }
 
-    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company) {
+    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company, LocalDateTime registerDate) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
@@ -68,6 +77,37 @@ public class Partner {
         this.positionHeld = positionHeld;
         this.stateProspect = stateProspect;
         this.company = company;
+        this.registerDate = registerDate;
+    }
+
+    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company, List<Note> noteList, LocalDateTime registerDate) {
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.email = email;
+        this.pictureUrl = pictureUrl;
+        this.fixedPhoneNumber = fixedPhoneNumber;
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.positionHeld = positionHeld;
+        this.stateProspect = stateProspect;
+        this.company = company;
+        this.noteList = noteList;
+        this.registerDate = registerDate;
+    }
+
+    public LocalDateTime getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(LocalDateTime registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    public List<Note> getNoteList() {
+        return noteList;
+    }
+
+    public void setNoteList(List<Note> noteList) {
+        this.noteList = noteList;
     }
 
     public Long getId() {
