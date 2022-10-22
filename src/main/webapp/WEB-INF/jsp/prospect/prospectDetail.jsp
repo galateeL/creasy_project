@@ -14,20 +14,26 @@
 <main>
 
     <header>
-        <jsp:include page="./header.jsp"/>
+        <jsp:include page="../header.jsp"/>
     </header>
 
-    <h1>Partner detail</h1>
+    <h1>Prospect detail</h1>
 
     <p>${partner.firstname}</p>
     <p>${partner.lastname}</p>
+    <p>${partner.company.name}</p>
 
-    <jsp:include page="./customer/deleteCustomerModal.jsp"/>
+    <jsp:include page="./deleteProspectModal.jsp"/>
 
     <!-- Button trigger modal -->
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Delete
     </button>
+
+
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <a href="${pageContext.request.contextPath}/partners/edit-prospect/${partner.id}" class="btn btn-primary">Edit</a>
 
 
 </main>

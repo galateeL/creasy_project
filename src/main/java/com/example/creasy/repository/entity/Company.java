@@ -1,12 +1,10 @@
 package com.example.creasy.repository.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Company {
@@ -42,6 +40,10 @@ public class Company {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate creationDate;
 
+    @OneToMany(mappedBy = "company")
+    private List<Partner> partnerList;
+
+
     public Company() {
     }
 
@@ -61,12 +63,36 @@ public class Company {
         this.creationDate = creationDate;
     }
 
+    public Company(String activityArea, String address, String city, String email, String logo, String name, String phoneNumberFixr, String postalCode, String siret, String webSite, String latitude, String longitude, List<Partner> partnerList) {
+        this.activityArea = activityArea;
+        this.address = address;
+        this.city = city;
+        this.email = email;
+        this.logo = logo;
+        this.name = name;
+        this.phoneNumberFixr = phoneNumberFixr;
+        this.postalCode = postalCode;
+        this.siret = siret;
+        this.webSite = webSite;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.partnerList = partnerList;
+    }
+
     public LocalDate getCreationDate() {
         return creationDate;
     }
 
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public List<Partner> getPartnerList() {
+        return partnerList;
+    }
+
+    public void setPartnerList(List<Partner> partnerList) {
+        this.partnerList = partnerList;
     }
 
     public String getLatitude() {

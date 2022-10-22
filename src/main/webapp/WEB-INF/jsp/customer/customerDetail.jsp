@@ -8,26 +8,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <title>CREASY | Customer list</title>
+    <title>CREASY | Customer detail</title>
 </head>
 <body>
 <main>
+
     <header>
         <jsp:include page="../header.jsp"/>
     </header>
 
-    <h1>Customer List</h1>
+    <h1>Customer detail</h1>
 
-    <a href="${pageContext.request.contextPath}/partners/add-customer" class="btn"
-       style="background-color: #05516b; color:white ">Add new customer</a>
+    <p>${partner.firstname}</p>
+    <p>${partner.lastname}</p>
+    <p>${partner.company.name}</p>
 
-    <c:forEach items="${customers}" var="customer">
-        <p>${customer.firstname}</p>
-        <p>${customer.lastname}</p>
-        <p>${customer.company.name}</p>
-        <a href="${pageContext.request.contextPath}/partners/details-customer/${customer.id}" class="btn"
-           style="background-color: #05516b; color:white ">Detail</a>
-    </c:forEach>
+    <jsp:include page="./deleteCustomerModal.jsp"/>
+
+    <!-- Button trigger modal -->
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Delete
+    </button>
+
+
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <a href="${pageContext.request.contextPath}/partners/edit-customer/${partner.id}" class="btn btn-primary">Edit</a>
 
 
 </main>
