@@ -88,6 +88,10 @@ public class PartnerService {
         return this.partnerRepository.findByStateProspectIs(StateProspect.ENDED);
     }
 
+    public List<Partner> getAllbyCompany(Long id){
+        return this.partnerRepository.findByCompanyId(id);
+    }
+
 
 
     public Partner findPartnerById(Long id) {

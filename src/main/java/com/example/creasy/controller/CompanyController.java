@@ -2,7 +2,9 @@ package com.example.creasy.controller;
 
 import com.example.creasy.repository.CompanyRepository;
 import com.example.creasy.repository.entity.Company;
+import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.service.CompanyService;
+import com.example.creasy.service.PartnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +18,11 @@ import java.util.List;
 public class CompanyController {
 
     private CompanyService companyService;
+    private PartnerService partnerService;
 
-    public CompanyController(CompanyService companyService) {
+    public CompanyController(CompanyService companyService, PartnerService partnerService) {
         this.companyService = companyService;
+        this.partnerService = partnerService;
     }
 
     @GetMapping("/list")
@@ -31,19 +35,21 @@ public class CompanyController {
             List<Company> companyList = companyService.getAllCompany();
             model.addAttribute("companies", companyList);
         }
-        return "companiesListView";
+        return "company/companiesListView";
     }
 
     @GetMapping(path = "/details/{id}")
     public String displaySpecificCompany(Model model, @PathVariable("id") Long id){
         Company company = companyService.getCompanyById(id);
+        List<Partner> partnerList = partnerService.getAllbyCompany(company.getId());
+        model.addAttribute("partner", partnerList);
         model.addAttribute("company", company);
-        return "companyDetailsView";
+        return "company/companyDetailsView";
     }
 
     @GetMapping("/add")
     public String createCompanyForm(){
-        return "companyAddView";
+        return "company/companyAddView";
     }
 
     @PostMapping("/add")
@@ -67,7 +73,7 @@ public class CompanyController {
     public String editCompanyForm(Model model, @PathVariable("id") Long id){
         Company company = companyService.getCompanyById(id);
         model.addAttribute("company",company);
-        return "companyEditView";
+        return "company/companyEditView";
     }
 
     @PostMapping("/edit/{id}")
