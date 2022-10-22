@@ -121,15 +121,18 @@
             <%----------------------------%>
 
             <%-----Block on the right-----%>
-            <div class="col col-md-4 p-4 bg-white">
+            <div class="col col-md-4 p-4 mt-5 mt-md-0 bg-white">
 
                 <div class="mb-3">
                     <label class="form-label p-2">CLIENTS AND PROSPECTS</label>
-                    <div></div>
+                    <div>
+                        <c:forEach items="${partner}" var="partner">
+                                  <h5 class="card-title fw-bold text-break">${partner.lastname} ${partner.firstname}</h5>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
                 </div>
-
-
-
 
             </div>
             <%----------------------------%>
