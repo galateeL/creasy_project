@@ -17,7 +17,7 @@
                                                           style="width: 100px"/></a>
                 </li >
                 <li class="nav-item d-flex justify-content-center align-items-center px-4">
-                    <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+                    <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item d-flex justify-content-center align-items-center px-4">
                     <a class="nav-link" href="${pageContext.request.contextPath}/companies/list">Companies</a>
