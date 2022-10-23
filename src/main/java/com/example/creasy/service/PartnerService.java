@@ -5,6 +5,7 @@ import com.example.creasy.repository.*;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 import com.example.creasy.repository.entity.User;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -25,6 +26,36 @@ public class PartnerService {
     public List<Partner> getAllPartner() {
         return (List<Partner>) this.partnerRepository.findAll();
     }
+
+
+
+    // Find all prospects by user
+    public int findAllProspectsByUser(String email){
+        return this.partnerRepository.findNumberProspectsByUserEmail(StateProspect.ENDED, email);
+    }
+
+
+    // Find all customers by user
+    public int findAllCustomersByUser(String email){
+        return this.partnerRepository.findNumberCustomersByUserEmail(StateProspect.ENDED, email);
+    }
+
+    // Find number of prospects with TO_FOLLOW_UP state
+    public int findNumberOfProspectsToFollowUp(StateProspect stateProspect, String email) {
+        return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.TO_FOLLOW_UP, email);
+    }
+
+    // Find number of prospects with IN_PROGRESS state
+    public int findNumberOfProspectsInProgress(StateProspect stateProspect, String email) {
+        return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.IN_PROGRESS, email);
+    }
+
+    // Find number of prospects with NOT_STARTED state
+    public int findNumberOfProspectsInNotStarted(StateProspect stateProspect, String email) {
+        return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.NOT_STARTED, email);
+    }
+
+
 
     public List<Partner> getAllProspect(String keywordProspect, String sort, String email) {
         if(keywordProspect != null && !keywordProspect.isEmpty()) {
