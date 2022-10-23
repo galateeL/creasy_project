@@ -32,8 +32,8 @@ body{
     color: white;
 }
 
-/*partners and companies info*/
-.part-info, .comp-inf{
+/*partners and companies info + title*/
+.part-info, .comp-inf, h1{
     color: #757575;
 }
 
