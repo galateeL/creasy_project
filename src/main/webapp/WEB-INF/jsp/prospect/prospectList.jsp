@@ -142,11 +142,11 @@
                             </div>
 
                             <div class="mt-4">
-                                <button class="btn btn-validate btn-lg border-0 rounded-circle me-3" aria-hidden="true"
+                                <button class="btn btn-validate btn-lg border-0 rounded-circle me-0 me-md-3" aria-hidden="true"
                                         type="submit">
                                     <div class="fa fa-check "></div>
                                 </button>
-                                <button class="btn btn-danger btn-lg border-0 rounded-circle ms-3" aria-hidden="true"
+                                <button class="btn btn-danger btn-lg border-0 rounded-circle ms-2 ms-md-3" aria-hidden="true"
                                         type="submit">
                                     <div class="fa fa-times"></div>
                                 </button>
