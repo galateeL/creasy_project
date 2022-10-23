@@ -3,6 +3,7 @@ package com.example.creasy.repository;
 import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
+import com.example.creasy.repository.entity.User;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +29,8 @@ public class CreateProspect {
     private Company company;
 
     private LocalDateTime registerDate;
+
+
 
 
     public CreateProspect() {
@@ -61,6 +64,9 @@ public class CreateProspect {
         this.company = company;
 
     }
+
+
+
 
     public LocalDateTime getRegisterDate() {
         return registerDate;
