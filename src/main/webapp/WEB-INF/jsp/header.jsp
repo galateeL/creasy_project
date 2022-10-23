@@ -42,7 +42,7 @@
                         </sec:authorize>
                     </a>
                 <li class="nav-item d-flex justify-content-center align-items-center">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="${pageContext.request.contextPath}/details/user">
                     <sec:authorize access="isAuthenticated()">
                         <sec:authentication property="principal.firstName" /> <sec:authentication property="principal.lastName" />
                     </sec:authorize>

@@ -21,18 +21,18 @@
 
     <title>Document</title>
 </head>
-<body class="container-fluid d-flex flex-row p-0" style="height: 100%; background-color:
-#C3C3C3;">
+<body class="d-flex flex-column justify-content-between vh-100" style="background-color:
+#F1F1F1;">
 <jsp:include page="./header.jsp"/>
 
 <section class=" col-2 " style="text-align: end;" >
     <h1 class="" style="font-family: Pacifico; color:#757575;">Settings</h1>
 </section>
 
-<section class=" col-8 col-md-4 m-0 d-flex flex-column justify-content-center " tabindex="-1" role="dialog"
+<section class=" col-8 col-md-4 m-0 d-flex flex-column justify-content-center w-50 " tabindex="-1" role="dialog"
          id="modalSignin">
 
-    <div class="container" style="background-color: white">
+    <div class="container w-50" style="background-color: white">
         <form:form method="post" action="${pageContext.request.contextPath}/signin" class="row">
             <sec:authorize access="isAuthenticated()">
             <div class="mb-3 col-12 mt-4">
@@ -76,7 +76,7 @@
     </div>
 </section>
 <c:if test="${list == 'true' }">
-<section class="col-2">
+<section class="col-2 w-50">
     <c:forEach items="${users}" var="user">
         <c:choose>
             <c:when test="${user.admin == true}">
