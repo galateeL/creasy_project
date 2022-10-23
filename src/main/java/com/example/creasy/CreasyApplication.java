@@ -93,7 +93,7 @@ public class CreasyApplication implements CommandLineRunner {
 
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        User user1=new User("kevin-laurent@hotmail.fr",true, "https://www " +
+        User user1=new User("a",true, "https://www " +
                 ".usinenouvelle" +
                 ".com/mediatheque/0/7/5/000353570_896x598_c.jpg", passwordEncoder.encode("a"), "k",
                 "k");
