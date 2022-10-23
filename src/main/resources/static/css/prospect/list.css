@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/*Remove X on search bar input for chrome*/
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+/*******/
+
+body{
+    font-family: 'Inter', sans-serif;
+    background: #F1F1F1;
+}
+
+.btn-secondary{
+    background: #C3C3C3;
+    color: white;
+}
+
+.btn-secondary:hover{
+    background: #b3b3b3;
+    color: white;
+}
+
+.btn-primary{
+    background: #8109CB;
+    color: white;
+}
+
+.btn-primary:hover{
+    background: #7608ba;
+    color: white;
+}
+
+.btn-danger{
+    background: #e60000;
+    color: white;
+}
+
+.btn-validate{
+    background: #3AE1B1;
+    color: white;
+}
+
+.btn-validate:hover{
+    background: #1ec898;
+    color: white;
+}
+
+.btn-danger:hover{
+    background: #cc0000;
+    color: white;
+}
+
+h5, h1{
+    color: #757575;
+}
+
+.card-text{
+    color: #8109CB;
+}
+
+
+/*search icon*/
+.fa-search{
+    display: block;
+    margin-left: -15%;
+
+}
+
+
