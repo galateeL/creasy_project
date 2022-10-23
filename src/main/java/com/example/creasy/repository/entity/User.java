@@ -2,6 +2,7 @@ package com.example.creasy.repository.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,6 +21,9 @@ public class User {
     private String lastName;
 
     private String firstName;
+
+    @OneToMany(mappedBy = "user")
+    private List<Partner> partnerList;
 
     public User() {
     }
@@ -45,9 +49,15 @@ public class User {
         this.firstName = firstName;
     }
 
-
-
-
+    public User(String email, boolean admin, String pictureUrl, String password, String lastName, String firstName, List<Partner> partnerList) {
+        this.email = email;
+        this.admin = admin;
+        this.pictureUrl = pictureUrl;
+        this.password = password;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.partnerList = partnerList;
+    }
 
     public Long getId() {
         return id;
@@ -103,6 +113,14 @@ public class User {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public List<Partner> getPartnerList() {
+        return partnerList;
+    }
+
+    public void setPartnerList(List<Partner> partnerList) {
+        this.partnerList = partnerList;
     }
 }
 
