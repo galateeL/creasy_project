@@ -1,24 +1,27 @@
 package com.example.creasy.controller;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.time.LocalDate;
+
 public class CreateCompany {
 
     private String activityArea;
 
-    private String additionalAddress;
-
-    private String adress;
+    private String address;
 
     private String city;
 
     private String email;
+
+    private MultipartFile logoFile;
 
     private String logo;
 
     private String name;
 
     private String phoneNumberFixr;
-
-    private String phoneNumberPortable;
 
     private String postalCode;
 
@@ -30,8 +33,27 @@ public class CreateCompany {
 
     private String longitude;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate creationDate;
+
     public CreateCompany() {
 
+    }
+
+    public MultipartFile getLogoFile() {
+        return logoFile;
+    }
+
+    public void setLogoFile(MultipartFile logoFile) {
+        this.logoFile = logoFile;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getLatitude() {
@@ -57,21 +79,12 @@ public class CreateCompany {
     public void setActivityArea(String activityArea) {
         this.activityArea = activityArea;
     }
-
-    public String getAdditionalAddress() {
-        return additionalAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdditionalAddress(String additionalAddress) {
-        this.additionalAddress = additionalAddress;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {
@@ -113,15 +126,6 @@ public class CreateCompany {
     public void setPhoneNumberFixr(String phoneNumberFixr) {
         this.phoneNumberFixr = phoneNumberFixr;
     }
-
-    public String getPhoneNumberPortable() {
-        return phoneNumberPortable;
-    }
-
-    public void setPhoneNumberPortable(String phoneNumberPortable) {
-        this.phoneNumberPortable = phoneNumberPortable;
-    }
-
     public String getPostalCode() {
         return postalCode;
     }

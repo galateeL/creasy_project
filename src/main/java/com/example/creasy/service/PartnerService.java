@@ -1,14 +1,14 @@
 package com.example.creasy.service;
 
-import com.example.creasy.controller.CreateCompany;
 import com.example.creasy.exception.PartnerNotFoundException;
 import com.example.creasy.repository.*;
-import com.example.creasy.repository.entity.Company;
-import com.example.creasy.repository.entity.Note;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
+import com.example.creasy.repository.entity.User;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -16,6 +16,7 @@ public class PartnerService {
 
     private PartnerRepository partnerRepository;
     private CompanyRepository companyRepository;
+
 
     public PartnerService(PartnerRepository partnerRepository, CompanyRepository companyRepository) {
         this.partnerRepository = partnerRepository;
@@ -26,19 +27,109 @@ public class PartnerService {
         return (List<Partner>) this.partnerRepository.findAll();
     }
 
-    public List<Partner> getAllProspect() {
-        return this.partnerRepository.findByStateProspectIsNot(StateProspect.ENDED);
+
+
+    // Find all prospects by user
+    public int findAllProspectsByUser(String email){
+        return this.partnerRepository.findNumberProspectsByUserEmail(StateProspect.ENDED, email);
     }
 
-    public List<Partner> getAllCustomer() {
-        return this.partnerRepository.findByStateProspectIs(StateProspect.ENDED);
+
+    // Find all customers by user
+    public int findAllCustomersByUser(String email){
+        return this.partnerRepository.findNumberCustomersByUserEmail(StateProspect.ENDED, email);
     }
+
+    // Find number of prospects with TO_FOLLOW_UP state
+    public int findNumberOfProspectsToFollowUp(StateProspect stateProspect, String email) {
+        return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.TO_FOLLOW_UP, email);
+    }
+
+    // Find number of prospects with IN_PROGRESS state
+    public int findNumberOfProspectsInProgress(StateProspect stateProspect, String email) {
+        return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.IN_PROGRESS, email);
+    }
+
+    // Find number of prospects with NOT_STARTED state
+    public int findNumberOfProspectsInNotStarted(StateProspect stateProspect, String email) {
+        return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.NOT_STARTED, email);
+    }
+
+
+
+    public List<Partner> getAllProspect(String keywordProspect, String sort, String email) {
+        if(keywordProspect != null && !keywordProspect.isEmpty()) {
+            if(sort != null) {
+                if(sort.equals("ZA")){
+                    return this.partnerRepository.findProspectZA(StateProspect.ENDED, keywordProspect, email);
+                } else if (sort.equals("AZ")) {
+                    return this.partnerRepository.findProspectAZ(StateProspect.ENDED, keywordProspect, email);
+                } else if (sort.equals("ON")) {
+                    return this.partnerRepository.findProspectON(StateProspect.ENDED, keywordProspect, email);
+                } else if (sort.equals("NO" )) {
+                    return this.partnerRepository.findProspectNO(StateProspect.ENDED, keywordProspect, email);
+                }
+            }
+
+            return this.partnerRepository.findProspectByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordProspect, email);
+        }
+
+        if(sort != null) {
+            if(sort.equals("ZA")){
+                return this.partnerRepository.findByStateProspectIsNotOrderByLastnameDesc(StateProspect.ENDED, email);
+            } else if (sort.equals("AZ")) {
+                return this.partnerRepository.findByStateProspectIsNotOrderByLastnameAsc(StateProspect.ENDED, email);
+            } else if (sort.equals( "ON")) {
+                return this.partnerRepository.findByStateProspectIsNotOrderByRegisterDateAsc(StateProspect.ENDED, email);
+            } else if (sort.equals("NO" )) {
+                return this.partnerRepository.findByStateProspectIsNotOrderByRegisterDateDesc(StateProspect.ENDED, email);
+            }
+        }
+
+        return this.partnerRepository.findByStateProspectIsNotAndUserEmailIs(StateProspect.ENDED, email);
+    }
+
+
+    public List<Partner> getAllCustomer(String keywordCustomer, String sort, String email) {
+        if(keywordCustomer != null && !keywordCustomer.isEmpty()) {
+            if(sort != null) {
+                if(sort.equals("ZA")){
+                    return this.partnerRepository.findCustomerZA(StateProspect.ENDED, keywordCustomer, email);
+                } else if (sort.equals("AZ")) {
+                    return this.partnerRepository.findCustomerAZ(StateProspect.ENDED, keywordCustomer, email);
+                } else if (sort.equals("ON")) {
+                    return this.partnerRepository.findCustomerON(StateProspect.ENDED, keywordCustomer, email);
+                } else if (sort.equals("NO" )) {
+                    return this.partnerRepository.findCustomerNO(StateProspect.ENDED, keywordCustomer, email);
+                }
+            }
+            return this.partnerRepository.findCustomerByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordCustomer, email);
+        }
+
+        if(sort != null) {
+            if(sort.equals("ZA")){
+                return this.partnerRepository.findByStateProspectIsOrderByLastnameDesc(StateProspect.ENDED, email);
+            } else if (sort.equals("AZ")) {
+                return this.partnerRepository.findByStateProspectIsOrderByLastnameAsc(StateProspect.ENDED, email);
+            } else if (sort.equals( "ON")) {
+                return this.partnerRepository.findByStateProspectIsOrderByRegisterDateAsc(StateProspect.ENDED, email);
+            } else if (sort.equals("NO" )) {
+                return this.partnerRepository.findByStateProspectIsOrderByRegisterDateDesc(StateProspect.ENDED, email);
+            }
+        }
+
+        return this.partnerRepository.findByStateProspectIsAndUserEmailIs(StateProspect.ENDED, email);
+    }
+
+    public List<Partner> getAllbyCompany(Long id){
+        return this.partnerRepository.findByCompanyId(id);
+    }
+
 
 
     public Partner findPartnerById(Long id) {
         return this.partnerRepository.findById(id).get();
     }
-
 
 
     public Partner getPartner(Long id) {
@@ -47,7 +138,7 @@ public class PartnerService {
                 .orElseThrow(() -> new PartnerNotFoundException(id));
     }
 
-    public void createProspect(CreateProspect createProspect) {
+    public void createProspect(CreateProspect createProspect, User user) {
 
         Partner prospect = new Partner();
         prospect.setFirstname(createProspect.getFirstname());
@@ -59,12 +150,15 @@ public class PartnerService {
         prospect.setPositionHeld(createProspect.getPositionHeld());
         prospect.setStateProspect(createProspect.getStateProspect());
         prospect.setCompany(createProspect.getCompany());
+        prospect.setRegisterDate(LocalDateTime.now());
+
+        prospect.setUser(user);
 
         this.partnerRepository.save(prospect);
 
     }
 
-    public void createCustomer(CreateCustomer createCustomer) {
+    public void createCustomer(CreateCustomer createCustomer, User user) {
 
         Partner customer = new Partner();
         customer.setFirstname(createCustomer.getFirstname());
@@ -76,6 +170,9 @@ public class PartnerService {
         customer.setPositionHeld(createCustomer.getPositionHeld());
         customer.setStateProspect(StateProspect.ENDED);
         customer.setCompany(createCustomer.getCompany());
+        customer.setRegisterDate(LocalDateTime.now());
+
+        customer.setUser(user);
 
         this.partnerRepository.save(customer);
 
@@ -97,11 +194,16 @@ public class PartnerService {
         partner.setFixedPhoneNumber(editPartner.getFixedPhoneNumber());
         partner.setMobilePhoneNumber(editPartner.getMobilePhoneNumber());
         partner.setPositionHeld(editPartner.getPositionHeld());
-        partner.setCompany(editPartner.getCompany());
+        if(editPartner.getStateProspect() != null) {
+            StateProspect stateProspect = StateProspect.valueOf(editPartner.getStateProspect());
+            partner.setStateProspect(stateProspect);
+        }
+        if(editPartner.getCompanyId() != null ) {
+            partner.setCompany(companyRepository.findById(Long.parseLong(editPartner.getCompanyId())).get());
+        }
 
         this.partnerRepository.save(partner);
 
     }
-
 
 }

@@ -5,6 +5,8 @@ import com.example.creasy.repository.entity.*;
 import com.example.creasy.service.CompanyService;
 import com.example.creasy.service.NoteService;
 import com.example.creasy.service.PartnerService;
+import com.example.creasy.service.UserService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,14 +26,15 @@ public class PartnerController {
     private CompanyService companyService;
 
     private NoteService noteService;
+    private UserService userService;
 
+    public PartnerController(PartnerService partnerService, CompanyService companyService, NoteService noteService, UserService userService) {
 
-
-    public PartnerController(PartnerService partnerService, CompanyService companyService, NoteService noteService) {
 
         this.partnerService = partnerService;
         this.companyService = companyService;
         this.noteService = noteService;
+        this.userService = userService;
 
     }
 
@@ -43,18 +47,28 @@ public class PartnerController {
 //
 //    }
 
-    // Display clients
+    // Display prospects
     @GetMapping("/all-prospects")
-    public String displayAllProspects(Model model) {
-        List<Partner> prospectList = partnerService.getAllProspect();
+    public String displayAllProspects(Principal principal, Model model, @Param("keywordProspect") String keywordProspect, @Param("sort") String sort, @Param("state") String state) {
+
+        User user = userService.getUserByMail(principal.getName());
+
+        List<Partner> prospectList = partnerService.getAllProspect(keywordProspect, sort, user.getEmail());
+        if(state != null && !state.isEmpty()) {
+            prospectList.removeIf(partner -> !partner.getStateProspect().name().equals(state));
+        }
         model.addAttribute("prospects", prospectList);
         return "prospect/prospectList";
     }
 
-    // Display prospects
+    // Display customers
     @GetMapping("/all-customers")
-    public String displayAllCustomers(Model model) {
-        List<Partner> customerList = partnerService.getAllCustomer();
+    public String displayAllCustomers(Principal principal, Model model, @Param("keywordCustomer") String keywordCustomer, @Param("sort") String sort){
+
+        User user = userService.getUserByMail(principal.getName());
+
+        List<Partner> customerList = partnerService.getAllCustomer(keywordCustomer, sort, user.getEmail());
+
         model.addAttribute("customers", customerList);
         return "customer/customerList";
     }
@@ -91,6 +105,7 @@ public class PartnerController {
     // Add new note to partner - Save in DB
     @PostMapping("/{id}/add-note")
     public String addNote(CreateNote createNote, @PathVariable Long id,Model model) {
+
         Partner partner = partnerService.findPartnerById(id);
         model.addAttribute("partner", partner);
 
@@ -118,8 +133,11 @@ public class PartnerController {
 
     // Add prospect - Save in DB
     @PostMapping("/add-prospect")
-    public String addProspect(CreateProspect createProspect) {
-        partnerService.createProspect(createProspect);
+    public String addProspect(Principal principal, CreateProspect createProspect) {
+
+        User user = userService.getUserByMail(principal.getName());
+
+        partnerService.createProspect(createProspect, user);
         return "redirect:/partners/all-prospects";
 
     }
@@ -135,8 +153,11 @@ public class PartnerController {
 
     // Add customer - Save in DB
     @PostMapping("/add-customer")
-    public String addCustomer(CreateCustomer createCustomer) {
-        partnerService.createCustomer(createCustomer);
+    public String addCustomer(Principal principal, CreateCustomer createCustomer) {
+
+        User user = userService.getUserByMail(principal.getName());
+
+        partnerService.createCustomer(createCustomer, user);
         return "redirect:/partners/all-customers";
     }
 
@@ -179,6 +200,9 @@ public class PartnerController {
         model.addAttribute("prospect", prospect);
         List<Company> companyList  = companyService.getAllCompany();
         model.addAttribute("companies", companyList);
+        StateProspect[] stateProspectsArray = StateProspect.values();
+        List<StateProspect> stateProspectList = Arrays.asList(stateProspectsArray);
+        model.addAttribute("stateProspects", stateProspectList);
         return "prospect/editProspect";
     }
 

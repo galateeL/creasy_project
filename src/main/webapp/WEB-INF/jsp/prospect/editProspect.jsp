@@ -63,9 +63,21 @@
                    value="${prospect.positionHeld}">
         </div>
 
+
         <div class="mb-2">
-            <label for="company">Company</label>
-            <select class="forms-select d-block w-100" id="company" required name="company">
+            <label for="stateProspect">Prospecting state :</label>
+            <select class="forms-select d-block w-100" name="stateProspect" id="stateProspect">
+                <option disabled selected>${prospect.stateProspect}</option>
+                <c:forEach items="${stateProspects}" var="stateProspect">
+                    <option value="${stateProspect}">${stateProspect}</option>
+                </c:forEach>
+            </select>
+        </div>
+
+
+        <div class="mb-2">
+            <label for="companyId">Company</label>
+            <select class="forms-select d-block w-100" id="companyId" required name="companyId">
                 <option disabled selected>${prospect.company.name}</option>
                 <c:forEach items="${companies}" var="company">
                     <option value="${company.id}">${company.name}</option>

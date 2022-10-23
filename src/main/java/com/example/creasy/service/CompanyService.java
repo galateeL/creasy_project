@@ -5,6 +5,7 @@ import com.example.creasy.exception.CompanyNotFoundException;
 import com.example.creasy.repository.CompanyRepository;
 import com.example.creasy.repository.entity.Company;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -13,8 +14,11 @@ public class CompanyService {
 
     private CompanyRepository companyRepository;
 
-    public CompanyService(CompanyRepository companyRepository) {
+    private StorageService storageService;
+
+    public CompanyService(CompanyRepository companyRepository, StorageService storageService) {
         this.companyRepository = companyRepository;
+        this.storageService = storageService;
     }
 
     public List<Company> getAllCompany(){
@@ -31,23 +35,31 @@ public class CompanyService {
         return this.companyRepository.findCompanyByNameContaining(searchValue);
     }
 
+
     public void addCompany(CreateCompany createCompany){
 
         Company company = new Company();
         company.setActivityArea(createCompany.getActivityArea());
-        company.setAdditionalAddress(createCompany.getAdditionalAddress());
-        company.setAdress(createCompany.getAdress());
+        company.setAddress(createCompany.getAddress());
         company.setCity(createCompany.getCity());
         company.setEmail(createCompany.getEmail());
-        company.setLogo(createCompany.getLogo());
+
         company.setName(createCompany.getName());
         company.setPhoneNumberFixr(createCompany.getPhoneNumberFixr());
-        company.setPhoneNumberPortable(createCompany.getPhoneNumberPortable());
         company.setPostalCode(createCompany.getPostalCode());
         company.setSiret(createCompany.getSiret());
         company.setWebSite(createCompany.getWebSite());
         company.setLatitude(createCompany.getLatitude());
         company.setLongitude(createCompany.getLongitude());
+        company.setCreationDate(createCompany.getCreationDate());
+
+        MultipartFile picture = createCompany.getLogoFile();
+        if (picture == null || picture.isEmpty()) {
+            company.setLogo(createCompany.getLogo());
+        } else {
+            storageService.store(picture);
+            company.setLogo("http://localhost:8080/images/" + picture.getOriginalFilename());
+        }
 
         this.companyRepository.save(company);
     }
@@ -63,19 +75,25 @@ public class CompanyService {
                 .orElseThrow(() -> new CompanyNotFoundException(id));
 
         company.setActivityArea(editCompany.getActivityArea());
-        company.setAdditionalAddress(editCompany.getAdditionalAddress());
-        company.setAdress(editCompany.getAdress());
+        company.setAddress(editCompany.getAddress());
         company.setCity(editCompany.getCity());
         company.setEmail(editCompany.getEmail());
-        company.setLogo(editCompany.getLogo());
         company.setName(editCompany.getName());
         company.setPhoneNumberFixr(editCompany.getPhoneNumberFixr());
-        company.setPhoneNumberPortable(editCompany.getPhoneNumberPortable());
         company.setPostalCode(editCompany.getPostalCode());
         company.setSiret(editCompany.getSiret());
         company.setWebSite(editCompany.getWebSite());
         company.setLatitude(editCompany.getLatitude());
         company.setLongitude(editCompany.getLongitude());
+        company.setCreationDate(editCompany.getCreationDate());
+
+        MultipartFile picture = editCompany.getLogoFile();
+        if (picture == null || picture.isEmpty()) {
+            company.setLogo(editCompany.getLogo());
+        } else {
+            storageService.store(picture);
+            company.setLogo("http://localhost:8080/images/" + picture.getOriginalFilename());
+        }
 
         return this.companyRepository.save(company);
 
