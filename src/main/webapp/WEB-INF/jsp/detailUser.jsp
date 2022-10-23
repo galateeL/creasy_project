@@ -25,81 +25,86 @@
 #F1F1F1;">
 <jsp:include page="./header.jsp"/>
 
-<section class=" col-2 " style="text-align: end;" >
+<section class=" col-2 mt-2" style="text-align: end;" >
     <h1 class="" style="font-family: Pacifico; color:#757575;">Settings</h1>
 </section>
+<div class=" container-fluid">
+    <div class="row">
+        <div class="col-1">
 
-<section class=" col-8 col-md-4 m-0 d-flex flex-column justify-content-center w-50 " tabindex="-1" role="dialog"
-         id="modalSignin">
-
-    <div class="container w-50" style="background-color: white">
-        <form:form method="post" action="${pageContext.request.contextPath}/signin" class="row">
-            <sec:authorize access="isAuthenticated()">
-            <div class="mb-3 col-12 mt-4">
-                <img src="<sec:authentication
+        </div>
+    <section class=" col-8 col-md-8 m-0 mt-2 mb-2 d-flex flex-column justify-content-center  " tabindex="-1"
+             role="dialog"
+             id="modalSignin">
+        <div class="container w-50" style="background-color: white">
+            <form:form method="post" action="${pageContext.request.contextPath}/signin" class="row">
+                <sec:authorize access="isAuthenticated()">
+                    <div class="mb-3 col-8 mt-4">
+                        <img src="<sec:authentication
                         property="principal.pictureUrl"/>" alt="Logo"
-                     style="height: 100px;width: 100px;border-radius: 50%; object-fit: cover;" class="mt-4">
-            </div>
-            <div class="mb-3 col-12 mt-5">
-                <label for="email" style="color: #FFC900;">EMAIL</label>
-                <h5 class="form-control rounded-3 mt-3 w-75" id="email" name="user"><sec:authentication
-                        property="name"/></h5>
-            </div>
-
-            <div class="mb-3 col-12 mt-3 ">
-                <label for="firstName" style="color: #FFC900;" >FIRST NAME</label>
-                <h5 class="form-control rounded-3 mt-3 w-75" id="firstName" name="user"><sec:authentication
-                        property="principal.firstName"/></h5>
-            </div>
-                <div class="mb-3 col-12 mt-3 ">
-                    <label for="lastName" style="color: #FFC900;" >LAST NAME</label>
-                    <h5 class="form-control rounded-3 mt-3 w-75" id="lastName" name="user"><sec:authentication
-                            property="principal.lastName"/></h5>
-                </div>
-            <div class="col-12 col-md-2"></div>
-            <div class="col-12 col-md-3">
-                <a class=" mb-5 btn btn-lg rounded-3  mt-3" style=" background-color: #FFC900; color: white;"
-                        href="${pageContext.request.contextPath}/edit/<sec:authentication
-                        property='principal.username'/>">Edit
-                </a>
-            </div>
-                <c:if test="${list != 'true' }">
-            <div class="col-12 col-md-7 ">
-                <a href="${pageContext.request.contextPath}/delete/<sec:authentication
-                        property='principal.username'/>" class=" mb-5 btn btn-lg rounded-3 mt-3" style=" background-color: #F7526A; color: white;"
-                        value="Save"type="submit">Delete my account
-                </a>
-            </div>
-                </c:if>
-            </sec:authorize>
-        </form:form>
-    </div>
-</section>
-<c:if test="${list == 'true' }">
-<section class="col-2 w-50">
-    <c:forEach items="${users}" var="user">
-        <c:choose>
-            <c:when test="${user.admin == true}">
-            </c:when>
-            <c:otherwise>
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">${user.firstName} ${user.lastName}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">${user.email}</h6>
-                        </div>
+                             style="height: 100px;width: 100px;border-radius: 50%; object-fit: cover;" class="mt-4">
                     </div>
-                    <div class="col-12 col-md-7 ">
-                        <a href="${pageContext.request.contextPath}/delete/user/${user.email}"
-                           class=" mb-5 btn btn-lg rounded-3 mt-3" style=" background-color: #F7526A; color: white;"
-                           value="Save"type="submit">Delete my account
+                    <div class="mb-3 col-12 mt-5">
+                        <label for="email" style="color: #FFC900;">EMAIL</label>
+                        <h5 class="form-control rounded-3 mt-3 w-75" id="email" name="user"><sec:authentication
+                                property="name"/></h5>
+                    </div>
+
+                    <div class="mb-3 col-12 mt-3 ">
+                        <label for="firstName" style="color: #FFC900;" >FIRST NAME</label>
+                        <h5 class="form-control rounded-3 mt-3 w-75" id="firstName" name="user"><sec:authentication
+                                property="principal.firstName"/></h5>
+                    </div>
+                    <div class="mb-3 col-12 mt-3 ">
+                        <label for="lastName" style="color: #FFC900;" >LAST NAME</label>
+                        <h5 class="form-control rounded-3 mt-3 w-75" id="lastName" name="user"><sec:authentication
+                                property="principal.lastName"/></h5>
+                    </div>
+                    <div class="col-12 col-md-2"></div>
+                    <div class="col-12 col-md-3">
+                        <a class=" mb-5 btn btn-lg rounded-3  mt-3" style=" background-color: #FFC900; color: white;"
+                           href="${pageContext.request.contextPath}/edit/<sec:authentication
+                        property='principal.username'/>">Edit
                         </a>
                     </div>
-                </div>
-            </c:otherwise>
-        </c:choose>
-    </c:forEach>
-</section>
-</c:if>
+                    <c:if test="${list != 'true' }">
+                        <div class="col-12 col-md-7 ">
+                            <a href="${pageContext.request.contextPath}/delete/<sec:authentication
+                        property='principal.username'/>" class=" mb-5 btn btn-lg rounded-3 mt-3" style=" background-color: #F7526A; color: white;"
+                               value="Save"type="submit">Delete my account
+                            </a>
+                        </div>
+                    </c:if>
+                </sec:authorize>
+            </form:form>
+        </div>
+    </section>
+    <c:if test="${list == 'true' }">
+        <section class="col-3">
+            <c:forEach items="${users}" var="user">
+                <c:choose>
+                    <c:when test="${user.admin == true}">
+                    </c:when>
+                    <c:otherwise>
+                            <div class="card align-items-center" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">${user.firstName} ${user.lastName}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">${user.email}</h6>
+                                </div>
+                                <div>
+                                <a href="${pageContext.request.contextPath}/delete/user/${user.email}"
+                                   class=" mb-5 btn btn-lg rounded-3 mt-3" style=" background-color: #F7526A; color: white;"
+                                   value="Save"type="submit">Delete account
+                                </a>
+                                </div>
+                            </div>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </section>
+    </c:if>
+    </div>
+</div>
+<jsp:include page="./footer.jsp"/>
 </body>
 </html>
