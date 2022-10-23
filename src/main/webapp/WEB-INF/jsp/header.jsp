@@ -1,7 +1,6 @@
 
 <header>
 
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid d-flex justify-content-evenly">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -10,7 +9,7 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 " style="font-family: 'Inter', sans-serif;">
-                <li class="d-flex justify-content-center align-items-center me-2 px-4">
+                <li class="d-flex justify-content-center align-items-center me-2 ms-3 px-4">
                     <a class="navbar-brand" href="#"><img src="https://i.postimg.cc/P5LLYgPf/logo-creasy-1.png" alt="creasy-logo"
                                                           style="width: 100px"/></a>
                 </li >
@@ -39,7 +38,7 @@
                     </a>
                     <a class="nav-link" href="#">Firstname Lastname</a>
                 </li>
-                <li class="nav-item d-flex justify-content-center align-items-center px-4">
+                <li class="nav-item d-flex justify-content-center align-items-center px-4 me-2">
                     <a class="nav-link" href="#">Logout</a>
                 </li>
             </ul>

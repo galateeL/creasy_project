@@ -33,6 +33,9 @@ public class Partner {
     @ManyToOne
     private Company company;
 
+    @ManyToOne
+    private User user;
+
     @OneToMany(mappedBy = "partner")
     private List<Note> noteList;
 
@@ -92,6 +95,28 @@ public class Partner {
         this.company = company;
         this.noteList = noteList;
         this.registerDate = registerDate;
+    }
+
+    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company, User user, LocalDateTime registerDate) {
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.email = email;
+        this.pictureUrl = pictureUrl;
+        this.fixedPhoneNumber = fixedPhoneNumber;
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.positionHeld = positionHeld;
+        this.stateProspect = stateProspect;
+        this.company = company;
+        this.user = user;
+        this.registerDate = registerDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LocalDateTime getRegisterDate() {
