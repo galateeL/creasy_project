@@ -16,6 +16,7 @@ public class PartnerService {
     private PartnerRepository partnerRepository;
     private CompanyRepository companyRepository;
 
+
     public PartnerService(PartnerRepository partnerRepository, CompanyRepository companyRepository) {
         this.partnerRepository = partnerRepository;
         this.companyRepository = companyRepository;
@@ -162,7 +163,13 @@ public class PartnerService {
         partner.setFixedPhoneNumber(editPartner.getFixedPhoneNumber());
         partner.setMobilePhoneNumber(editPartner.getMobilePhoneNumber());
         partner.setPositionHeld(editPartner.getPositionHeld());
-        partner.setCompany(editPartner.getCompany());
+        if(editPartner.getStateProspect() != null) {
+            StateProspect stateProspect = StateProspect.valueOf(editPartner.getStateProspect());
+            partner.setStateProspect(stateProspect);
+        }
+        if(editPartner.getCompanyId() != null ) {
+            partner.setCompany(companyRepository.findById(Long.parseLong(editPartner.getCompanyId())).get());
+        }
 
         this.partnerRepository.save(partner);
 

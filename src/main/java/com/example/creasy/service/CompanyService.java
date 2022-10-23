@@ -35,6 +35,7 @@ public class CompanyService {
         return this.companyRepository.findCompanyByNameContaining(searchValue);
     }
 
+
     public void addCompany(CreateCompany createCompany){
 
         Company company = new Company();
