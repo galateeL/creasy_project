@@ -12,12 +12,22 @@ body{
     background: #F1F1F1;
 }
 
-.btn{
+.btn-secondary{
+    background: #C3C3C3;
+    color: white;
+}
+
+.btn-secondary:hover{
+    background: #b3b3b3;
+    color: white;
+}
+
+.btn-primary{
     background: #3AE1B1;
     color: white;
 }
 
-.btn:hover{
+.btn-primary:hover{
     background: #1ec898;
     color: white;
 }
@@ -28,6 +38,10 @@ h5, h1{
 
 .card-text{
     color: #3AE1B1;
+}
+
+.card-text:hover{
+    color: #1ec898;
 }
 
 /*search icon*/

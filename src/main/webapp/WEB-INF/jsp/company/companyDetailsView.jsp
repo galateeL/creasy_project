@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Creasy - Companies List</title>
+    <title>Creasy - ${company.name}</title>
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -138,13 +138,16 @@
         </div>
         <%----------------------------%>
     </div>
-
-</div>
-
-</div>
+    <%--back to top button--%>
+    <jsp:include page="../backToTopButton.jsp"/>
+    <%----------%>
 </div>
 <%--footer--%>
 <jsp:include page="../footer.jsp"/>
+<%----------%>
+
+<%--back to top button script--%>
+<script src="/js/BackToTopButton.js"></script>
 <%----------%>
 </body>
 </html>

@@ -36,7 +36,7 @@
     <jsp:include page="../header.jsp"/>
     <%----------%>
 
-    <div class="container-fluid col-12 justify-content-center">
+    <div class="container-fluid col-12">
 
 
         <h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Companies :</h1>
@@ -44,7 +44,7 @@
         <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
 
             <%--Add company button--%>
-            <a class="btn shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0"
+            <a class="btn btn-primary border-0 shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0"
                href="${pageContext.request.contextPath}/companies/add">Add Company</a>
             <%---------%>
 
@@ -68,9 +68,9 @@
                         <div class="card-body d-md-flex justify-content-between overflow-auto">
                             <div class="align-items-start">
                                 <h5 class="card-title fw-bold text-break">${company.name}</h5>
-                                <p class="card-text">${company.webSite}</p>
+                                <a class="card-text text-decoration-none" href="${company.webSite}" target="_blank" rel="noopener noreferrer">${company.webSite}</a>
                             </div>
-                            <a class="btn align-self-center ms-md-2 mt-3 mt-md-0 ps-3 pe-3"
+                            <a class="btn btn-primary border-0 align-self-center ms-md-2 mt-3 mt-md-0 ps-3 pe-3"
                                href="${pageContext.request.contextPath}/companies/details/${company.id}">Details</a>
                         </div>
                     </div>
@@ -80,9 +80,17 @@
         <%----------%>
 
     </div>
+    <%--back to top button--%>
+    <jsp:include page="../backToTopButton.jsp"/>
+    <%----------%>
 </div>
+
 <%--footer--%>
 <jsp:include page="../footer.jsp"/>
+<%----------%>
+
+<%--back to top button script--%>
+<script src="/js/BackToTopButton.js"></script>
 <%----------%>
 </body>
 </html>
