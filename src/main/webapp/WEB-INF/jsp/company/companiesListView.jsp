@@ -1,4 +1,4 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -22,62 +22,67 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
             crossorigin="anonymous"></script>
 
 
-
-
 </head>
-<body>
+<body class="d-flex flex-column justify-content-between vh-100">
 
-<header>
+<div>
+    <%--header--%>
     <jsp:include page="../header.jsp"/>
-</header>
+    <%----------%>
 
-<div class="fluid-container col-12 justify-content-center">
+    <div class="container-fluid col-12 justify-content-center">
 
-    <h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Companies :</h1>
 
-    <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
+        <h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Companies :</h1>
 
-        <%--Add company button--%>
-        <a class="btn shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0"
-           href="${pageContext.request.contextPath}/companies/add">Add Company</a>
+        <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
+
+            <%--Add company button--%>
+            <a class="btn shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0"
+               href="${pageContext.request.contextPath}/companies/add">Add Company</a>
             <%---------%>
 
-        <%--search bar with search icon button--%>
-        <form action="${pageContext.request.contextPath}/companies/list" method="get" class="d-flex ms-md-2 col-10 col-lg-2" role="search">
-            <input name="search" value="${searchName}" type="search" class="Search form-control shadow-sm" placeholder="Search..." aria-label="Search">
-            <button class="bg-transparent border-0 fa fa-search" type="submit"></button>
-        </form>
-        <%---------%>
+            <%--search bar with search icon button--%>
+            <form action="${pageContext.request.contextPath}/companies/list" method="get"
+                  class="d-flex ms-md-2 col-10 col-lg-2" role="search">
+                <input name="search" value="${searchName}" type="search" class="Search form-control shadow-sm"
+                       placeholder="Search..." aria-label="Search">
+                <button class="bg-transparent border-0 fa fa-search" type="submit"></button>
+            </form>
+            <%---------%>
 
-    </div>
+        </div>
 
 
-    <%--Card for each companies--%>
-    <div class="col row m-5 p-3">
-        <c:forEach items="${companies}" var="company">
-            <div class="col-lg-6 col-12 mt-4">
-                <div class="card h-100 border-0">
-                    <div class="card-body d-md-flex justify-content-between overflow-auto">
-                        <div class="align-items-start">
-                            <h5 class="card-title fw-bold text-break">${company.name}</h5>
-                            <p class="card-text">${company.webSite}</p>
+        <%--Card for each companies--%>
+        <div class="col row m-5 p-3">
+            <c:forEach items="${companies}" var="company">
+                <div class="col-lg-6 col-12 mt-4">
+                    <div class="card h-100 border-0">
+                        <div class="card-body d-md-flex justify-content-between overflow-auto">
+                            <div class="align-items-start">
+                                <h5 class="card-title fw-bold text-break">${company.name}</h5>
+                                <p class="card-text">${company.webSite}</p>
+                            </div>
+                            <a class="btn align-self-center ms-md-2 mt-3 mt-md-0 ps-3 pe-3"
+                               href="${pageContext.request.contextPath}/companies/details/${company.id}">Details</a>
                         </div>
-                        <a class="btn align-self-center ms-md-2 mt-3 mt-md-0 ps-3 pe-3"
-                           href="${pageContext.request.contextPath}/companies/details/${company.id}">Details</a>
                     </div>
                 </div>
-            </div>
-        </c:forEach>
-    </div>
-    <%---------%>
+            </c:forEach>
+        </div>
+        <%----------%>
 
+    </div>
 </div>
+<%--footer--%>
+<jsp:include page="../footer.jsp"/>
+<%----------%>
 </body>
 </html>
