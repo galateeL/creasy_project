@@ -65,12 +65,17 @@
         <div class="col row m-5 p-3">
 
             <div class="d-flex flex-column flex-md-row justify-content-between ">
-
+                <div class="d-flex position-absolute align-items-center m-3">
+                    <img src="/img/filterIcon.png" width="50px">
+                    <div class="filtersText ms-4 fw-bold fs-3">Filters</div>
+                </div>
                 <%-----Block on the left-----%>
                 <div class="d-flex flex-column justify-content-center col-12 col-md-4 p-5 bg-white">
 
-                    <form class="" method="GET"
+
+                    <form class="mt-5" method="GET"
                           action="${pageContext.request.contextPath}/partners/all-prospects">
+
 
                         <div class=" d-flex flex-column align-items-center bg-white">
 
