@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="sort" id="NO" value="ON">
+                        <input class="form-check-input" type="radio" name="sort" id="NO" value="NO">
                         <label class="form-check-label text-secondary" for="NO">
                             Newest to oldest
                         </label>
@@ -115,28 +115,28 @@
                     <%--                        <label for="TO_FOLLOW_UP">To follow up</label><br><br>--%>
 
                     <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="sort" id="NOT_STARTED" value="NOT_STARTED">
+                        <input class="form-check-input" type="radio" name="state" id="NOT_STARTED" value="NOT_STARTED">
                         <label class="form-check-label text-secondary" for="NOT_STARTED">
                             Not started
                         </label>
                     </div>
 
                     <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="sort" id="IN_PROGRESS" value="IN_PROGRESS">
+                        <input class="form-check-input" type="radio" name="state" id="IN_PROGRESS" value="IN_PROGRESS">
                         <label class="form-check-label text-secondary" for="IN_PROGRESS">
                             In progress
                         </label>
                     </div>
 
                     <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="sort" id="TO_FOLLOW_UP" value="TO_FOLLOW_UP">
+                        <input class="form-check-input" type="radio" name="state" id="TO_FOLLOW_UP" value="TO_FOLLOW_UP">
                         <label class="form-check-label text-secondary" for="TO_FOLLOW_UP">
                             To follow up
                         </label>
                     </div>
 
-                    <button class="btn btn" type="submit" style="background-color: white;color:gray"><img src="https://i.postimg.cc/KcMNKkn1/Capture.jpg" alt="validate logo" width="70px"/></button>
-
+                    <button class="btn"  type="submit" style="color:gray"><img src="https://i.postimg.cc/4d0f9p9x/tick-mark.png" alt="validate logo" width="40px"/></button>
+                    <button  class="btn" type="submit" style="color:gray"><img src="https://i.postimg.cc/0Nfrb6nz/delete.png" alt="clear logo" width="40px"/></button>
 <%--                </div>--%>
             </form>
         </div>

@@ -194,6 +194,9 @@ public class PartnerController {
         model.addAttribute("prospect", prospect);
         List<Company> companyList  = companyService.getAllCompany();
         model.addAttribute("companies", companyList);
+        StateProspect[] stateProspectsArray = StateProspect.values();
+        List<StateProspect> stateProspectList = Arrays.asList(stateProspectsArray);
+        model.addAttribute("stateProspects", stateProspectList);
         return "prospect/editProspect";
     }
 

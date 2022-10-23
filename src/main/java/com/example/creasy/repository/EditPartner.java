@@ -25,14 +25,14 @@ public class EditPartner {
 
     private String stateProspect;
 
-    private Company company;
+    private String companyId;
 
     private User user;
 
     public EditPartner() {
     }
 
-    public EditPartner(int id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, String stateProspect, Company company) {
+    public EditPartner(int id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, String stateProspect, String companyId) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -43,7 +43,7 @@ public class EditPartner {
         this.positionHeld = positionHeld;
         //this.isClient = isClient;
         this.stateProspect = stateProspect;
-        this.company = company;
+        this.companyId = companyId;
     }
 
     public User getUser() {
@@ -54,12 +54,13 @@ public class EditPartner {
         this.user = user;
     }
 
-    public Company getCompany() {
-        return company;
+
+    public String getCompanyId() {
+        return companyId;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public int getId() {
