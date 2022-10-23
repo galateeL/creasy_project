@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -27,11 +27,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
             crossorigin="anonymous"></script>
+
 </head>
 <body>
 <main>
@@ -43,6 +43,8 @@
 
     <div class="fluid-container col-12 justify-content-center">
 
+
+
         <h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Prospects</h1>
 
         <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start m-5">
@@ -50,103 +52,94 @@
             <a href="${pageContext.request.contextPath}/partners/add-prospect" class="btn"
                style="background-color: #8109CB; color:white ">Add prospect</a>
             <%---------%>
-        </div>
 
-            <form class="d-flex align-items-center m-5" method="GET" action="${pageContext.request.contextPath}/partners/all-prospects">
                 <%--                        Search prospect--%>
-                <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
+                <div class="ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
 
                     <input class="form-control me-2" type="text" placeholder="Search customer" name="keywordProspect"
                            value="${keywordProspect}" id="keywordProspect">
                 </div>
+        </div>
 
-                <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
+        <div>
+            <div class="d-flex flex-column flex-md-row align-items-baseline">
+        <form class="col-12 col-md-5 " method="GET"
+              action="${pageContext.request.contextPath}/partners/all-prospects">
 
-                    <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="sort" id="AZ" value="AZ">
-                        <label class="form-check-label text-secondary" for="AZ">
+            <div class=" p-5 mt-4 ms-md-5 d-flex flex-column align-items-center bg-white">
+
+                <div class="d-flex">
+                    <div>
+                        <input class="btn-check" type="radio" name="sort" id="AZ" value="AZ">
+                        <label class="btn btn-secondary mx-md-2 px-md-4 py-md-2" for="AZ">
                             A-Z
                         </label>
                     </div>
 
-                    <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="sort" id="ZA" value="ZA">
-                        <label class="form-check-label text-secondary" for="ZA">
+                    <div>
+                        <input class="btn-check" type="radio" name="sort" id="ZA" value="ZA">
+                        <label class="btn btn-secondary mx-md-2 px-4 py-2" for="ZA">
                             Z-A
                         </label>
                     </div>
+                </div>
 
-                    <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="sort" id="ON" value="ON">
-                        <label class="form-check-label text-secondary" for="ON">
+
+                <div class="d-flex my-md-4">
+                    <div>
+                        <input class="btn-check" type="radio" name="sort" id="ON" value="ON">
+                        <label class="btn btn-secondary mx-md-2 px-4 py-2" for="ON">
                             Oldest to newest
                         </label>
                     </div>
 
-                    <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="sort" id="NO" value="NO">
-                        <label class="form-check-label text-secondary" for="NO">
+                    <div>
+                        <input class="btn-check" type="radio" name="sort" id="NO" value="NO">
+                        <label class="btn btn-secondary mx-md-2 px-4 py-2" for="NO">
                             Newest to oldest
                         </label>
                     </div>
-<%--                    <div class="form-check me-5">--%>
-<%--                                            <input class="form-check-input" type="radio" id="AZ" name="sort" value="AZ">--%>
-<%--                                            <label for="AZ">A-Z</label><br>--%>
-<%--                                    </div>--%>
-
-<%--                    <div class="form-check me-5">--%>
-<%--                                            <input class="form-check-input" type="radio" id="ZA" name="sort" value="ZA">--%>
-<%--                                            <label for="ZA">Z-A</label><br>--%>
-<%--                    </div>--%>
-<%--                                            <input type="radio" id="ON" name="sort" value="ON">--%>
-<%--                                            <label for="ON">Oldest to newest</label><br><br>--%>
-
-<%--                                            <input type="radio" id="NO" name="sort" value="NO">--%>
-<%--                                            <label for="NO">Newest to oldest</label><br><br>--%>
+                </div>
 
 
-                    <%--                        <input type="radio" id="NOT_STARTED" name="state" value="NOT_STARTED">--%>
-                    <%--                        <label for="NOT_STARTED">Not started</label><br>--%>
-
-                    <%--                        <input type="radio" id="IN_PROGRESS" name="state" value="IN_PROGRESS">--%>
-                    <%--                        <label for="IN_PROGRESS">In progress</label><br><br>--%>
-
-                    <%--                        <input type="radio" id="TO_FOLLOW_UP" name="state" value="TO_FOLLOW_UP">--%>
-                    <%--                        <label for="TO_FOLLOW_UP">To follow up</label><br><br>--%>
-
-                    <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="state" id="NOT_STARTED" value="NOT_STARTED">
-                        <label class="form-check-label text-secondary" for="NOT_STARTED">
+                <div class="d-flex border p-3">
+                    <div>
+                        <input class="btn-check" type="radio" name="state" id="NOT_STARTED" value="NOT_STARTED">
+                        <label class="btn btn-secondary px-4 py-2" for="NOT_STARTED">
                             Not started
                         </label>
                     </div>
 
-                    <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="state" id="IN_PROGRESS" value="IN_PROGRESS">
-                        <label class="form-check-label text-secondary" for="IN_PROGRESS">
+                    <div>
+                        <input class="btn-check" type="radio" name="state" id="IN_PROGRESS" value="IN_PROGRESS">
+                        <label class="btn btn-secondary mx-md-4 px-4 py-2" for="IN_PROGRESS">
                             In progress
                         </label>
                     </div>
 
-                    <div class="form-check me-5">
-                        <input class="form-check-input" type="radio" name="state" id="TO_FOLLOW_UP" value="TO_FOLLOW_UP">
-                        <label class="form-check-label text-secondary" for="TO_FOLLOW_UP">
+                    <div>
+                        <input class="btn-check" type="radio" name="state" id="TO_FOLLOW_UP" value="TO_FOLLOW_UP">
+                        <label class="btn btn-secondary px-4 py-2" for="TO_FOLLOW_UP">
                             To follow up
                         </label>
                     </div>
+                </div>
 
-                    <button class="btn"  type="submit" style="color:gray"><img src="https://i.postimg.cc/4d0f9p9x/tick-mark.png" alt="validate logo" width="40px"/></button>
-                    <button  class="btn" type="submit" style="color:gray"><img src="https://i.postimg.cc/0Nfrb6nz/delete.png" alt="clear logo" width="40px"/></button>
-<%--                </div>--%>
-            </form>
-        </div>
+                <div class="mt-2 mt-md-4">
+                    <button class="btn" type="submit"><img src="https://i.postimg.cc/4d0f9p9x/tick-mark.png"
+                                                           alt="validate logo" width="40px"/></button>
+                    <button class="btn" type="submit"><img src="https://i.postimg.cc/0Nfrb6nz/delete.png" alt="clear logo"
+                                                           width="40px"/></button>
+                </div>
+
+            </div>
+        </form>
 
 
-
-        <%--Card for each companies--%>
-        <div class="col row m-5 p-3">
+        <%--Card for each prospect--%>
+        <div class="col row m-5 p-3 justify-content-center">
             <c:forEach items="${prospects}" var="prospect">
-                <div class="col-lg-6 col-12 mt-4">
+                <div class="col-md-7 col-12 mt-4">
                     <div class="card h-100 border-0">
                         <div class="card-body d-md-flex justify-content-between overflow-auto">
                             <div class="align-items-start">
@@ -161,10 +154,10 @@
             </c:forEach>
         </div>
         <%---------%>
-
-
-
+            </div>
+        </div>
     </div>
+
 </main>
 
 </body>
