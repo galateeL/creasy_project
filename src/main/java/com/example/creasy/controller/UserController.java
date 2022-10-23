@@ -46,10 +46,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/all")
-    public String test(){
-        return "all";
-    }
+
     @GetMapping("/details/user")
     public String displayDetailForm(Model m, Principal p){
         m.addAttribute("command",new CreateUser());

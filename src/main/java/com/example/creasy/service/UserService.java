@@ -4,6 +4,7 @@ import com.example.creasy.controller.dto.CreateUser;
 import com.example.creasy.controller.dto.UpdateUser;
 import com.example.creasy.exception.UserNotFoundException;
 import com.example.creasy.repository.UserRepository;
+import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,6 +20,9 @@ public class UserService {
     @Autowired
     private StorageService storageService;
 
+    public User findUserById(Long id) {
+        return this.userRepository.findById(id).get();
+    }
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
     }

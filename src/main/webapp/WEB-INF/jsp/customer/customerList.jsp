@@ -18,10 +18,14 @@
 
     <h1>Customer List</h1>
 
+    <a href="${pageContext.request.contextPath}/partners/add-customer" class="btn"
+       style="background-color: #05516b; color:white ">Add new customer</a>
+
     <c:forEach items="${customers}" var="customer">
         <p>${customer.firstname}</p>
         <p>${customer.lastname}</p>
-        <a href="${pageContext.request.contextPath}/partners/details/${customer.id}" class="btn"
+        <p>${customer.company.name}</p>
+        <a href="${pageContext.request.contextPath}/partners/details-customer/${customer.id}" class="btn"
            style="background-color: #05516b; color:white ">Detail</a>
     </c:forEach>
 

@@ -1,88 +1,141 @@
 package com.example.creasy.repository.entity;
 
-import net.bytebuddy.asm.Advice;
+import com.example.creasy.controller.dto.EventDto;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
-public class Event {
+public
+class Event {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private String title;
+	private String description;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime start;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime finish;
+	private String address;
+	private String url;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@ManyToOne
+	private Partner partner;
+	@ManyToOne
+	@JoinColumn(name= "user_id",referencedColumnName = "id")
+	private User userById;
+	
+	public Event(Long id, String title, String description, LocalDateTime start, LocalDateTime finish) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.start = start;
+		this.finish = finish;
+	}
 
-    private String description;
+	public Event(  String description, LocalDateTime start, LocalDateTime finish,String address,
+				Partner partner,User userById) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.start = start;
+		this.finish = finish;
+		this.address= address;
+		this.partner=partner;
+		this.userById = userById;
+	}
+	
+	public Event() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    private String address;
+	public EventDto toEventDto() {
+		EventDto eventDto = new EventDto();
+		eventDto.setUrl("http://localhost:8080/evenements"+this.id);
+		eventDto.setId(this.id);
+		eventDto.setStart(this.start);
+		eventDto.setFinish(this.finish);
+		eventDto.setTitle(this.partner.getFirstname() + " " +this.partner.getLastname());
 
-    private String name;
+		return eventDto;
+	}
 
-    private LocalDate startDate;
+	public User getUserById() {
+		return userById;
+	}
 
-    private LocalDate endDate;
+	public void setUserById(User userById) {
+		this.userById = userById;
+	}
 
-    private boolean wholeDay;
-    @ManyToOne
-    @JoinColumn(name = "partner_fk")
-    private Partner partner;
+	public String getAddress() {
+		return address;
+	}
 
-    public Event() {
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public Partner getPartner() {
+		return partner;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public LocalDate getStartDate() {
-        return startDate;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public LocalDate getEndDate() {
-        return endDate;
-    }
+	public LocalDateTime getStart() {
+		return start;
+	}
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
+	public void setStart(LocalDateTime start) {
+		this.start = start;
+	}
 
-    public boolean isWholeDay() {
-        return wholeDay;
-    }
+	public LocalDateTime getFinish() {
+		return finish;
+	}
 
-    public void setWholeDay(boolean wholeDay) {
-        this.wholeDay = wholeDay;
-    }
+	public void setFinish(LocalDateTime finish) {
+		this.finish = finish;
+	}
+
 }

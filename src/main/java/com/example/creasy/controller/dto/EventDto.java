@@ -1,83 +1,96 @@
 package com.example.creasy.controller.dto;
 
-import com.example.creasy.repository.entity.Partner;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.time.LocalDateTime;
+
 
 public class EventDto {
 
-    private Long id;
+	private Long id;
 
-    private String description;
+	private String title;
+	private String url;
+	private String description;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime start;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime finish;
+	private String address;
 
-    private String address;
+	public EventDto(Long id, String title, String url, LocalDateTime start, LocalDateTime finish) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.url = url;
+		this.start = start;
+		this.finish = finish;
+	}
 
-    private String name;
+	public EventDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    private LocalDate startDate;
+	public String getDescription() {
+		return description;
+	}
 
-    private LocalDate endDate;
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    private boolean wholeDay;
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public LocalDateTime getStart() {
+		return start;
+	}
+
+	public void setStart(LocalDateTime start) {
+		this.start = start;
+	}
+
+	public LocalDateTime getFinish() {
+		return finish;
+	}
+
+	public void setFinish(LocalDateTime finish) {
+		this.finish = finish;
+	}
 
 
-    public EventDto() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public boolean isWholeDay() {
-        return wholeDay;
-    }
-
-    public void setWholeDay(boolean wholeDay) {
-        this.wholeDay = wholeDay;
-    }
 }

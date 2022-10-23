@@ -41,7 +41,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/partners/all-prospects">Prospects</a>
                 </li>
                 <li class="nav-item d-flex justify-content-center align-items-center px-4">
-                    <a class="nav-link" href="#">Calendar</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/staticcalendar">Calendar</a>
                 </li>
                 <li class="nav-item d-flex justify-content-center align-items-center px-4">
                     <a class="nav-link" href="#">Settings</a>

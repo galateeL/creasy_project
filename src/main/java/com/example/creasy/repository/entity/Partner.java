@@ -29,9 +29,12 @@ public class Partner {
     @Enumerated(EnumType.STRING)
     private StateProspect stateProspect;
 
-    @OneToMany(mappedBy = "partner")
-    private List<Event> events;
+    @ManyToOne
+    private Company company;
 
+
+    @OneToMany(mappedBy = "partner")
+    private List<Note> noteList;
 
     public Partner() {
     }
@@ -58,6 +61,39 @@ public class Partner {
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
         this.stateProspect = stateProspect;
+    }
+
+    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company) {
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.email = email;
+        this.pictureUrl = pictureUrl;
+        this.fixedPhoneNumber = fixedPhoneNumber;
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.positionHeld = positionHeld;
+        this.stateProspect = stateProspect;
+        this.company = company;
+    }
+
+    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company, List<Note> noteList) {
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.email = email;
+        this.pictureUrl = pictureUrl;
+        this.fixedPhoneNumber = fixedPhoneNumber;
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.positionHeld = positionHeld;
+        this.stateProspect = stateProspect;
+        this.company = company;
+        this.noteList = noteList;
+    }
+
+    public List<Note> getNoteList() {
+        return noteList;
+    }
+
+    public void setNoteList(List<Note> noteList) {
+        this.noteList = noteList;
     }
 
     public Long getId() {
@@ -92,7 +128,6 @@ public class Partner {
         this.email = email;
     }
 
-
     public String getPictureUrl() {
         return pictureUrl;
     }
@@ -125,12 +160,19 @@ public class Partner {
         this.positionHeld = positionHeld;
     }
 
-
     public StateProspect getStateProspect() {
         return stateProspect;
     }
 
     public void setStateProspect(StateProspect stateProspect) {
         this.stateProspect = stateProspect;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }

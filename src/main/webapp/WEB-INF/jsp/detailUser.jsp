@@ -23,6 +23,7 @@
 </head>
 <body class="container-fluid d-flex flex-row p-0" style="height: 100%; background-color:
 #C3C3C3;">
+<jsp:include page="./header.jsp"/>
 
 <section class=" col-2 " style="text-align: end;" >
     <h1 class="" style="font-family: Pacifico; color:#757575;">Settings</h1>
