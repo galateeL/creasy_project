@@ -44,6 +44,10 @@ public class DashboardController {
     @GetMapping("")
     public String displayDashboard(Principal principal, Model model) {
 
+        User user = userService.getUserByMail(principal.getName());
+        List<Partner> prospectList = partnerService.findAllProspectsByList(StateProspect.ENDED,StateProspect.TO_FOLLOW_UP , user.getEmail());
+        partnerService.setToFollowUpIfNecessary(prospectList);
+
         // Number of prospects with specific state by user
 
         int prospectsToFollowUp = partnerService.findNumberOfProspectsToFollowUp(StateProspect.TO_FOLLOW_UP, principal.getName());
@@ -64,7 +68,6 @@ public class DashboardController {
         model.addAttribute("propectsByUser", propectsByUser);
 
         // Number of companies by user
-        User user = userService.getUserByMail(principal.getName());
         List <Partner> partnerList = user.getPartnerList();
         Set<Company> companySet = partnerList.stream().map(partner -> partner.getCompany())
                 .collect(Collectors.toSet());

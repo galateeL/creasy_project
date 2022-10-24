@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.Part;
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -124,8 +127,17 @@ public class PartnerController {
     // Add prospect - Display addProspect Form
     @GetMapping("/add-prospect")
     public String displayAddProspectForm(Model model) {
-        StateProspect[] stateProspectsArray = StateProspect.values();
-        List<StateProspect> stateProspectList = Arrays.asList(stateProspectsArray);
+       StateProspect[] stateProspectsArray = StateProspect.values();
+       // List<StateProspect> stateProspectList = Arrays.asList(stateProspectsArray);
+
+      List <StateProspect> stateProspectList = new ArrayList<>();
+      for(StateProspect stateProspect : stateProspectsArray){
+          if(stateProspect != StateProspect.ENDED){
+              stateProspectList.add(stateProspect);
+          }
+      }
+
+
         List<Company> companyList  = companyService.getAllCompany();
         model.addAttribute("stateProspects", stateProspectList);
         model.addAttribute("companies", companyList);
@@ -278,16 +290,12 @@ public class PartnerController {
         partnerService.addDunningPeriod(partner.getId(), createDunning);
 
 
-        if(partner.getStateProspect() == StateProspect.ENDED) {
+        if (partner.getStateProspect() == StateProspect.ENDED) {
             return "redirect:/partners/details-customer/{id}";
         } else {
             return "redirect:/partners/details-prospect/{id}";
         }
 
     }
-
-
-
-
 
 }
