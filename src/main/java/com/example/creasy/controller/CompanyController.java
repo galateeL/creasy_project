@@ -24,7 +24,6 @@ public class CompanyController {
 
     private CompanyService companyService;
     private PartnerService partnerService;
-
     private UserService userService;
 
     public CompanyController(CompanyService companyService, PartnerService partnerService, UserService userService) {

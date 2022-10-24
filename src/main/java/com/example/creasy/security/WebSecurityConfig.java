@@ -40,7 +40,7 @@ public class WebSecurityConfig {
                 .loginPage("/signin")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/details/user", true)
+                .defaultSuccessUrl("/dashboard", true)
                 .permitAll()
                 //Configuration du logout
                 .and()
