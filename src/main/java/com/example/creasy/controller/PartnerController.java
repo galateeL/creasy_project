@@ -26,15 +26,16 @@ public class PartnerController {
     private CompanyService companyService;
 
     private NoteService noteService;
-
     private UserService userService;
 
     public PartnerController(PartnerService partnerService, CompanyService companyService, NoteService noteService, UserService userService) {
+
 
         this.partnerService = partnerService;
         this.companyService = companyService;
         this.noteService = noteService;
         this.userService = userService;
+
     }
 
     // Display all partners
@@ -82,6 +83,8 @@ public class PartnerController {
         List<Note> noteList  = noteService.getAllNotesByPartner(partner);
         model.addAttribute("notes", noteList);
 
+        model.addAttribute("events", noteList);
+
         return "prospect/prospectDetail";
     }
 
@@ -94,6 +97,8 @@ public class PartnerController {
 
         List<Note> noteList  = noteService.getAllNotesByPartner(partner);
         model.addAttribute("notes", noteList);
+
+        model.addAttribute("events", noteList);
         return "customer/customerDetail";
     }
 
@@ -112,6 +117,7 @@ public class PartnerController {
         }
 
     }
+
 
 
     // Add prospect - Display addProspect Form

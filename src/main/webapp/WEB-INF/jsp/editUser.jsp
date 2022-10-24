@@ -23,10 +23,12 @@
 </head>
 <body class="container-fluid d-flex flex-row p-0" style="height: 100%; background-color:
 #C3C3C3;">
+<jsp:include page="./header.jsp"/>
 
-<section class=" col-4 " style="text-align: end;" >
-    <h1 class="" style="font-family: Pacifico; color:#757575;">Settings</h1>
+<section  style="text-align: end;" >
+    <h1  style="font-family: Pacifico; color:#757575;">Settings</h1>
 </section>
+<div class=" container-fluid column">
 <section class=" col-8 col-md-4 m-0 d-flex flex-column justify-content-center " tabindex="-1" role="dialog"
          id="modalSignin">
 
@@ -67,6 +69,7 @@
                 </div>
         </form:form>
     </div>
+</div>
 </section>
 </body>
 </html>

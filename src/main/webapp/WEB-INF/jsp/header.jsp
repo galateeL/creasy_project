@@ -1,4 +1,7 @@
 
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <header>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -14,7 +17,7 @@
                                                           style="width: 100px"/></a>
                 </li >
                 <li class="nav-item d-flex justify-content-center align-items-center px-4">
-                    <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+                    <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item d-flex justify-content-center align-items-center px-4">
                     <a class="nav-link" href="${pageContext.request.contextPath}/companies/list">Companies</a>
@@ -26,21 +29,31 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/partners/all-prospects">Prospects</a>
                 </li>
                 <li class="nav-item d-flex justify-content-center align-items-center px-4">
-                    <a class="nav-link" href="#">Calendar</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/staticcalendar">Calendar</a>
                 </li>
                 <li class="nav-item d-flex justify-content-center align-items-center px-4">
                     <a class="nav-link" href="#">Settings</a>
                 </li>
-                <li class="nav-item d-flex justify-content-center align-items-center px-4">
+                <li class="nav-item d-flex justify-content-center align-items-center">
                     <a class="nav-link" href="#">
-                        <img src="https://i.postimg.cc/MGHn9L6H/man.png" alt="Avatar Logo" class="d-flex justify-content-center align-items-center" style="width:44px; text-align: center"
-                             class="rounded-pill">
+                        <sec:authorize access="isAuthenticated()">
+                            <img src="<sec:authentication property = "principal.pictureUrl"/>" alt="profil avatar"
+                                class="d-flex justify-content-center align-items-center rounded-pill" style="width:35px; height:35px; object-fit: cover; text-align: center">
+                        </sec:authorize>
                     </a>
-                    <a class="nav-link" href="#">Firstname Lastname</a>
+                <li class="nav-item d-flex justify-content-center align-items-center">
+                <a class="nav-link" href="${pageContext.request.contextPath}/details/user">
+                    <sec:authorize access="isAuthenticated()">
+                        <sec:authentication property="principal.firstName" /> <sec:authentication property="principal.lastName" />
+                    </sec:authorize>
+                </a>
+                </li>
                 </li>
                 <li class="nav-item d-flex justify-content-center align-items-center px-4 me-2">
                     <a class="nav-link" href="#">Logout</a>
                 </li>
+
+
             </ul>
         </div>
     </div>

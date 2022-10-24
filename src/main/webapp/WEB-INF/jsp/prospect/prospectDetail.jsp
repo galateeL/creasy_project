@@ -64,6 +64,13 @@
         New note
     </button>
 
+    <jsp:include page="../addEventModal.jsp"/>
+    <!-- Button trigger modal -->
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal">
+        New note
+    </button>
+
 
 </main>
 

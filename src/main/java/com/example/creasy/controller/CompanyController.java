@@ -3,15 +3,20 @@ package com.example.creasy.controller;
 import com.example.creasy.repository.CompanyRepository;
 import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Partner;
+import com.example.creasy.repository.entity.User;
 import com.example.creasy.service.CompanyService;
 import com.example.creasy.service.PartnerService;
+import com.example.creasy.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.jnlp.ClipboardService;
+import java.security.Principal;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/companies")
@@ -20,28 +25,42 @@ public class CompanyController {
     private CompanyService companyService;
     private PartnerService partnerService;
 
-    public CompanyController(CompanyService companyService, PartnerService partnerService) {
+    private UserService userService;
+
+    public CompanyController(CompanyService companyService, PartnerService partnerService, UserService userService) {
         this.companyService = companyService;
         this.partnerService = partnerService;
+        this.userService = userService;
     }
 
     @GetMapping("/list")
-    public String displayAllCompanies(Model model, @RequestParam(value = "search", required = false) String searchValue){
+    public String displayAllCompanies(Model model, @RequestParam(value = "search", required = false) String searchValue, Principal principal){
+
+        User user = userService.getUserByMail(principal.getName());
+        List <Partner> partnerList = user.getPartnerList();
+        Set<Company> companySet = partnerList.stream().map(partner -> partner.getCompany())
+                .collect(Collectors.toSet());
+
         if(searchValue != null){
-            List<Company>companyList = companyService.searchByName(searchValue);
-            model.addAttribute("companies", companyList);
+            companySet.removeIf(company -> !company.getName().toLowerCase().contains(searchValue.toLowerCase()));
+            model.addAttribute("companies", companySet);
             model.addAttribute("searchName", searchValue);
         } else {
-            List<Company> companyList = companyService.getAllCompany();
-            model.addAttribute("companies", companyList);
+            model.addAttribute("companies", companySet);
         }
         return "company/companiesListView";
     }
 
     @GetMapping(path = "/details/{id}")
-    public String displaySpecificCompany(Model model, @PathVariable("id") Long id){
+    public String displaySpecificCompany(Principal principal, Model model, @PathVariable("id") Long id){
+
+        User user = userService.getUserByMail(principal.getName());
+        List <Partner> partnerList = user.getPartnerList();
+        partnerList.removeIf(partner -> partner.getCompany().getId() != id);
+
         Company company = companyService.getCompanyById(id);
-        List<Partner> partnerList = partnerService.getAllbyCompany(company.getId());
+
+
         model.addAttribute("partner", partnerList);
         model.addAttribute("company", company);
         return "company/companyDetailsView";
