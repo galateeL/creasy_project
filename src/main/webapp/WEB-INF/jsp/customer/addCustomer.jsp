@@ -45,7 +45,7 @@
             <h1 class="mt-3 fw-bold ms-md-5 align-self-center">Add Customer :</h1>
 
             <a class="btn mt-3 btn-secondary shadow-sm align-self-center border-0 ps-3 pe-3"
-               href="${pageContext.request.contextPath}/partners/all-prospects">Back to customer list</a>
+               href="${pageContext.request.contextPath}/partners/all-customers">Back to customer list</a>
 
         </div>
         <%----------------------------%>

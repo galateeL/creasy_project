@@ -47,7 +47,7 @@
             <h1 class="mt-3 fw-bold ms-md-5 align-self-center">Prospect details</h1>
 
             <a class="btn mt-3 btn-secondary shadow-sm align-self-center border-0 ps-3 pe-3"
-               href="${pageContext.request.contextPath}/companies/list">Back to company list</a>
+               href="${pageContext.request.contextPath}/partners/all-prospects">Back to prospect list</a>
 
         </div>
         <%----------------------------%>

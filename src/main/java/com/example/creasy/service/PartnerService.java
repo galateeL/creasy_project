@@ -174,7 +174,6 @@ public class PartnerService {
         customer.setFirstname(createCustomer.getFirstname());
         customer.setLastname(createCustomer.getLastname());
         customer.setEmail(createCustomer.getEmail());
-        customer.setPictureUrl(createCustomer.getPictureUrl());
         customer.setMobilePhoneNumber(createCustomer.getMobilePhoneNumber());
         customer.setFixedPhoneNumber(createCustomer.getFixedPhoneNumber());
         customer.setPositionHeld(createCustomer.getPositionHeld());
@@ -183,6 +182,14 @@ public class PartnerService {
         customer.setRegisterDate(LocalDateTime.now());
 
         customer.setUser(user);
+
+        MultipartFile picture = createCustomer.getPictureFile();
+        if (picture == null || picture.isEmpty()) {
+            customer.setPictureUrl(createCustomer.getPictureUrl());
+        } else {
+            storageService.store(picture);
+            customer.setPictureUrl("http://localhost:8080/images/" + picture.getOriginalFilename());
+        }
 
         this.partnerRepository.save(customer);
 
