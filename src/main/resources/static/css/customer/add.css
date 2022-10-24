@@ -23,12 +23,12 @@ body{
 }
 
 .btn-primary{
-    background: #8109CB;
+    background: #FFC900;
     color: white;
 }
 
 .btn-primary:hover{
-    background: #7608ba;
+    background: #e6b400;
     color: white;
 }
 
@@ -59,19 +59,16 @@ h5, h1{
 }
 
 .card-text{
-    color: #8109CB;
+    color: #3AE1B1;
 }
 
-
-/*search icon*/
-.fa-search{
-    display: block;
-    margin-left: -15%;
-
+.form-label{
+    color: #D9D9D9;
 }
 
-.filtersText{
-    color: #757575;
+#pictureFile-p{
+    display: none;
 }
+
 
 

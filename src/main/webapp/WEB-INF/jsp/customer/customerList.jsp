@@ -11,53 +11,163 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+
     <title>CREASY | Customer list</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/customer/list.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+
 </head>
-<body>
-<main>
-    <header>
-        <jsp:include page="../header.jsp"/>
-    </header>
+<body class="d-flex flex-column justify-content-between vh-100">
 
-    <h1>Customer List</h1>
-
-    <a href="${pageContext.request.contextPath}/partners/add-customer" class="btn"
-       style="background-color: #05516b; color:white ">Add new customer</a>
+<div>
+    <%--header--%>
+    <jsp:include page="../header.jsp"/>
+    <%----------%>
 
 
-    <h2>Search customer</h2>
-    <form class="d-flex" method="GET" action="${pageContext.request.contextPath}/partners/all-customers">
-
-        <input class="form-control me-2" type="text" placeholder="Search customer" name="keywordCustomer"
-               value="${keywordCustomer}" id="keywordCustomer">
-
-        <input type="radio" id="AZ" name="sort" value="AZ">
-        <label for="AZ">AZ</label><br>
-
-        <input type="radio" id="ZA" name="sort" value="ZA">
-        <label for="ZA">ZA</label><br>
-
-        <input type="radio" id="ON" name="sort" value="ON">
-        <label for="ON">ON</label><br><br>
-
-        <input type="radio" id="NO" name="sort" value="NO">
-        <label for="NO">NO</label><br><br>
-
-        <button class="btn btn" type="submit" style="background-color: white;color:gray">Search</button>
-    </form>
+    <div class="container-fluid col-12 justify-content-center">
 
 
+        <h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Customer List</h1>
 
-    <c:forEach items="${customers}" var="customer">
-        <p>${customer.firstname}</p>
-        <p>${customer.lastname}</p>
-        <p>${customer.company.name}</p>
-        <a href="${pageContext.request.contextPath}/partners/details-customer/${customer.id}" class="btn"
-           style="background-color: #05516b; color:white ">Detail</a>
-    </c:forEach>
+        <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
+            <%--Add prospect button--%>
+            <a href="${pageContext.request.contextPath}/partners/add-customer"
+               class="btn btn-primary border-0 shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0">Add new customer</a>
+            <%---------%>
+
+            <%--Search customer--%>
+                <div class="ms-md-2 col-10 col-lg-2">
+
+                    <form class="d-flex" method="GET" action="${pageContext.request.contextPath}/partners/all-customers">
+                        <input class="Search form-control shadow-sm" type="search" placeholder="Search customer"
+                               name="keywordCustomer"
+                               value="${keywordCustomer}" id="keywordCustomer">
+                        <button class="bg-transparent border-0 fa fa-search" type="submit"></button>
+                    </form>
+                </div>
+        </div>
 
 
-</main>
+        <div class="col row m-5 p-3">
 
+            <div class="d-flex flex-column flex-md-row justify-content-between ">
+                <div class="d-flex position-absolute align-items-center m-3">
+                    <img src="/img/filterIcon.png" width="50px">
+                    <div class="filtersText ms-4 fw-bold fs-3">Filters</div>
+                </div>
+                <%-----Block on the left-----%>
+                <div class="d-flex flex-column justify-content-center col-12 col-md-4 p-5 bg-white">
+
+
+                    <form class="mt-5" method="GET"
+                          action="${pageContext.request.contextPath}/partners/all-customers">
+
+
+                        <div class=" d-flex flex-column align-items-center bg-white">
+
+                            <div class="d-flex flex-column flex-md-row align-items-center">
+                                <div>
+                                    <input class="btn-check" type="radio" name="sort" id="AZ" value="AZ">
+                                    <label class="btn btn-secondary mx-md-2 px-md-4 py-md-2 border-0" for="AZ">
+                                        A-Z
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input class="btn-check" type="radio" name="sort" id="ZA" value="ZA">
+                                    <label class="btn btn-secondary mt-2 mt-md-0 mx-md-2 px-4 py-2 border-0" for="ZA">
+                                        Z-A
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="d-flex my-md-4 flex-column flex-md-row align-items-center">
+                                <div>
+                                    <input class="btn-check" type="radio" name="sort" id="ON" value="ON">
+                                    <label class="btn btn-secondary mt-2 mt-md-0 mx-md-2 px-4 py-2 border-0" for="ON">
+                                        Oldest to newest
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input class="btn-check" type="radio" name="sort" id="NO" value="NO">
+                                    <label class="btn btn-secondary mt-2 mb-3 mt-md-0 mb-md-0 mx-md-2 px-4 py-2 border-0"
+                                           for="NO">
+                                        Newest to oldest
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <button class="btn btn-validate btn-lg border-0 rounded-circle me-0 me-md-3" aria-hidden="true"
+                                        type="submit">
+                                    <div class="fa fa-check "></div>
+                                </button>
+                                <button class="btn btn-danger btn-lg border-0 rounded-circle ms-2 ms-md-3" aria-hidden="true"
+                                        type="submit">
+                                    <div class="fa fa-times"></div>
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+                <%----------------------------%>
+
+                <%-----Block on the right-----%>
+                <div class="col col-md-6 p-4 mt-5 mt-md-0 mb-5">
+                    <div class="mb-3">
+                        <div>
+                            <c:forEach items="${customers}" var="customer">
+                                <div class="col mt-4">
+                                    <div class="card h-100 border-0">
+                                        <div class="card-body d-md-flex justify-content-between overflow-auto">
+                                            <div class="align-items-start">
+                                                <h5 class="card-title fw-bold text-break">${customer.lastname} ${customer.firstname} </h5>
+                                                <p class="card-text">${customer.company.name}</p>
+                                            </div>
+                                            <a class="btn btn-primary border-0 align-self-center ms-md-2 mt-3 mt-md-0 ps-3 pe-3"
+                                               href="${pageContext.request.contextPath}/partners/details-customer/${customer.id}">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
+                <%----------------------------%>
+            </div>
+        </div>
+    </div>
+    <%--back to top button--%>
+    <jsp:include page="../backToTopButton.jsp"/>
+    <%----------%>
+</div>
+<%--footer--%>
+<jsp:include page="../footer.jsp"/>
+<%----------%>
+
+<%--back to top button script--%>
+<script src="/js/BackToTopButton.js"></script>
+<%----------%>
 </body>
 </html>

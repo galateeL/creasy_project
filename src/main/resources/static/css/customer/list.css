@@ -23,12 +23,12 @@ body{
 }
 
 .btn-primary{
-    background: #8109CB;
+    background: #FFC900;
     color: white;
 }
 
 .btn-primary:hover{
-    background: #7608ba;
+    background: #e6b400;
     color: white;
 }
 
@@ -54,12 +54,13 @@ body{
     color: white;
 }
 
+
 h5, h1{
     color: #757575;
 }
 
 .card-text{
-    color: #8109CB;
+    color: #FFC900;
 }
 
 
