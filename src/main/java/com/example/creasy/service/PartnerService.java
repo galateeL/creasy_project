@@ -9,6 +9,8 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Part;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -56,6 +58,12 @@ public class PartnerService {
     // Find number of prospects with NOT_STARTED state
     public int findNumberOfProspectsInNotStarted(StateProspect stateProspect, String email) {
         return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.NOT_STARTED, email);
+    }
+
+
+
+    public List<Partner> findAllProspectsByList (StateProspect stateProspect1, StateProspect stateProspect2, String email){
+        return this.partnerRepository.findProspectsListByUser(StateProspect.ENDED, StateProspect.TO_FOLLOW_UP, email);
     }
 
 
@@ -127,7 +135,6 @@ public class PartnerService {
     public List<Partner> getAllbyCompany(Long id){
         return this.partnerRepository.findByCompanyId(id);
     }
-
 
 
     public Partner findPartnerById(Long id) {
@@ -229,5 +236,32 @@ public class PartnerService {
         this.partnerRepository.save(partner);
 
     }
+
+
+    public void addDunningPeriod(Long id, CreateDunning createDunning) {
+        Partner partner = this.partnerRepository
+                .findById(id)
+                .orElseThrow(() -> new PartnerNotFoundException(id));
+
+        partner.setDunningPeriod(createDunning.getDunningPeriod());
+        partner.setDunningRegisterDate(LocalDateTime.now());
+
+        this.partnerRepository.save(partner);
+
+    }
+
+    public void setToFollowUpIfNecessary(List<Partner> partnerList){
+        for (Partner partner : partnerList) {
+            if(partner.getDunningRegisterDate() != null && partner.getDunningPeriod() != 0 &&
+                    partner.getDunningRegisterDate()
+                            .plusDays(partner.getDunningPeriod())
+                            .isBefore(LocalDateTime.now())) {
+
+                partner.setStateProspect(StateProspect.TO_FOLLOW_UP);
+                partnerRepository.save(partner);
+            }
+        }
+    }
+
 
 }

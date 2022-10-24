@@ -36,6 +36,18 @@ body{
     border: none;
 }
 
+.btn-sub{
+    background: #ef8e43;
+    color: white;
+    border: none;
+}
+
+.btn-sub:hover{
+    background: #eb7114;
+    color: white;
+    border: none;
+}
+
 .btn-danger{
     background: #F7526A;
     color: white;
