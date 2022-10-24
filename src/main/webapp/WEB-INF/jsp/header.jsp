@@ -26,10 +26,19 @@
                         <a class="nav-link"
                            href="${pageContext.request.contextPath}/partners/all-customers">Customers</a>
                     </li>
+
+
                     <li class="nav-item d-flex justify-content-center align-items-center px-4">
-                        <a class="nav-link"
+
+
+                            <a class="nav-link"
                            href="${pageContext.request.contextPath}/partners/all-prospects">Prospects</a>
+
+
                     </li>
+
+
+
                     <li class="nav-item d-flex justify-content-center align-items-center px-4">
                         <a class="nav-link" href="${pageContext.request.contextPath}/staticcalendar">Calendar</a>
                     </li>
@@ -56,7 +65,6 @@
                     <li class="nav-item d-flex justify-content-center align-items-center px-4 me-2">
                         <a class="nav-link" style="color: #f7526a;" href="#">Logout</a>
                     </li>
-
 
                 </ul>
             </div>

@@ -1,8 +1,10 @@
 package com.example.creasy.repository.entity;
 
 import com.sun.istack.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -26,6 +28,15 @@ public class Partner {
     private String mobilePhoneNumber;
 
     private String positionHeld;
+
+
+
+
+    private int dunningPeriod;
+
+    private LocalDateTime dunningRegisterDate;
+
+
     @NotNull
     @Enumerated(EnumType.STRING)
     private StateProspect stateProspect;
@@ -110,6 +121,40 @@ public class Partner {
         this.company = company;
         this.user = user;
         this.registerDate = registerDate;
+    }
+
+    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, int dunningPeriod, LocalDateTime dunningRegisterDate, StateProspect stateProspect, Company company, User user, List<Note> noteList, LocalDateTime registerDate) {
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.email = email;
+        this.pictureUrl = pictureUrl;
+        this.fixedPhoneNumber = fixedPhoneNumber;
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.positionHeld = positionHeld;
+        this.dunningPeriod = dunningPeriod;
+        this.dunningRegisterDate = dunningRegisterDate;
+        this.stateProspect = stateProspect;
+        this.company = company;
+        this.user = user;
+        this.noteList = noteList;
+        this.registerDate = registerDate;
+    }
+
+
+    public int getDunningPeriod() {
+        return dunningPeriod;
+    }
+
+    public void setDunningPeriod(int dunningPeriod) {
+        this.dunningPeriod = dunningPeriod;
+    }
+
+    public LocalDateTime getDunningRegisterDate() {
+        return dunningRegisterDate;
+    }
+
+    public void setDunningRegisterDate(LocalDateTime dunningRegisterDate) {
+        this.dunningRegisterDate = dunningRegisterDate;
     }
 
     public User getUser() {
