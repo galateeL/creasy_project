@@ -2,6 +2,7 @@ package com.example.creasy.repository;
 
 import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.User;
+import org.springframework.web.multipart.MultipartFile;
 
 public class EditPartner {
 
@@ -14,6 +15,8 @@ public class EditPartner {
     private String email;
 
     private String pictureUrl;
+
+    private MultipartFile pictureFile;
 
     private String fixedPhoneNumber;
 
@@ -44,6 +47,14 @@ public class EditPartner {
         //this.isClient = isClient;
         this.stateProspect = stateProspect;
         this.companyId = companyId;
+    }
+
+    public MultipartFile getPictureFile() {
+        return pictureFile;
+    }
+
+    public void setPictureFile(MultipartFile pictureFile) {
+        this.pictureFile = pictureFile;
     }
 
     public User getUser() {
