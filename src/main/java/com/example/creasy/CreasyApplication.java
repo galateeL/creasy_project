@@ -1,13 +1,14 @@
 package com.example.creasy;
 
+
+import com.example.creasy.repository.*;
+
 import com.example.creasy.repository.CompanyRepository;
 import com.example.creasy.repository.entity.Company;
 
-import com.example.creasy.repository.NoteRepository;
-import com.example.creasy.repository.UserRepository;
+
 import com.example.creasy.repository.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.creasy.repository.PartnerRepository;
 
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
@@ -26,6 +27,9 @@ public class CreasyApplication implements CommandLineRunner {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private EventRepository eventRepository;
 
     private PartnerRepository partnerRepository;
     private CompanyRepository companyRepository;
@@ -93,10 +97,8 @@ public class CreasyApplication implements CommandLineRunner {
 
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        User user1=new User("a",true, "https://www " +
-                ".usinenouvelle" +
-                ".com/mediatheque/0/7/5/000353570_896x598_c.jpg", passwordEncoder.encode("a"), "k",
-                "k");
+        User user1=new User("a",true, "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", passwordEncoder.encode("a"), "Laroche",
+                "Rosa");
 
         User user2=new User("kevin.laurentt@outlook.fr",false, "https://www.usinenouvelle" +
                 ".com/mediatheque/0/7/5/000353570_896x598_c.jpg", passwordEncoder.encode("a"), "k",
@@ -135,6 +137,8 @@ public class CreasyApplication implements CommandLineRunner {
         // Note instanciation + save in DB
         Note note3 = new Note("Second note with this customer ...... lorem ipsum", LocalDateTime.now(), prospect1);
         noteRepository.save(note3);
+        Event event = new Event("dadazdad",LocalDateTime.now(),LocalDateTime.now(),"cdedzef",client1,user1);
+        eventRepository.save(event);
 
     }
 

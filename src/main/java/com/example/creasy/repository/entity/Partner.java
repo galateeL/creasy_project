@@ -36,6 +36,7 @@ public class Partner {
     @ManyToOne
     private User user;
 
+
     @OneToMany(mappedBy = "partner")
     private List<Note> noteList;
 
