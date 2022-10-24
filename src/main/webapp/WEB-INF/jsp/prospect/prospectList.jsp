@@ -41,21 +41,21 @@
     <%----------%>
 
 
-    <div class="fluid-container col-12 justify-content-center">
+    <div class="container-fluid col-12 justify-content-center">
 
 
         <h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Prospects</h1>
 
-        <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start m-5 ">
+        <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
             <%--Add prospect button--%>
             <a href="${pageContext.request.contextPath}/partners/add-prospect"
-               class="btn btn-primary shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0 border-0">Add prospect</a>
+               class="btn btn-primary border-0 shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0">Add prospect</a>
             <%---------%>
 
             <%--                        Search prospect--%>
-            <div class="ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
+            <div class="d-flex ms-md-2 col-10 col-lg-2">
 
-                <input class="form-control me-2" type="search" placeholder="Search customer" name="keywordProspect"
+                <input class="Search form-control shadow-sm" type="search" placeholder="Search customer" name="keywordProspect"
                        value="${keywordProspect}" id="keywordProspect">
                 <button class="bg-transparent border-0 fa fa-search" type="submit"></button>
             </div>
@@ -65,12 +65,17 @@
         <div class="col row m-5 p-3">
 
             <div class="d-flex flex-column flex-md-row justify-content-between ">
-
+                <div class="d-flex position-absolute align-items-center m-3">
+                    <img src="/img/filterIcon.png" width="50px">
+                    <div class="filtersText ms-4 fw-bold fs-3">Filters</div>
+                </div>
                 <%-----Block on the left-----%>
                 <div class="d-flex flex-column justify-content-center col-12 col-md-4 p-5 bg-white">
 
-                    <form class="" method="GET"
+
+                    <form class="mt-5" method="GET"
                           action="${pageContext.request.contextPath}/partners/all-prospects">
+
 
                         <div class=" d-flex flex-column align-items-center bg-white">
 
@@ -137,11 +142,11 @@
                             </div>
 
                             <div class="mt-4">
-                                <button class="btn btn-validate btn-lg border-0 rounded-circle me-3" aria-hidden="true"
+                                <button class="btn btn-validate btn-lg border-0 rounded-circle me-0 me-md-3" aria-hidden="true"
                                         type="submit">
                                     <div class="fa fa-check "></div>
                                 </button>
-                                <button class="btn btn-danger btn-lg border-0 rounded-circle ms-3" aria-hidden="true"
+                                <button class="btn btn-danger btn-lg border-0 rounded-circle ms-2 ms-md-3" aria-hidden="true"
                                         type="submit">
                                     <div class="fa fa-times"></div>
                                 </button>
