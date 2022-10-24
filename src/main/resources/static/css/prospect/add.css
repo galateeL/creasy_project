@@ -54,29 +54,21 @@ body{
     color: white;
 }
 
-.btn-danger:hover{
-    background: #cc0000;
-    color: white;
-}
-
 h5, h1{
     color: #757575;
 }
 
 .card-text{
-    color: #8109CB;
+    color: #3AE1B1;
 }
 
-
-/*search icon*/
-.fa-search{
-    display: block;
-    margin-left: -15%;
-
+.form-label{
+    color: #D9D9D9;
 }
 
-.filtersText{
-    color: #757575;
+#pictureFile-p{
+    display: none;
 }
+
 
 

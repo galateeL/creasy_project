@@ -2,6 +2,7 @@ package com.example.creasy.repository;
 
 import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.User;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +17,8 @@ public class EditPartner {
     private String email;
 
     private String pictureUrl;
+
+    private MultipartFile pictureFile;
 
     private String fixedPhoneNumber;
 
@@ -59,6 +62,7 @@ public class EditPartner {
     }
 
 
+
     public int getDunningPeriod() {
         return dunningPeriod;
     }
@@ -73,6 +77,16 @@ public class EditPartner {
 
     public void setDunningRegisterDate(LocalDateTime dunningRegisterDate) {
         this.dunningRegisterDate = dunningRegisterDate;
+    }
+
+
+
+    public MultipartFile getPictureFile() {
+        return pictureFile;
+    }
+
+    public void setPictureFile(MultipartFile pictureFile) {
+        this.pictureFile = pictureFile;
     }
 
 

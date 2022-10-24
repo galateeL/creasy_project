@@ -7,6 +7,7 @@ import com.example.creasy.repository.entity.StateProspect;
 import com.example.creasy.repository.entity.User;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,11 +18,13 @@ public class PartnerService {
 
     private PartnerRepository partnerRepository;
     private CompanyRepository companyRepository;
+    private StorageService storageService;
 
 
-    public PartnerService(PartnerRepository partnerRepository, CompanyRepository companyRepository) {
+    public PartnerService(PartnerRepository partnerRepository, CompanyRepository companyRepository, StorageService storageService) {
         this.partnerRepository = partnerRepository;
         this.companyRepository = companyRepository;
+        this.storageService = storageService;
     }
 
     public List<Partner> getAllPartner() {
@@ -145,7 +148,6 @@ public class PartnerService {
         prospect.setFirstname(createProspect.getFirstname());
         prospect.setLastname(createProspect.getLastname());
         prospect.setEmail(createProspect.getEmail());
-        prospect.setPictureUrl(createProspect.getPictureUrl());
         prospect.setMobilePhoneNumber(createProspect.getMobilePhoneNumber());
         prospect.setFixedPhoneNumber(createProspect.getFixedPhoneNumber());
         prospect.setPositionHeld(createProspect.getPositionHeld());
@@ -154,6 +156,14 @@ public class PartnerService {
         prospect.setRegisterDate(LocalDateTime.now());
 
         prospect.setUser(user);
+
+        MultipartFile picture = createProspect.getPictureFile();
+        if (picture == null || picture.isEmpty()) {
+            prospect.setPictureUrl(createProspect.getPictureUrl());
+        } else {
+            storageService.store(picture);
+            prospect.setPictureUrl("http://localhost:8080/images/" + picture.getOriginalFilename());
+        }
 
         this.partnerRepository.save(prospect);
 
@@ -191,7 +201,6 @@ public class PartnerService {
         partner.setFirstname(editPartner.getFirstname());
         partner.setLastname(editPartner.getLastname());
         partner.setEmail(editPartner.getEmail());
-        partner.setPictureUrl(editPartner.getPictureUrl());
         partner.setFixedPhoneNumber(editPartner.getFixedPhoneNumber());
         partner.setMobilePhoneNumber(editPartner.getMobilePhoneNumber());
         partner.setPositionHeld(editPartner.getPositionHeld());
@@ -201,6 +210,14 @@ public class PartnerService {
         }
         if(editPartner.getCompanyId() != null ) {
             partner.setCompany(companyRepository.findById(Long.parseLong(editPartner.getCompanyId())).get());
+        }
+
+        MultipartFile picture = editPartner.getPictureFile();
+        if (picture == null || picture.isEmpty()) {
+            partner.setPictureUrl(editPartner.getPictureUrl());
+        } else {
+            storageService.store(picture);
+            partner.setPictureUrl("http://localhost:8080/images/" + picture.getOriginalFilename());
         }
 
         this.partnerRepository.save(partner);
