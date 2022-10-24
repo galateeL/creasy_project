@@ -114,13 +114,12 @@
 
                 <div class="ms-md-5 mt-4">
                     <h5>
-                        <span class="text-secondary">Welcome to </span><span
+                        <span style="color: #b3b3b3">Welcome to </span><span
                             style="color:#FFC900; font-family: 'Outfit', sans-serif; font-size: 25px">C</span><span
                             style="color:#F7526A; font-family: 'Outfit', sans-serif; font-size: 25px">r</span><span
-                            style="color:#3AE1B1; font-family: 'Outfit', sans-serif; font-size: 25px">easy</span><span
-                            class="text-secondary"> CRM, your best ally for managing your business!</span>
+                            style="color:#3AE1B1; font-family: 'Outfit', sans-serif; font-size: 25px">easy</span><span style="color: #b3b3b3"> CRM, your best ally for managing your business!</span>
                     </h5>
-                    <h5 class="text-secondary">Creasy allows you to centralize all your partners' data and to facilitate
+                    <h5  style="color: #b3b3b3">Creasy allows you to centralize all your partners' data and to facilitate
                         their
                         management.</h5>
                 </div>
@@ -132,42 +131,42 @@
                     <div class="d-flex flex-column justify-content-center col-12 col-md-5 p-5 me-3 text-secondary">
 
                         <div class="mb-3">
-                            <label class="form-label p-2" style="background-color: #D9D9D9; color: white">KEY
+                            <label class="form-label p-2 shadow-sm" style="background-color: #D9D9D9; color: white">KEY
                                 FIGURES</label>
                         </div>
 
 
-                        <div class="bg-white my-1 py-2 ps-5">
+                        <div class="bg-white my-1 py-2 ps-5 shadow-sm">
                             <p><span
                                     style="color: #8109CB;font-family: 'Outfit', sans-serif; font-size: 40px">${propectsByUser} </span>
                                 prospects</p>
                         </div>
 
-                        <div class="bg-white my-1 py-2 ps-5">
+                        <div class="bg-white my-1 py-2 ps-5 shadow-sm">
                             <p><span
                                     style="color: #FFC900;font-family: 'Outfit', sans-serif; font-size: 40px">${customersByUser} </span>
                                 customers</p>
                         </div>
 
-                        <div class="bg-white my-1 py-2 ps-5">
+                        <div class="bg-white my-1 py-2 ps-5 shadow-sm">
                             <p><span
                                     style="color: #3AE1B1;font-family: 'Outfit', sans-serif; font-size: 40px">${companiesByUser} </span>
                                 companies</p>
                         </div>
 
-                        <div class="bg-white my-1 py-2 ps-5  mt-4">
+                        <div class="bg-white my-1 py-2 ps-5  mt-4 shadow-sm">
                             <p><span
                                     style="color: #F7526A;font-family: 'Outfit', sans-serif; font-size: 40px">${prospectsToFollowUp} </span>
                                 prospect(s) to follow up</p>
                         </div>
 
-                        <div class="bg-white my-1 py-2 ps-5">
+                        <div class="bg-white my-1 py-2 ps-5 shadow-sm">
                             <p><span
                                     style="color: #8109CB;font-family: 'Outfit', sans-serif; font-size: 40px">${prospectsNotStarted} </span>
                                 prospect(s) not started</p>
                         </div>
 
-                        <div class="bg-white my-1 py-2 ps-5">
+                        <div class="bg-white my-1 py-2 ps-5 shadow-sm">
                             <p><span
                                     style="color: #8109CB;font-family: 'Outfit', sans-serif; font-size: 40px">${prospectsInProgress} </span>
                                 prospect(s) in progress</p>
@@ -178,13 +177,13 @@
                     <%--           --%>
 
                     <%--Intermediaire block--%>
-                    <div class="col-md-1 bg-red"></div>
+                    <div class="col-md-1"></div>
                     <%--                          --%>
 
 
                     <%--        Right block--%>
                     <div class="d-flex flex-column justify-content-center align-items-center col-12 col-md-5 p-5">
-                        <label class="form-label p-2" style="background-color: #D9D9D9; color: white">CUSTOMERS AND
+                        <label class="form-label p-2 shadow-sm" style="background-color: #D9D9D9; color: white">CUSTOMERS AND
                             PROSPECTS</label>
                         <div class="col row m-2 p-3 my-2" id="donutchart"></div>
 
