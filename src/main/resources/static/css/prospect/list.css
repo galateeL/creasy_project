@@ -23,12 +23,32 @@ body{
 }
 
 .btn-primary{
-    background: #3AE1B1;
+    background: #8109CB;
     color: white;
 }
 
 .btn-primary:hover{
+    background: #7608ba;
+    color: white;
+}
+
+.btn-danger{
+    background: #e60000;
+    color: white;
+}
+
+.btn-validate{
+    background: #3AE1B1;
+    color: white;
+}
+
+.btn-validate:hover{
     background: #1ec898;
+    color: white;
+}
+
+.btn-danger:hover{
+    background: #cc0000;
     color: white;
 }
 
@@ -37,12 +57,9 @@ h5, h1{
 }
 
 .card-text{
-    color: #3AE1B1;
+    color: #8109CB;
 }
 
-.card-text:hover{
-    color: #1ec898;
-}
 
 /*search icon*/
 .fa-search{
@@ -51,5 +68,8 @@ h5, h1{
 
 }
 
+.filtersText{
+    color: #757575;
+}
 
 
