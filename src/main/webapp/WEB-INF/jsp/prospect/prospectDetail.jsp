@@ -130,6 +130,26 @@
                             <label class="form-label p-2 px-5">STATE OF PROGRESS</label>
                             <div class="comp-inf fw-bold text-nowrap">${partner.stateProspect}</div>
                         </div>
+
+
+
+
+                        <div class="mb-3 col " style="width: 345px">
+                            <form action="${pageContext.request.contextPath}/partners/${partner.id}/add-dunning-period"
+                                  method="post">
+                                    <label for="dunningPeriod" class="form-label p-2 px-5 mb-4">DEADLINE BEFORE DUNNING</label>
+                                    <input type="number" class="form-control" id="dunningPeriod" name="dunningPeriod"
+                                           placeholder="ex : 6 days" min="0">
+
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <button type="submit" class="btn mt-4" style="background: #ee8d41; color: white">Add dunning
+                                    period
+                                </button>
+                            </form>
+
+                        </div>
+
+
                     </div>
 
                     <hr>
@@ -165,12 +185,32 @@
                 </div>
                 <%----------------------------%>
             </div>
+
+
+
+                            <%--    Add dunning period--%>
+
+<%--                            <form action="${pageContext.request.contextPath}/partners/${partner.id}/add-dunning-period" method="post">--%>
+
+<%--                                <div class="mb-2">--%>
+<%--                                    <label for="dunningPeriod" class="form-label">Deadlines before dunning</label>--%>
+<%--                                    <input type="number" class="form-control" id="dunningPeriod" name="dunningPeriod" placeholder="ex : 6 days">--%>
+<%--                                </div>--%>
+
+<%--                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+<%--                                <button type="submit" class="btn" style="background: #ff5630; color: white">Add dunning period--%>
+<%--                                </button>--%>
+<%--                            </form>--%>
+
+                            <%--          --%>
+
+
         </div>
 
     </div>
-        <%--back to top button--%>
-        <jsp:include page="../backToTopButton.jsp"/>
-        <%----------%>
+    <%--back to top button--%>
+    <jsp:include page="../backToTopButton.jsp"/>
+    <%----------%>
 </div>
 
 <%--footer--%>

@@ -52,7 +52,7 @@
                 pieHole: 0.4,
                 width: 500,
                 height: 250,
-                colors: ['#8109cb', '#f7526a', '#3ae1b1']
+                colors: ['#f7526a','#8109cb', '#3ae1b1']
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
