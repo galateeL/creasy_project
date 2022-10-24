@@ -56,6 +56,7 @@
            style="background-color: #05516b; color:white ">Detail</a>
     </c:forEach>
 
+
 </main>
 
 </body>
