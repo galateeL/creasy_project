@@ -28,6 +28,29 @@
     <p>${partner.lastname}</p>
     <p>${partner.company.name}</p>
 
+
+
+<%--    Add dunning period--%>
+
+    <form action="${pageContext.request.contextPath}/partners/${partner.id}/add-dunning-period" method="post">
+
+        <div class="mb-2">
+            <label for="dunningPeriod" class="form-label">Deadlines before dunning</label>
+            <input type="number" class="form-control" id="dunningPeriod" name="dunningPeriod" placeholder="ex : 6 days">
+        </div>
+
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <button type="submit" class="btn" style="background: #ff5630; color: white">Add dunning period
+        </button>
+    </form>
+
+<%--          --%>
+
+
+
+
+
+
     <c:forEach items="${notes}" var="note">
         <p>${note.registerDate}</p>
         <p>${note.exchange}</p>

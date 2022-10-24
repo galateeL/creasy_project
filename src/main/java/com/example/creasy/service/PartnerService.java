@@ -8,6 +8,7 @@ import com.example.creasy.repository.entity.User;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -201,6 +202,19 @@ public class PartnerService {
         if(editPartner.getCompanyId() != null ) {
             partner.setCompany(companyRepository.findById(Long.parseLong(editPartner.getCompanyId())).get());
         }
+
+        this.partnerRepository.save(partner);
+
+    }
+
+
+    public void addDunningPeriod(Long id, CreateDunning createDunning) {
+        Partner partner = this.partnerRepository
+                .findById(id)
+                .orElseThrow(() -> new PartnerNotFoundException(id));
+
+        partner.setDunningPeriod(createDunning.getDunningPeriod());
+        partner.setDunningRegisterDate(LocalDateTime.now());
 
         this.partnerRepository.save(partner);
 

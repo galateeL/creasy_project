@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.Part;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
@@ -265,5 +266,28 @@ public class PartnerController {
             return "redirect:/partners/details-prospect/" + partner.getId();
         }
     }
+
+
+    // Add dunning period to a prospect - Save in DB
+    @PostMapping("{id}/add-dunning-period")
+    public String addDunningPeriod(CreateDunning createDunning, @PathVariable Long id, Model model) {
+
+        Partner partner = partnerService.findPartnerById(id);
+        model.addAttribute("partner", partner);
+
+        partnerService.addDunningPeriod(partner.getId(), createDunning);
+
+
+        if(partner.getStateProspect() == StateProspect.ENDED) {
+            return "redirect:/partners/details-customer/{id}";
+        } else {
+            return "redirect:/partners/details-prospect/{id}";
+        }
+
+    }
+
+
+
+
 
 }

@@ -3,6 +3,8 @@ package com.example.creasy.repository;
 import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.User;
 
+import java.time.LocalDateTime;
+
 public class EditPartner {
 
     private int id;
@@ -29,6 +31,16 @@ public class EditPartner {
 
     private User user;
 
+
+
+
+    private int dunningPeriod;
+
+    private LocalDateTime dunningRegisterDate;
+
+
+
+
     public EditPartner() {
     }
 
@@ -45,6 +57,24 @@ public class EditPartner {
         this.stateProspect = stateProspect;
         this.companyId = companyId;
     }
+
+
+    public int getDunningPeriod() {
+        return dunningPeriod;
+    }
+
+    public void setDunningPeriod(int dunningPeriod) {
+        this.dunningPeriod = dunningPeriod;
+    }
+
+    public LocalDateTime getDunningRegisterDate() {
+        return dunningRegisterDate;
+    }
+
+    public void setDunningRegisterDate(LocalDateTime dunningRegisterDate) {
+        this.dunningRegisterDate = dunningRegisterDate;
+    }
+
 
     public User getUser() {
         return user;
