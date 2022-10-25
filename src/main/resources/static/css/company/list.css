@@ -32,6 +32,16 @@ body{
     color: white;
 }
 
+.btn-primary:focus{
+    background: #179b76 !important;
+    color: white;
+}
+
+.btn-primary:active{
+    background: #179b76 !important;
+    color: white;
+}
+
 h5, h1{
     color: #757575;
 }
@@ -51,5 +61,19 @@ h5, h1{
 
 }
 
+#companyNav{
+    background: #3AE1B1;
+    color: white;
+}
+
+#companyNav:hover{
+    background: #1ec898;
+    color: white;
+}
+
+#companyNav:active{
+    background: #179b76 !important;
+    color: white;
+}
 
 

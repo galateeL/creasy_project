@@ -59,6 +59,7 @@
             chart.draw(data, options);
         }
 
+
     </script>
     <%--    --%>
 
@@ -78,7 +79,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="/css/company/list.css"/>
+    <link rel="stylesheet" href="/css/dashboard/dashboard.css"/>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -212,6 +213,7 @@
     <%--back to top button script--%>
     <script src="/js/BackToTopButton.js"></script>
     <%----------%>
+<script src="/js/currentPage.js"></script>
 
 
 </body>

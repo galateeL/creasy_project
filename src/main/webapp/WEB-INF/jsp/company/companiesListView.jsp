@@ -92,5 +92,7 @@
 <%--back to top button script--%>
 <script src="/js/BackToTopButton.js"></script>
 <%----------%>
+
+<script src="/js/currentPage.js"></script>
 </body>
 </html>
