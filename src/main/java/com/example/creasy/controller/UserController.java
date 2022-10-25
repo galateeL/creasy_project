@@ -38,14 +38,30 @@ public class UserController {
     @PostMapping("/signup")
     public String signUp(@Valid CreateUser createUser, BindingResult result,Model m){
         if(result.hasErrors()){
-            m.addAttribute("command",createUser);
+            m.addAttribute("createUser",createUser);
             return "signUpView";
         }else{
             userService.register(createUser);
             return "redirect:/signin";
         }
     }
+    @GetMapping("/edit/{mail}")
+    public String updateContactForm(Model model, @PathVariable(value="mail") String mail){
+        User user = userService.getUserByMail(mail);
+        model.addAttribute("updateUser", user);
+        return "editUser";
+    }
 
+    @PostMapping("/edit")
+    public String editContactForm(@Valid UpdateUser updateUser, BindingResult result, Model m){
+        if(result.hasErrors()){
+            m.addAttribute("updateUser",updateUser);
+            return "editUser";
+        }else{
+            userService.update(updateUser);
+            return "redirect:/signin";
+        }
+    }
 
     @GetMapping("/details/user")
     public String displayDetailForm(Model m, Principal p){
@@ -57,23 +73,7 @@ public class UserController {
         m.addAttribute("users",userList);
         return "detailUser";
     }
-    @GetMapping("/edit/{mail}")
-    public String updateContactForm(Model model, @PathVariable(value="mail") String mail){
-        User user = userService.getUserByMail(mail);
-        model.addAttribute("command", user);
-        return "editUser";
-    }
 
-    @PostMapping("/edit")
-    public String editContactForm(@Valid UpdateUser updateUser, BindingResult result, Model m){
-        if(result.hasErrors()){
-            m.addAttribute("command",updateUser);
-            return "editUser";
-        }else{
-            userService.update(updateUser);
-            return "redirect:/signin";
-        }
-    }
 
     @GetMapping("/delete/{mail}")
     public String delete(@PathVariable(value="mail") String mail){

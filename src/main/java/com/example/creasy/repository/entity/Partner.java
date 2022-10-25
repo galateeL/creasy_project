@@ -1,5 +1,7 @@
 package com.example.creasy.repository.entity;
 
+import com.example.creasy.controller.dto.EventDto;
+import com.example.creasy.controller.dto.MapCustomerDto;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -111,7 +113,15 @@ public class Partner {
         this.user = user;
         this.registerDate = registerDate;
     }
+    public MapCustomerDto toMapCustomerDto() {
+        MapCustomerDto mapCustomerDto = new MapCustomerDto();
+        mapCustomerDto.setFirstName(this.firstname);
+        mapCustomerDto.setId(this.id);
+        mapCustomerDto.setLatitude(this.company.getLatitude());
+        mapCustomerDto.setLongitude(this.company.getLongitude());
 
+        return mapCustomerDto;
+    }
     public User getUser() {
         return user;
     }

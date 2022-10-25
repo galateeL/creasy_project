@@ -57,7 +57,7 @@ class Event {
 
 	public EventDto toEventDto() {
 		EventDto eventDto = new EventDto();
-		eventDto.setUrl("http://localhost:8080/evenements"+this.id);
+		eventDto.setUrl("http://localhost:8080/evenement"+this.id);
 		eventDto.setId(this.id);
 		eventDto.setStart(this.start);
 		eventDto.setFinish(this.finish);

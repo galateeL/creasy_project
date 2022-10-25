@@ -20,11 +20,16 @@
 
     <title>Document</title>
 </head>
-<body class="container-fluid d-flex flex-row p-0" style="height: 100%;" >
+<body class="container-fluid d-flex flex-row p-0" style="min-height: 100%;">
 
-<section class=" text-center d-flex flex-column justify-content-center align-middle col-2 " style="background-color:
+<section class=" text-center d-flex flex-column justify-content-center align-middle col-2 "
+         style="background-color:
 #757575;">
-    <h1 class="text-align-center" style="font-family: Pacifico; color:white; vertical-align: middle;">Ease your customer management !</h1>
+    <div class=" d-none d-lg-block">
+    <h1 class="text-align-center" style="font-family: Pacifico; color:white; vertical-align: middle;">Ease
+        your
+        customer management !</h1>
+    </div>
 </section>
 <section class="col-8 m-0" tabindex="-1" role="dialog" id="modalSignin">
 
@@ -33,31 +38,37 @@
                            action="${pageContext.request.contextPath}/signup"
                            modelAttribute="createUser" class="row">
                     <form:input path="id" type="number" name="id" id="id" class="form-control" hidden="true" />
-                    <div class="col-12 d-flex flex-column align-items-center mt-5">
-                        <img src="https://i.postimg.cc/jSTDLtq3/logo-creasy.png" alt="Logo">
+                    <div class="col-12 mb-4 d-flex flex-column align-items-center">
+                        <img src="https://i.postimg.cc/jSTDLtq3/logo-creasy.png" class="img-fluid" style="height:
+                        200px;width: 300px; object-fit: scale-down"  alt="Logo">
                         <h1 >Welcome</h1>
                         <p style="color: #C3C3C3;">Create your account to continue</p>
                     </div>
-                    <div class="mb-3 mt-3 col-12 d-flex flex-column align-items-center  ">
-                        <label for="pictureUrl" style="color: #C3C3C3;">AVATAR</label>
+                    <div class="mb-3 col-12 d-flex flex-column align-items-center  ">
+
+
+
+                        <label class="form-check-label" style="color: #C3C3C3;" for="flexSwitchCheckDefault">UPlOAD
+                        PICTURE</label>
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                               onclick="myFunction()">
+
                         <form:input type="file" id="text2"
                                     style="display:none"  class="form-control rounded-3 mt-2 w-50" path="pictureFile"/>
                         <form:input id="text" style="display:block"  type="text"
                                     class="form-control rounded-3 mt-2 w-50" path="pictureUrl"/>
                     </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
-                               onclick="myFunction()">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                    </div>
+
                     <div class="mb-3 col-12 col-md-6 d-flex flex-column align-items-center  ">
                         <label for="firstName" style="color: #C3C3C3;">FIRST NAME</label>
                         <form:input type="text" class="form-control rounded-3 mt-2 w-50 " path="firstName"/>
                     </div>
 
-                    <div class="mb-3 col-12 col-md-6 d-flex flex-column align-items-center">
-                        <label for="email" style="color: #C3C3C3;">EMAIL</label>
-                        <form:input class="form-control rounded-3 mt-2 w-50"  path="email" required="true"/>
+                    <div class="mb-3 col-12 col-md-6 d-flex flex-column align-items-center pattern-css">
+                        <label for="email"  style="color: #C3C3C3;">EMAIL</label>
+                        <form:input class="form-control rounded-3 mt-2 w-50 errorEmail"  type="email"
+                                    path="email"
+                                    required="true"/>
                         <form:errors path="email" cssStyle="color: #ff0008;"/>
 
                     </div>
@@ -103,6 +114,17 @@
             text2.style.display = "none";
         }
     }
+    var email = document.querySelector('input.errorEmail');
+    email.oninvalid = function(e) {
+        e.target.setCustomValidity("");
+        if (!e.target.validity.valid) {
+            if (e.target.value.length == 0) {
+                e.target.setCustomValidity("Ce champ est obligatoire");
+            } else {
+                e.target.setCustomValidity("Enter a valid email. Exemple : contact@nom.com");
+            }
+        }
+    };
 </script>
 </body>
 </html>
