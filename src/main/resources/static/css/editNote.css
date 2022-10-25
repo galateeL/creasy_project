@@ -15,95 +15,47 @@ body{
 .btn-secondary{
     background: #C3C3C3;
     color: white;
+    border: none;
 }
 
 .btn-secondary:hover{
     background: #b3b3b3;
     color: white;
+    border: none;
 }
 
 .btn-primary{
     background: #3AE1B1;
     color: white;
+    border: none;
 }
 
 .btn-primary:hover{
     background: #1ec898;
     color: white;
+    border: none;
 }
 
 .btn-primary:focus{
     background: #179b76 !important;
     color: white;
+    border: none;
 }
 
 .btn-primary:active{
     background: #179b76 !important;
     color: white;
+    border: none;
 }
 
-/*partners and companies info + title*/
-.part-info, .comp-inf, h1{
+h5, h1{
     color: #757575;
 }
 
-/*company name title*/
-.comp-name{
-    color: #3AE1B1;
+h5, h1{
+    color: #757575;
 }
 
 .form-label{
-    background: #D9D9D9;
-    color: white;
+    color: #D9D9D9;
 }
-
-.imgLogoC{
-    object-fit: cover;
-    height: 100px;
-}
-
-.fa-map-marker{
-    color: red;
-    text-shadow: 2px 2px #C3C3C3;
-}
-
-.fa-map-marker:hover{
-    color: #e60000;
-}
-
-.fa-envelope-o{
-    color: #A7A7A7;
-    text-shadow: 2px 2px #C3C3C3;
-}
-
-.fa-envelope-o:hover{
-    color: #999999;
-}
-
-.fa-phone{
-    color: #3AE1B1;
-    text-shadow: 2px 2px #C3C3C3;
-}
-
-.fa-phone:hover{
-    color: #1ec898;
-    text-shadow: 2px 2px #C3C3C3;
-}
-
-#companyNav{
-    background: #3AE1B1;
-    color: white;
-}
-
-#companyNav:hover{
-    background: #1ec898;
-    color: white;
-}
-
-#companyNav:active{
-    background: #179b76 !important;
-    color: white;
-}
-
-
-

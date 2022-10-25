@@ -15,35 +15,35 @@ body{
 .btn-secondary{
     background: #C3C3C3;
     color: white;
-    border: none;
+    border: none
 }
 
 .btn-secondary:hover{
     background: #b3b3b3;
     color: white;
-    border: none;
+    border: none
 }
 
-.btn-primary{
-    background: #3AE1B1;
+.btn-danger{
+    background: #F7526A;
     color: white;
     border: none;
 }
 
-.btn-primary:hover{
-    background: #1ec898;
+.btn-danger:hover{
+    background: #f52443;
     color: white;
     border: none;
 }
 
-.btn-primary:focus{
-    background: #179b76 !important;
+.btn-danger:focus{
+    background: #db0a2a;
     color: white;
     border: none;
 }
 
-.btn-primary:active{
-    background: #179b76 !important;
+.btn-danger:active{
+    background: #db0a2a;
     color: white;
     border: none;
 }
@@ -55,26 +55,3 @@ h5, h1{
 .form-label{
     color: #D9D9D9;
 }
-
-#logoFile{
-    display: none;
-}
-
-#companyNav{
-    background: #3AE1B1;
-    color: white;
-}
-
-#companyNav:hover{
-    background: #1ec898;
-    color: white;
-}
-
-#companyNav:active{
-    background: #179b76 !important;
-    color: white;
-}
-
-
-
-
