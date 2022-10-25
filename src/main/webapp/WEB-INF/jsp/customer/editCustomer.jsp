@@ -74,8 +74,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="company">COMPANY</label>
-                            <select class="form-select" aria-label=".form-select" id="company" required name="company">
+                            <label class="form-label" for="companyId">COMPANY</label>
+                            <select class="form-select" aria-label=".form-select" id="companyId" required name="companyId">
                                 <option disabled selected>${customer.company.name}</option>
                                 <c:forEach items="${companies}" var="company">
                                     <option value="${company.id}">${company.name}</option>

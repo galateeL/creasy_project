@@ -244,7 +244,7 @@ public class PartnerService {
 
         MultipartFile picture = editPartner.getPictureFile();
         if (picture == null || picture.isEmpty()) {
-            partner.setPictureUrl(editPartner.getPictureUrl());
+//            partner.setPictureUrl(editPartner.getPictureUrl());
         } else {
             storageService.store(picture);
             partner.setPictureUrl("http://localhost:8080/images/" + picture.getOriginalFilename());
