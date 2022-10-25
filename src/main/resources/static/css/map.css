@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/*Remove X on search bar input for chrome*/
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+/*******/
+
+body{
+    font-family: 'Inter', sans-serif;
+    background: #F1F1F1;
+}
+
+#map_div{
+    width: 1000px;
+    height: 700px;
+    border: #d9d9d9;
+
+    border-width: 6px;
+    border-style: solid;
+    border-color : #d9d9d9;
+}
+
+h5, h1{
+    color: #757575;
+}
+
+#customerNav{
+    background: #FFC900;
+    color: white;
+}
+
+#customerNav:hover{
+    background: #e6b400;
+    color: white;
+}
+
+
+#customerNav:active{
+    background: #cca000 !important;
+    color: white;
+    border: none;
+}
+
+@media screen and (max-width:720px){
+    #map_div{
+        width: 700px;
+        height: 500px;
+
+        border-width: 6px;
+        border-style: solid;
+        border-color : #d9d9d9;
+    }
+
+    h5, h1{
+        color: #757575;
+    }
+}
