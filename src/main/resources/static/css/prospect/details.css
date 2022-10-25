@@ -36,6 +36,16 @@ body{
     border: none;
 }
 
+.btn-primary:focus{
+    background: #6607a2 !important;
+    color: white;
+}
+
+.btn-primary:active{
+    background: #6607a2 !important;
+    color: white;
+}
+
 .btn-sub{
     background: #ef8e43;
     color: white;
@@ -46,6 +56,16 @@ body{
     background: #eb7114;
     color: white;
     border: none;
+}
+
+.btn-sub:focus{
+    background: #d36612 !important;
+    color: white;
+}
+
+.btn-sub:active{
+    background: #d36612 !important;
+    color: white;
 }
 
 .btn-danger{
@@ -60,17 +80,36 @@ body{
     border: none;
 }
 
+.btn-danger:focus{
+    background: #db0a2a;
+    color: white;
+    border: none;
+}
+
+.btn-danger:active{
+    background: #db0a2a;
+    color: white;
+    border: none;
+}
 
 .btn-validate{
     background: #3AE1B1;
     color: white;
-    border: none;
 }
 
 .btn-validate:hover{
     background: #1ec898;
     color: white;
-    border: none;
+}
+
+.btn-validate:focus{
+    background: #179b76 !important;
+    color: white;
+}
+
+.btn-validate:active{
+    background: #179b76 !important;
+    color: white;
 }
 
 .date{

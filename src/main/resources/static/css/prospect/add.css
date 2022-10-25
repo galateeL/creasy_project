@@ -32,6 +32,16 @@ body{
     color: white;
 }
 
+.btn-primary:focus{
+    background: #6607a2 !important;
+    color: white;
+}
+
+.btn-primary:active{
+    background: #6607a2 !important;
+    color: white;
+}
+
 .btn-danger{
     background: #F7526A;
     color: white;
@@ -44,6 +54,18 @@ body{
     border: none;
 }
 
+.btn-danger:focus{
+    background: #db0a2a;
+    color: white;
+    border: none;
+}
+
+.btn-danger:active{
+    background: #db0a2a;
+    color: white;
+    border: none;
+}
+
 .btn-validate{
     background: #3AE1B1;
     color: white;
@@ -51,6 +73,16 @@ body{
 
 .btn-validate:hover{
     background: #1ec898;
+    color: white;
+}
+
+.btn-validate:focus{
+    background: #179b76 !important;
+    color: white;
+}
+
+.btn-validate:active{
+    background: #179b76 !important;
     color: white;
 }
 

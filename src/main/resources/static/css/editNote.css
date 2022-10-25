@@ -15,98 +15,47 @@ body{
 .btn-secondary{
     background: #C3C3C3;
     color: white;
+    border: none;
 }
 
 .btn-secondary:hover{
     background: #b3b3b3;
     color: white;
+    border: none;
 }
 
 .btn-primary{
-    background: #FFC900;
+    background: #3AE1B1;
     color: white;
+    border: none;
 }
 
 .btn-primary:hover{
-    background: #e6b400;
+    background: #1ec898;
     color: white;
+    border: none;
 }
 
 .btn-primary:focus{
-    background: #cca000 !important;
+    background: #179b76 !important;
     color: white;
     border: none;
 }
 
 .btn-primary:active{
-    background: #cca000 !important;
-    color: white;
-    border: none;
-}
-
-.btn-danger{
-    background: #F7526A;
-    color: white;
-    border: none;
-}
-
-.btn-danger:hover{
-    background: #f52443;
-    color: white;
-    border: none;
-}
-
-.btn-danger:focus{
-    background: #db0a2a;
-    color: white;
-    border: none;
-}
-
-.btn-danger:active{
-    background: #db0a2a;
-    color: white;
-    border: none;
-}
-
-.btn-validate{
-    background: #3AE1B1;
-    color: white;
-}
-
-.btn-validate:hover{
-    background: #1ec898;
-    color: white;
-}
-
-.btn-validate:focus{
     background: #179b76 !important;
     color: white;
+    border: none;
 }
-
-.btn-validate:active{
-    background: #179b76 !important;
-    color: white;
-}
-
 
 h5, h1{
     color: #757575;
 }
 
-.card-text{
-    color: #FFC900;
-}
-
-
-/*search icon*/
-.fa-search{
-    display: block;
-    margin-left: -15%;
-
-}
-
-.filtersText{
+h5, h1{
     color: #757575;
 }
 
-
+.form-label{
+    color: #D9D9D9;
+}

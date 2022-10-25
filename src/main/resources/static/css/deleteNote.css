@@ -15,33 +15,13 @@ body{
 .btn-secondary{
     background: #C3C3C3;
     color: white;
+    border: none
 }
 
 .btn-secondary:hover{
     background: #b3b3b3;
     color: white;
-}
-
-.btn-primary{
-    background: #FFC900;
-    color: white;
-}
-
-.btn-primary:hover{
-    background: #e6b400;
-    color: white;
-}
-
-.btn-primary:focus{
-    background: #cca000 !important;
-    color: white;
-    border: none;
-}
-
-.btn-primary:active{
-    background: #cca000 !important;
-    color: white;
-    border: none;
+    border: none
 }
 
 .btn-danger{
@@ -68,45 +48,10 @@ body{
     border: none;
 }
 
-.btn-validate{
-    background: #3AE1B1;
-    color: white;
-}
-
-.btn-validate:hover{
-    background: #1ec898;
-    color: white;
-}
-
-.btn-validate:focus{
-    background: #179b76 !important;
-    color: white;
-}
-
-.btn-validate:active{
-    background: #179b76 !important;
-    color: white;
-}
-
-
 h5, h1{
     color: #757575;
 }
 
-.card-text{
-    color: #FFC900;
+.form-label{
+    color: #D9D9D9;
 }
-
-
-/*search icon*/
-.fa-search{
-    display: block;
-    margin-left: -15%;
-
-}
-
-.filtersText{
-    color: #757575;
-}
-
-
