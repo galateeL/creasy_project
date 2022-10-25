@@ -139,7 +139,7 @@
                                   method="post">
                                     <label for="dunningPeriod" class="form-label p-2 px-5 mb-4">DEADLINE BEFORE DUNNING</label>
                                     <input type="number" class="form-control" id="dunningPeriod" name="dunningPeriod"
-                                           placeholder="ex : 6 days" min="0">
+                                           placeholder="ex : 6 days" min="0" required>
 
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <button type="submit" class="btn mt-4" style="background: #ee8d41; color: white">Add dunning
