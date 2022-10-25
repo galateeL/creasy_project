@@ -10,7 +10,10 @@ import com.example.creasy.repository.entity.StateProspect;
 import com.example.creasy.repository.entity.User;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Part;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +24,13 @@ public class PartnerService {
 
     private PartnerRepository partnerRepository;
     private CompanyRepository companyRepository;
+    private StorageService storageService;
 
 
-    public PartnerService(PartnerRepository partnerRepository, CompanyRepository companyRepository) {
+    public PartnerService(PartnerRepository partnerRepository, CompanyRepository companyRepository, StorageService storageService) {
         this.partnerRepository = partnerRepository;
         this.companyRepository = companyRepository;
+        this.storageService = storageService;
     }
 
     public List<Partner> getAllPartner() {
@@ -60,6 +65,12 @@ public class PartnerService {
     // Find number of prospects with NOT_STARTED state
     public int findNumberOfProspectsInNotStarted(StateProspect stateProspect, String email) {
         return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.NOT_STARTED, email);
+    }
+
+
+
+    public List<Partner> findAllProspectsByList (StateProspect stateProspect1, StateProspect stateProspect2, String email){
+        return this.partnerRepository.findProspectsListByUser(StateProspect.ENDED, StateProspect.TO_FOLLOW_UP, email);
     }
 
 
@@ -143,7 +154,6 @@ public class PartnerService {
     }
 
 
-
     public Partner findPartnerById(Long id) {
         return this.partnerRepository.findById(id).get();
     }
@@ -161,7 +171,6 @@ public class PartnerService {
         prospect.setFirstname(createProspect.getFirstname());
         prospect.setLastname(createProspect.getLastname());
         prospect.setEmail(createProspect.getEmail());
-        prospect.setPictureUrl(createProspect.getPictureUrl());
         prospect.setMobilePhoneNumber(createProspect.getMobilePhoneNumber());
         prospect.setFixedPhoneNumber(createProspect.getFixedPhoneNumber());
         prospect.setPositionHeld(createProspect.getPositionHeld());
@@ -170,6 +179,14 @@ public class PartnerService {
         prospect.setRegisterDate(LocalDateTime.now());
 
         prospect.setUser(user);
+
+        MultipartFile picture = createProspect.getPictureFile();
+        if (picture == null || picture.isEmpty()) {
+            prospect.setPictureUrl(createProspect.getPictureUrl());
+        } else {
+            storageService.store(picture);
+            prospect.setPictureUrl("http://localhost:8080/images/" + picture.getOriginalFilename());
+        }
 
         this.partnerRepository.save(prospect);
 
@@ -207,7 +224,6 @@ public class PartnerService {
         partner.setFirstname(editPartner.getFirstname());
         partner.setLastname(editPartner.getLastname());
         partner.setEmail(editPartner.getEmail());
-        partner.setPictureUrl(editPartner.getPictureUrl());
         partner.setFixedPhoneNumber(editPartner.getFixedPhoneNumber());
         partner.setMobilePhoneNumber(editPartner.getMobilePhoneNumber());
         partner.setPositionHeld(editPartner.getPositionHeld());
@@ -219,8 +235,43 @@ public class PartnerService {
             partner.setCompany(companyRepository.findById(Long.parseLong(editPartner.getCompanyId())).get());
         }
 
+        MultipartFile picture = editPartner.getPictureFile();
+        if (picture == null || picture.isEmpty()) {
+            partner.setPictureUrl(editPartner.getPictureUrl());
+        } else {
+            storageService.store(picture);
+            partner.setPictureUrl("http://localhost:8080/images/" + picture.getOriginalFilename());
+        }
+
         this.partnerRepository.save(partner);
 
     }
+
+
+    public void addDunningPeriod(Long id, CreateDunning createDunning) {
+        Partner partner = this.partnerRepository
+                .findById(id)
+                .orElseThrow(() -> new PartnerNotFoundException(id));
+
+        partner.setDunningPeriod(createDunning.getDunningPeriod());
+        partner.setDunningRegisterDate(LocalDateTime.now());
+
+        this.partnerRepository.save(partner);
+
+    }
+
+    public void setToFollowUpIfNecessary(List<Partner> partnerList){
+        for (Partner partner : partnerList) {
+            if(partner.getDunningRegisterDate() != null && partner.getDunningPeriod() != 0 &&
+                    partner.getDunningRegisterDate()
+                            .plusDays(partner.getDunningPeriod())
+                            .isBefore(LocalDateTime.now())) {
+
+                partner.setStateProspect(StateProspect.TO_FOLLOW_UP);
+                partnerRepository.save(partner);
+            }
+        }
+    }
+
 
 }

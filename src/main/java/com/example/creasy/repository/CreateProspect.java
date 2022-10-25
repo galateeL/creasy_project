@@ -4,6 +4,7 @@ import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 import com.example.creasy.repository.entity.User;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +17,8 @@ public class CreateProspect {
     private String email;
 
     private String pictureUrl;
+
+    private MultipartFile pictureFile;
 
     private String fixedPhoneNumber;
 
@@ -66,7 +69,13 @@ public class CreateProspect {
     }
 
 
+    public MultipartFile getPictureFile() {
+        return pictureFile;
+    }
 
+    public void setPictureFile(MultipartFile pictureFile) {
+        this.pictureFile = pictureFile;
+    }
 
     public LocalDateTime getRegisterDate() {
         return registerDate;

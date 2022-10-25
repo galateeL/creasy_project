@@ -5,34 +5,33 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add new note</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add new event</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <p>Add Event</p>
-            </div>
-            <div class="modal-footer">
-                <form action="${pageContext.request.contextPath}/${partner.id}/add-event" method="post">
+            <div class="modal-footer justify-content-center col-12">
+                <form class="d-flex flex-column col-10" action="${pageContext.request.contextPath}/${partner.id}/add-event" method="post">
 
-                    <label for="title" class="form-label">title</label>
-                    <input name="title" rows="12" cols="35" id="title" placeholder="Tap your note here..." >
+                    <label for="title" class="form-label p-1">title</label>
+                    <input class="form-control" name="title" id="title" placeholder="Tap your title here..." >
 
-                    <label for="description" class="form-label">description</label>
-                    <input name="description" rows="12" cols="35" id="description" placeholder="Tap your note here..." >
+                    <label for="description" class="form-label mt-3 p-1">description</label>
+                    <input class="form-control" name="description"  id="description" placeholder="Tap your description here..." >
 
-                    <label for="start">Start Date:</label>
-                    <input type="datetime-local" id="start" name="start">
+                    <label class="form-label mt-3 p-1" for="start">Start Date:</label>
+                    <input class="form-control" type="datetime-local" id="start" name="start">
 
-                    <label for="finish">Finish Date:</label>
-                    <input type="datetime-local" id="finish" name="finish">
+                    <label class="form-label mt-3 p-1" for="finish">Finish Date:</label>
+                    <input class="form-control" type="datetime-local" id="finish" name="finish">
 
-                    <label for="address" class="form-label">Address</label>
-                    <input name="address" rows="12" cols="35" id="address" placeholder="Tap your note here..." >
+                    <label for="address" class="form-label mt-3 p-1">Address</label>
+                    <input class="form-control" name="address" id="address" placeholder="Tap your Address here..." >
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abandon</button>
+                    <div class="d-flex justify-content-center mt-3">
+                        <button type="button" class="btn btn-secondary me-4" data-bs-dismiss="modal">Abandon</button>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
 
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <button type="submit" class="btn btn-primary">Save</button>
 
                 </form>
             </div>

@@ -4,6 +4,7 @@ import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 import com.example.creasy.repository.entity.User;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,7 +24,6 @@ public class CreatePartner {
     private String mobilePhoneNumber;
 
     private String positionHeld;
-
 
     private StateProspect stateProspect;
 
@@ -64,7 +64,6 @@ public class CreatePartner {
         this.positionHeld = positionHeld;
         this.stateProspect = stateProspect;
     }
-
 
     public LocalDateTime getRegisterDate() {
         return registerDate;

@@ -59,7 +59,7 @@ public class UserController {
             return "editUser";
         }else{
             userService.update(updateUser);
-            return "redirect:/signin";
+            return "redirect:/details/user";
         }
     }
 

@@ -106,4 +106,7 @@ public interface PartnerRepository extends CrudRepository<Partner, Long> {
 
 
 
+    // Prospect List by user
+    @Query("select p from Partner p WHERE p.stateProspect <> ?1 and p.stateProspect <> ?2 and p.user.email = ?3")
+    List <Partner> findProspectsListByUser(StateProspect stateProspect1, StateProspect stateProspect2, String email);
 }
