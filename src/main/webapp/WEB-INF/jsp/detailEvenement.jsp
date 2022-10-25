@@ -21,57 +21,41 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     </style>
 
-    <title>CREASY | Event Details</title>
+    <title>Document</title>
 </head>
-<body class="vh-100" style="background-color:
+<body class="d-flex flex-column justify-content-between vh-100" style="background-color:
 #F1F1F1;">
 <jsp:include page="./header.jsp"/>
-<section class=" col-2 mt-2" style="text-align: end;" >
-    <h1 class="fw-bold" style="font-family: inter; color:#757575;">Settings</h1>
-</section>
-<div class=" justify-content-center">
-    <div class="row">
-        <div class="col-2"></div>
-        <section class=" col-8 m-0 mt-2 mb-2 d-flex flex-column justify-content-center  " tabindex="-1"
-                 role="dialog"
-                 id="modalSignin">
-            <div class="container" style="background-color: white">
-                <form:form method="post" action="${pageContext.request.contextPath}/evenement${partner.id}" class="row">
-                    <sec:authorize access="isAuthenticated()">
-                        <div class="mb-3 col-12 mt-5">
-                            <label for="title" class="form-label">title</label>
-                            <form:input class="form-control rounded-3 mt-3 w-75"  path="title" required="true"/>
-                        </div>
-
-                        <div class="mb-3 col-12 mt-3 ">
-                            <label for="description" class="form-label">description</label>
-                            <form:input class="form-control rounded-3 mt-3 w-75"  path="description" required="true"/>
-                        </div>
-                        <div class="mb-3 col-12 mt-3 ">
-                            <label for="start">Start Date:</label>
-                            <form:input class="form-control rounded-3 mt-3 w-75"  path="start" required="true"/>
-                        </div>
-                        <div class="mb-3 col-12 mt-3 ">
-                            <label for="finish">Finish Date:</label>
-                            <form:input class="form-control rounded-3 mt-3 w-75"  path="finish" required="true"/>
-                        </div>
-                        <div class="mb-3 col-12 mt-3 ">
-                            <label for="address" class="form-label">Address</label>
-                            <form:input class="form-control rounded-3 mt-3 w-75"  path="address" required="true"/>
-                        </div>
-                        <div class="col-12 row justify-content-center">
-                            <div class="col-12 col-md-5 m-1 row align-item-center">
-                                <a class=" mb-5 btn btn-lg rounded-3  mt-3" style=" background-color: #FFC900; color: white;"
-                                   href="${pageContext.request.contextPath}/staticcalendar">Return to Calendar
-                                </a>
-                            </div>
-                        </div>
-                    </sec:authorize>
-                </form:form>
+<div class="row">
+    <div class="col-3"></div>
+    <div class="card border container col-6">
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <p class="card-text text-break fw-bold" style="font-size: 25px;" >${event.partner.firstname}
+                    ${event.partner.lastname}</p>
             </div>
-        </section>
-        <div class="col-2"></div>
+            <div class="d-flex justify-content-center mt-2">
+                <p class="date text-break">${event.start} - ${event.finish}</p>
+            </div>
+            <div class="d-flex justify-content-center">
+                <p  style="font-size: 20px;" class="card-text text-break"
+                >${event.title}</p>
+            </div>
+            <div class="d-flex justify-content-center">
+                <p class="card-text text-break" >${event.description}</p>
+            </div>
+            <div class="d-flex justify-content-center mb-1">
+                <p class="card-text text-break" >${event.address}</p>
+            </div>
+            <div class="d-flex mt-3 justify-content-center">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <a href="${pageContext.request.contextPath}/staticcalendar"
+                   class="btn btn-primary  my-md-3 mb-2">Return to calendar</a>
+            </div>
+
+        </div>
     </div>
+    <div class="col-3"></div>
 </div>
 <jsp:include page="./footer.jsp"/>
 </body>

@@ -46,9 +46,12 @@ public class UserController {
         }
     }
     @GetMapping("/edit/{mail}")
-    public String updateContactForm(Model model, @PathVariable(value="mail") String mail){
+    public String updateContactForm(Model model,Principal p, @PathVariable(value="mail") String mail){
         User user = userService.getUserByMail(mail);
         model.addAttribute("updateUser", user);
+        if(p.getName().equals("laurence.rosa@rosa-formation.fr")  ){
+            model.addAttribute("list","true");
+        }
         return "editUser";
     }
 

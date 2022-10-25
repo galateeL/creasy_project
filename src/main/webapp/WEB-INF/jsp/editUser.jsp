@@ -44,6 +44,16 @@
                            modelAttribute="updateUser" class="row">
                     <sec:authorize access="isAuthenticated()">
                         <form:input path="id" type="number" name="id" id="id" class="form-control" hidden="true" />
+                        <div class="mb-3 col-12 mt-3 ">
+
+                            <label for="pictureFile" class="form-label" style="color: #FFC900;">PICTURE</label>
+                            <div>
+                                <label for="pictureFile" class="btn btn-secondary shadow-sm border-0 mt-3">Choose
+                                    your picture
+                                </label>
+                                <input hidden id="pictureFile" type="file" name="pictureFile" class="form-control">
+                            </div>
+                        </div>
                         <div class="mb-3 col-12 mt-5">
                             <label for="email" style="color: #FFC900;">EMAIL</label>
                             <form:input class="form-control rounded-3 mt-3 w-75"  path="email" required="true"/>
@@ -61,25 +71,18 @@
                             <label for="lastName" style="color: #FFC900;" >PASSWORD</label>
                             <form:input type="password" class="form-control rounded-3 mt-3 w-75" path="password"/>
                         </div>
-                        <div class="mb-3 col-12 mt-3 ">
-
-                            <label for="pictureFile" class="form-label" style="color: #FFC900;">Avatar</label>
-                            <div>
-                                <label for="pictureFile" class="btn btn-secondary shadow-sm border-0 mt-3">Choose
-                                    file for your avatar</label>
-                                <input hidden id="pictureFile" type="file" name="pictureFile" class="form-control">
-                            </div>
-
-
-                        </div>
                         <div class="col-12 row justify-content-center">
                             <div class="col-12 row justify-content-center">
                                 <div class="col-12 col-md-5 m-1 row align-item-center">
-                                    <button class=" mb-5 btn btn-lg rounded-3  mt-3" style=" background-color: #FFC900; color:
-                                white;" value="Save"type="submit">Validate
+                                    <jsp:include page="./saveEditUserModal.jsp"/>
+                                    <button type="button"
+                                            class="mb-5 btn btn-lg rounded-3  mt-3" style=" background-color: #FFC900;
+                                    color:
+                                    white;"
+                                            data-bs-toggle="modal" data-bs-target="#DisconnectWhenEdit">
+                                        Validate
                                     </button>
                                 </div>
-
                                 <div class="col-12 col-md-6 row  m-1 align-item-center ">
                                     <a href="${pageContext.request.contextPath}/details/user" class=" mb-5 btn btn-lg rounded-3 mt-3" style=" background-color: #545454; color: white;"
                                        value="Save"type="submit">Abandon
