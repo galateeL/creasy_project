@@ -69,6 +69,7 @@ $(document).ready(function() {
 <div>
 <jsp:include page="./header.jsp"/>
 
+	<h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Calendar :</h1>
 
 	<div style="background-color:white;" class="mt-5" id='calendar'></div>
 
