@@ -14,6 +14,8 @@
 
     <link rel="stylesheet" href="/css/deleteNote.css"/>
 
+    <link rel="icon" type="image/x-icon" href="/img/circleLogo.png">
+
 
     <title>CREASY | Delete note</title>
 </head>
