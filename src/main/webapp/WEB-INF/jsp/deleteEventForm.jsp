@@ -14,7 +14,7 @@
 
     <link rel="icon" type="image/x-icon" href="/img/circleLogo.png">
 
-    <title>CREASY | Delete note</title>
+    <title>CREASY | Delete Event</title>
 </head>
 <body>
 

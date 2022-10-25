@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Creasy - Edit Customer ${customer.lastname} ${customer.firstname}</title>
+    <title>CREASY | Edit Customer ${customer.lastname} ${customer.firstname}</title>
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -74,8 +74,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="company">COMPANY</label>
-                            <select class="form-select" aria-label=".form-select" id="company" required name="company">
+                            <label class="form-label" for="companyId">COMPANY</label>
+                            <select class="form-select" aria-label=".form-select" id="companyId" required name="companyId">
                                 <option disabled selected>${customer.company.name}</option>
                                 <c:forEach items="${companies}" var="company">
                                     <option value="${company.id}">${company.name}</option>
