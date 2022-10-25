@@ -99,8 +99,10 @@ public class PartnerController {
         Partner partner = partnerService.findPartnerById(id);
         model.addAttribute("partner", partner);
 
+
         List<Note> noteList  = noteService.getAllNotesByPartner(partner);
         model.addAttribute("notes", noteList);
+
 
         model.addAttribute("events", noteList);
         return "customer/customerDetail";
