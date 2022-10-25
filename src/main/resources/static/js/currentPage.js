@@ -16,6 +16,12 @@ if (window.location.href.indexOf("customer") > -1) {
     c.setAttribute("aria-current", "page");
 }
 
+if (window.location.href.indexOf("map") > -1) {
+    let c = document.getElementById("customerNav");
+    c.className += " active text-white";
+    c.setAttribute("aria-current", "page");
+}
+
 if (window.location.href.indexOf("prospect") > -1) {
     let d = document.getElementById("prospectNav");
     d.className += " active text-white";

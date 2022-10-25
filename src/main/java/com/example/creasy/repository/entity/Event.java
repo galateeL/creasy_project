@@ -1,6 +1,8 @@
 package com.example.creasy.repository.entity;
 
 import com.example.creasy.controller.dto.EventDto;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -24,8 +26,10 @@ class Event {
 	private String url;
 
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Partner partner;
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name= "user_id",referencedColumnName = "id")
 	private User userById;
 	

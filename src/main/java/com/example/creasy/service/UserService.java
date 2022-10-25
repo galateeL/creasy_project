@@ -4,6 +4,7 @@ import com.example.creasy.controller.dto.CreateUser;
 import com.example.creasy.controller.dto.UpdateUser;
 import com.example.creasy.exception.UserNotFoundException;
 import com.example.creasy.repository.UserRepository;
+import com.example.creasy.repository.entity.Company;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +85,10 @@ public class UserService {
     }
     public void deleteUser(String mail){
         userRepository.deleteByEmail(mail);
+
+    }
+    public void deleteUserById(User user){
+        this. userRepository.delete(user);
     }
 }
 

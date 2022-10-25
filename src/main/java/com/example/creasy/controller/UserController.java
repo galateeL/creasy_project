@@ -46,9 +46,12 @@ public class UserController {
         }
     }
     @GetMapping("/edit/{mail}")
-    public String updateContactForm(Model model, @PathVariable(value="mail") String mail){
+    public String updateContactForm(Model model,Principal p, @PathVariable(value="mail") String mail){
         User user = userService.getUserByMail(mail);
         model.addAttribute("updateUser", user);
+        if(p.getName().equals("laurence.rosa@rosa-formation.fr")){
+            model.addAttribute("list","true");
+        }
         return "editUser";
     }
 
@@ -59,13 +62,14 @@ public class UserController {
             return "editUser";
         }else{
             userService.update(updateUser);
-            return "redirect:/details/user";
+            return "redirect:/signin";
         }
     }
 
     @GetMapping("/details/user")
     public String displayDetailForm(Model m, Principal p){
         m.addAttribute("command",new CreateUser());
+
         if(p.getName().equals("laurence.rosa@rosa-formation.fr")  ){
             m.addAttribute("list","true");
         }
@@ -75,11 +79,12 @@ public class UserController {
     }
 
 
-    @GetMapping("/delete/{mail}")
-    public String delete(@PathVariable(value="mail") String mail){
-        userService.deleteUser(mail);
+    @PostMapping("/delete/user")
+    public String delete(Principal p){
+        userService.deleteUser(p.getName());
         return "redirect:/signin";
     }
+
     @GetMapping("/delete/user/{mail}")
     public String deleteUser(@PathVariable(value="mail") String mail){
         userService.deleteUser(mail);

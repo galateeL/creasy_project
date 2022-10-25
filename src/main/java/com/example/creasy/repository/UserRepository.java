@@ -19,4 +19,5 @@ public interface UserRepository extends CrudRepository<User,Long> {
     @Transactional
     @Query("Delete From User u WHERE u.email = :email")
     void deleteByEmail(@Param("email") String email);
+
 }

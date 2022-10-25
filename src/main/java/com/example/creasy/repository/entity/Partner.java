@@ -3,6 +3,8 @@ package com.example.creasy.repository.entity;
 import com.example.creasy.controller.dto.EventDto;
 import com.example.creasy.controller.dto.MapCustomerDto;
 import com.sun.istack.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -49,6 +51,7 @@ public class Partner {
 
 
     @OneToMany(mappedBy = "partner")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Note> noteList;
 
     private LocalDateTime registerDate;
