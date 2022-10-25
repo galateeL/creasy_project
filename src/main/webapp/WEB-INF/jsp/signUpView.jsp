@@ -20,7 +20,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
     </style>
 
-    <title>Document</title>
+    <title>Sign Up</title>
 </head>
 <body class="container-fluid d-flex flex-row p-0" style="min-height: 100%;">
 

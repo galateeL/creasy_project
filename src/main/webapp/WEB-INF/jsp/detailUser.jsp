@@ -21,7 +21,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     </style>
 
-    <title>Document</title>
+    <title>CREASY | User Details</title>
 </head>
 <body class="d-flex flex-column justify-content-between vh-100" style="background-color:
 #F1F1F1;">
