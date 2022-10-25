@@ -102,4 +102,19 @@ h5, h1{
     display: none;
 }
 
+#prospectNav{
+    background: #8109CB;
+    color: white;
+}
+
+#prospectNav:hover{
+    background: #7608ba;
+    color: white;
+}
+
+#prospectNav:active{
+    background: #6607a2 !important;
+    color: white;
+}
+
 
