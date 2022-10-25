@@ -32,6 +32,16 @@ body{
     color: white;
 }
 
+.btn-primary:focus{
+    background: #179b76 !important;
+    color: white;
+}
+
+.btn-primary:active{
+    background: #179b76 !important;
+    color: white;
+}
+
 /*partners and companies info + title*/
 .part-info, .comp-inf, h1{
     color: #757575;
@@ -79,6 +89,8 @@ body{
     color: #1ec898;
     text-shadow: 2px 2px #C3C3C3;
 }
+
+
 
 
 

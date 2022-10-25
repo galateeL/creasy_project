@@ -15,29 +15,41 @@ body{
 .btn-secondary{
     background: #C3C3C3;
     color: white;
+    border: none;
 }
 
 .btn-secondary:hover{
     background: #b3b3b3;
     color: white;
+    border: none;
 }
 
 .btn-primary{
     background: #3AE1B1;
     color: white;
+    border: none;
 }
 
 .btn-primary:hover{
     background: #1ec898;
     color: white;
+    border: none;
+}
+
+.btn-primary:focus{
+    background: #179b76 !important;
+    color: white;
+    border: none;
+}
+
+.btn-primary:active{
+    background: #179b76 !important;
+    color: white;
+    border: none;
 }
 
 h5, h1{
     color: #757575;
-}
-
-.card-text{
-    color: #3AE1B1;
 }
 
 .form-label{
@@ -47,6 +59,7 @@ h5, h1{
 #logoFile{
     display: none;
 }
+
 
 
 
