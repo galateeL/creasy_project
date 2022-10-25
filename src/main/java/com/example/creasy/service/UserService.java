@@ -36,6 +36,7 @@ public class UserService {
         newUser.setPictureUrl(createUser.getPictureUrl());
         newUser.setFirstName(createUser.getFirstName());
         newUser.setLastName(createUser.getLastName());
+
         if(picture.isEmpty() || picture == null){
             newUser.setPictureUrl(createUser.getPictureUrl());
         }else{
@@ -46,6 +47,7 @@ public class UserService {
     }
 
     public void update(UpdateUser updateUser){
+
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         User user = userRepository.findById(updateUser.getId()).get();
@@ -53,8 +55,14 @@ public class UserService {
         user.setEmail(updateUser.getEmail());
         user.setFirstName(updateUser.getFirstName());
         user.setLastName(updateUser.getLastName());
-        user.setPictureUrl(updateUser.getPictureUrl());
         user.setId(updateUser.getId());
+        MultipartFile picture = updateUser.getPictureFile();
+        if(picture.isEmpty() || picture == null){
+
+        }else{
+            storageService.store(picture);
+            user.setPictureUrl("http://localhost:8080/images/"+ picture.getOriginalFilename());
+        }
 
         if  (!updateUser.getPassword().equals(user.getPassword())){
             user.setPassword(passwordEncoder.encode(updateUser.getPassword()));

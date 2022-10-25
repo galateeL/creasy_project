@@ -1,5 +1,7 @@
 package com.example.creasy.repository.entity;
 
+import com.example.creasy.controller.dto.EventDto;
+import com.example.creasy.controller.dto.MapCustomerDto;
 import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -121,6 +123,16 @@ public class Partner {
         this.company = company;
         this.user = user;
         this.registerDate = registerDate;
+    }
+    public MapCustomerDto toMapCustomerDto() {
+        MapCustomerDto mapCustomerDto = new MapCustomerDto();
+        mapCustomerDto.setFirstName(this.firstname);
+        mapCustomerDto.setId(this.id);
+        mapCustomerDto.setLatitude(this.company.getLatitude());
+        mapCustomerDto.setLongitude(this.company.getLongitude());
+
+
+        return mapCustomerDto;
     }
 
     public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, int dunningPeriod, LocalDateTime dunningRegisterDate, StateProspect stateProspect, Company company, User user, List<Note> noteList, LocalDateTime registerDate) {

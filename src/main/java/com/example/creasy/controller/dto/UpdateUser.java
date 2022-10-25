@@ -1,6 +1,7 @@
 package com.example.creasy.controller.dto;
 
 import com.example.creasy.repository.entity.User;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,11 +15,19 @@ public class UpdateUser {
     private String password;
 
     private String lastName;
-
+    private MultipartFile pictureFile;
     private String firstName;
     private String pictureUrl;
 
     public UpdateUser() {
+    }
+
+    public MultipartFile getPictureFile() {
+        return pictureFile;
+    }
+
+    public void setPictureFile(MultipartFile pictureFile) {
+        this.pictureFile = pictureFile;
     }
 
     public Long getId() {

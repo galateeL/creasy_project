@@ -2,10 +2,7 @@ package com.example.creasy.controller;
 
 
 import com.example.creasy.controller.dto.CreateEvent;
-import com.example.creasy.repository.entity.Event;
-import com.example.creasy.repository.entity.Partner;
-import com.example.creasy.repository.entity.StateProspect;
-import com.example.creasy.repository.entity.User;
+import com.example.creasy.repository.entity.*;
 import com.example.creasy.service.EventService;
 import com.example.creasy.service.PartnerService;
 import com.example.creasy.service.UserService;
@@ -15,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 class EventController {
@@ -44,7 +42,13 @@ class EventController {
 		}
 
 	}
+	@GetMapping("/evenement{id}")
+	public String displaySpecificCustomer(Model model, @PathVariable Long id){
 
+		Event event  = eventService.getEventById(id);
+		model.addAttribute("command", event);
+		return "detailEvenement";
+	}
 	// Edit specific note - Display form
 	@GetMapping("/edit-event/{id}")
 	public String displayEditEventForm (Model model, @PathVariable Long id) {

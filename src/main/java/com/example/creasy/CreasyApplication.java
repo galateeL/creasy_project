@@ -64,8 +64,8 @@ public class CreasyApplication implements CommandLineRunner {
                 "12345",
                 "12356894100056",
                 "http://www.webSite.com",
-                "48.866667",
-                "2.333333",
+                "37.6153",
+                "-122.3900",
                 LocalDate.now()
         );
         companyRepository.save(company);
@@ -81,18 +81,18 @@ public class CreasyApplication implements CommandLineRunner {
                 "12345",
                 "12356894100056",
                 "http://www.webSite.com",
-                "48.866667",
-                "2.333333",
+                "37.4422",
+                "-122.1731",
                 LocalDate.now()
         );
         companyRepository.save(company2);
 
         // Company instanciation + save in DB
-        Company company3 = new Company("Technologies", "2 rue du phare", "Nantes", "capgemini@cap.com", "https://lespetitesannoncesdemarine.files.wordpress.com/2019/07/capgemini-logo.jpg?w=1200", "Capgemini", "021547854", "44000", "test Siret", "website", "1245", "5541", LocalDate.now());
+        Company company3 = new Company("Technologies", "2 rue du phare", "Nantes", "capgemini@cap.com", "https://lespetitesannoncesdemarine.files.wordpress.com/2019/07/capgemini-logo.jpg?w=1200", "Capgemini", "021547854", "44000", "test Siret", "website", "37.4232", "-122.0853", LocalDate.now());
         companyRepository.save(company3);
 
         // Company instanciation + save in DB
-        Company company4 = new Company("Technologies", "2 rue du phare", "Nantes", "capgemini@cap.com", "https://lespetitesannoncesdemarine.files.wordpress.com/2019/07/capgemini-logo.jpg?w=1200", "Avera", "021547854", "44000", "test Siret", "website", "1245", "5541", LocalDate.now());
+        Company company4 = new Company("Technologies", "2 rue du phare", "Nantes", "capgemini@cap.com", "https://lespetitesannoncesdemarine.files.wordpress.com/2019/07/capgemini-logo.jpg?w=1200", "Avera", "021547854", "44000", "test Siret", "website", "37.4289", "-122.1697", LocalDate.now());
         companyRepository.save(company4);
 
 
@@ -104,9 +104,13 @@ public class CreasyApplication implements CommandLineRunner {
                 ".com/mediatheque/0/7/5/000353570_896x598_c.jpg", passwordEncoder.encode("a"), "k",
                 "k");
 
+        User user3=new User("b",false, "https://www.usinenouvelle" +
+                ".com/mediatheque/0/7/5/000353570_896x598_c.jpg", passwordEncoder.encode("b"), "k",
+                "k");
+
         userRepository.save(user1);
         userRepository.save(user2);
-
+        userRepository.save(user3);
 
 
         // Client instanciation + save dans la DB

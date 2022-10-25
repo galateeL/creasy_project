@@ -86,7 +86,7 @@
 
 
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <a href="${pageContext.request.contextPath}/partners/edit-prospect/${partner.id}"
+                    <a href="${pageContext.request.contextPath}/partners/edit-customer/${partner.id}"
                        class="btn btn-primary shadow-sm align-self-center border-0 ps-3 pe-3 me-md-3 mb-md-0 mb-4">Edit</a>
 
                 </div>
