@@ -25,31 +25,25 @@
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
 
-        var jsonData = $.ajax({
-            url: "/allcustomers",
-            type: 'GET',
-            dataType:"json",
-            async: false
-        }).responseText;
-        var obj = JSON.parse(jsonData);
-        const array = [];
-        for(var i in obj) {
-            array.push([obj[i]]);
-        }
-        console.log(array)
-        var data = google.visualization.arrayToDataTable(
-            [
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Lat');
+        data.addColumn('number', 'Long');
+        data.addColumn('string', 'Name')
 
-                array
-            ]
-        );
+        fetch("/allcustomers").then(res=>res.json()).then(companies=>{
+            companies.forEach(company => {
+                console.log(company)
+                data.addRow([parseFloat(company.latitude),parseFloat(company.longitude),company.name])
+            })
+            console.log(data)
+            var map = new google.visualization.Map(document.getElementById('map_div'));
+            map.draw(data,{
 
-        var map = new google.visualization.Map(document.getElementById('map_div'));
-        map.draw(data,{
-
-            showTooltip: true,
-            showInfoWindow: true
+                showTooltip: true,
+                showInfoWindow: true
+            });
         });
+
     }
 
 </script>
