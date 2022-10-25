@@ -1,5 +1,8 @@
 package com.example.creasy.repository.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +26,7 @@ public class User {
     private String firstName;
 
     @OneToMany(mappedBy = "user")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Partner> partnerList;
 
     public User() {
