@@ -46,7 +46,7 @@ class EventController {
 	public String displaySpecificCustomer(Model model, @PathVariable Long id){
 
 		Event event  = eventService.getEventById(id);
-		model.addAttribute("command", event);
+		model.addAttribute("event", event);
 		return "detailEvenement";
 	}
 	// Edit specific note - Display form
