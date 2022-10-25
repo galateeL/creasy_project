@@ -32,8 +32,6 @@ public class Partner {
     private String positionHeld;
 
 
-
-
     private int dunningPeriod;
 
     private LocalDateTime dunningRegisterDate;

@@ -76,7 +76,7 @@
                             <label class="form-label text-uppercase" for="stateProspect">Prospecting state</label>
 
                             <select class="form-select" aria-label=".form-select" name="stateProspect" id="stateProspect">
-                                <option disabled selected>${prospect.stateProspects}</option>
+                                <option disabled selected>${prospect.stateProspect}</option>
                                 <c:forEach items="${stateProspects}" var="stateProspect">
                                     <option value="${stateProspect}">${stateProspect}</option>
                                 </c:forEach>
