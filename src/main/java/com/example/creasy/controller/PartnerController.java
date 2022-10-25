@@ -201,7 +201,7 @@ public class PartnerController {
 
     // Edit specific customer
     @PostMapping("/edit-customer/{id}")
-    public String editCustomer(EditPartner editPartner, @PathVariable Long id, Model model){
+    public String editCustomer(EditPartner editPartner, @PathVariable Long id){
         partnerService.editPartner(id, editPartner);
         return "redirect:/partners/details-customer/{id}";
     }
@@ -224,13 +224,13 @@ public class PartnerController {
     public String editProspect(EditPartner editPartner, @PathVariable Long id){
         partnerService.editPartner(id, editPartner);
 
-       //return "redirect:/partners/details-prospect/{id}";
+       return "redirect:/partners/details-prospect/{id}";
 
-        if(editPartner.getStateProspect().equals("ENDED")) {
-            return "redirect:/partners/all-customers";
-        } else {
-            return "redirect:/partners/details-prospect/{id}";
-        }
+//        if(editPartner.getStateProspect().equals("ENDED")) {
+//            return "redirect:/partners/all-customers";
+//        } else {
+//            return "redirect:/partners/details-prospect/{id}";
+//        }
     }
 
     // Edit specific note - Display form
