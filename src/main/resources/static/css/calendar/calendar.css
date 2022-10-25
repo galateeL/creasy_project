@@ -1,0 +1,11 @@
+#calendarNav{
+    background: #C3C3C3;
+}
+
+#calendarNav:hover{
+    background: #b3b3b3;
+}
+
+#calendarNav:active{
+    background: #999999;
+}

@@ -109,4 +109,21 @@ h5, h1{
     color: #757575;
 }
 
+#customerNav{
+    background: #FFC900;
+    color: white;
+}
+
+#customerNav:hover{
+    background: #e6b400;
+    color: white;
+}
+
+
+#customerNav:active{
+    background: #cca000 !important;
+    color: white;
+    border: none;
+}
+
 

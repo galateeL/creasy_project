@@ -58,5 +58,20 @@ h5, h1{
     display: none;
 }
 
+#companyNav{
+    background: #3AE1B1;
+    color: white;
+}
+
+#companyNav:hover{
+    background: #1ec898;
+    color: white;
+}
+
+#companyNav:active{
+    background: #179b76 !important;
+    color: white;
+}
+
 
 
