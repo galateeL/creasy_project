@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -76,7 +76,7 @@
                             <label class="form-label text-uppercase" for="stateProspect">Prospecting state</label>
 
                             <select class="form-select" aria-label=".form-select" name="stateProspect" id="stateProspect">
-                                <option disabled selected>${prospect.stateProspect}</option>
+                                <option disabled selected>${prospect.stateProspects}</option>
                                 <c:forEach items="${stateProspects}" var="stateProspect">
                                     <option value="${stateProspect}">${stateProspect}</option>
                                 </c:forEach>

@@ -15,37 +15,21 @@ body{
 .btn-secondary{
     background: #C3C3C3;
     color: white;
-    border: none;
 }
 
 .btn-secondary:hover{
     background: #b3b3b3;
     color: white;
-    border: none;
 }
 
 .btn-primary{
-    background: #8109CB;
+    background: #FFC900;
     color: white;
-    border: none;
 }
 
 .btn-primary:hover{
-    background: #7608ba;
+    background: #e6b400;
     color: white;
-    border: none;
-}
-
-.btn-sub{
-    background: #ef8e43;
-    color: white;
-    border: none;
-}
-
-.btn-sub:hover{
-    background: #eb7114;
-    color: white;
-    border: none;
 }
 
 .btn-danger{
@@ -60,42 +44,35 @@ body{
     border: none;
 }
 
-
 .btn-validate{
     background: #3AE1B1;
     color: white;
-    border: none;
 }
 
 .btn-validate:hover{
     background: #1ec898;
     color: white;
-    border: none;
 }
 
-.date{
-    color: #3AE1B1;
-}
 
-/*partners and companies info + title*/
-.part-info, .comp-inf, h1{
+h5, h1{
     color: #757575;
 }
 
-/*company name title*/
-.pros-name{
-    color: #8109CB;
+.card-text{
+    color: #FFC900;
 }
 
-.form-label{
-    background: #D9D9D9;
-    color: white;
+
+/*search icon*/
+.fa-search{
+    display: block;
+    margin-left: -15%;
+
 }
 
-.imgPicture{
-    object-fit: cover;
-    height: 100px;
+.filtersText{
+    color: #757575;
 }
-
 
 

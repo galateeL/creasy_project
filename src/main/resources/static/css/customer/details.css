@@ -25,25 +25,13 @@ body{
 }
 
 .btn-primary{
-    background: #8109CB;
+    background: #FFC900;
     color: white;
     border: none;
 }
 
 .btn-primary:hover{
-    background: #7608ba;
-    color: white;
-    border: none;
-}
-
-.btn-sub{
-    background: #ef8e43;
-    color: white;
-    border: none;
-}
-
-.btn-sub:hover{
-    background: #eb7114;
+    background: #e6b400;
     color: white;
     border: none;
 }
@@ -84,7 +72,7 @@ body{
 
 /*company name title*/
 .pros-name{
-    color: #8109CB;
+    color: #e6b400;
 }
 
 .form-label{
