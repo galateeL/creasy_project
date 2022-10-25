@@ -47,22 +47,33 @@
 
         <h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Customer List</h1>
 
-        <div class="mt-4 ms-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start">
-            <%--Add prospect button--%>
-            <a href="${pageContext.request.contextPath}/partners/add-customer"
-               class="btn btn-primary border-0 shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0">Add new customer</a>
-            <%---------%>
 
-            <%--Search customer--%>
-                <div class="ms-md-2 col-10 col-lg-2">
+        <div class="mt-4 ms-md-5">
 
-                    <form class="d-flex" method="GET" action="${pageContext.request.contextPath}/partners/all-customers">
-                        <input class="Search form-control shadow-sm" type="search" placeholder="Search customer"
-                               name="keywordCustomer"
-                               value="${keywordCustomer}" id="keywordCustomer">
-                        <button class="bg-transparent border-0 fa fa-search" type="submit"></button>
-                    </form>
+            <div class="ms-md-4 me-md-5 d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
+
+                <div class="d-flex flex-column flex-md-row">
+                    <%--Add prospect button--%>
+                    <a href="${pageContext.request.contextPath}/partners/add-customer"
+                       class="btn btn-primary border-0 shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0">Add new customer</a>
+                    <%---------%>
+
+                    <%--Search customer--%>
+                    <div class="ms-md-2">
+
+                        <form class="d-flex" method="GET" action="${pageContext.request.contextPath}/partners/all-customers">
+                            <input class="Search form-control shadow-sm" type="search" placeholder="Search customer"
+                                   name="keywordCustomer"
+                                   value="${keywordCustomer}" id="keywordCustomer">
+                            <button class="bg-transparent border-0 fa fa-search" type="submit"></button>
+                        </form>
+                    </div>
                 </div>
+
+
+                <a class="btn mt-3 btn-primary shadow-sm align-self-center border-0 me-md-5 ps-3 pe-3"
+                   href="${pageContext.request.contextPath}/map">Locating customers</a>
+            </div>
         </div>
 
 
