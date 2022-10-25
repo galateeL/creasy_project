@@ -40,6 +40,7 @@
                  role="dialog"
                  id="modalSignin">
             <div class="container" style="background-color: white">
+                <jsp:include page="./deleteUserModal.jsp"/>
                 <form:form method="post" action="${pageContext.request.contextPath}/signin" class="row">
                     <sec:authorize access="isAuthenticated()">
                         <div class="mb-3 col-8 mt-4">
@@ -72,12 +73,13 @@
                             </div>
                             <c:if test="${list != 'true' }">
                                 <div class="col-12 col-md-6 row  m-1 align-item-center ">
-                                    <a href="${pageContext.request.contextPath}/delete/<sec:authentication
-                        property='principal.username'/>" class=" mb-5 btn btn-lg rounded-3 mt-3" style=" background-color: #F7526A; color: white;"
-                                       value="Save"type="submit">Delete my account
-                                    </a>
-                                </div>
 
+                                    <button type="button"
+                                            class=" mb-5 btn btn-lg rounded-3 mt-3" style=" background-color: #F7526A; color: white;"
+                                            data-bs-toggle="modal" data-bs-target="#DeleteUser">
+                                        Delete my accoun
+                                    </button>
+                                </div>
                             </c:if>
                         </div>
                     </sec:authorize>

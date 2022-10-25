@@ -39,7 +39,9 @@ public class CustomUserDetails implements UserDetails {
     public String getLastName() {
         return this.user.getLastName();
     }
-
+    public boolean isAdmin() {
+        return this.user.isAdmin();
+    }
     @Override
     public boolean isAccountNonExpired() {
         return true;

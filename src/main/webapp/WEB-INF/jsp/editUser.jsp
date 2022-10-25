@@ -88,14 +88,6 @@
                                        value="Save"type="submit">Abandon
                                     </a>
                                 </div>
-                                <c:if test="${list != 'true' }">
-                                    <div class="col-12 row  m-1 align-item-center ">
-                                        <a href="${pageContext.request.contextPath}/delete/<sec:authentication
-                                            property='principal.username'/>" class=" mb-5 btn btn-lg rounded-3 mt-3" style=" background-color: #F7526A; color: white;"
-                                           value="Save"type="submit">Delete my account
-                                        </a>
-                                    </div>
-                                </c:if>
                             </div>
                         </div>
                     </sec:authorize>
