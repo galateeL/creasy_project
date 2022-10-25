@@ -1,7 +1,10 @@
 package com.example.creasy.service;
 
+import com.example.creasy.controller.dto.EventDto;
+import com.example.creasy.controller.dto.MapCustomerDto;
 import com.example.creasy.exception.PartnerNotFoundException;
 import com.example.creasy.repository.*;
+import com.example.creasy.repository.entity.Event;
 import com.example.creasy.repository.entity.Partner;
 import com.example.creasy.repository.entity.StateProspect;
 import com.example.creasy.repository.entity.User;
@@ -12,7 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.Part;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PartnerService {
@@ -44,6 +49,8 @@ public class PartnerService {
     public int findAllCustomersByUser(String email){
         return this.partnerRepository.findNumberCustomersByUserEmail(StateProspect.ENDED, email);
     }
+
+
 
     // Find number of prospects with TO_FOLLOW_UP state
     public int findNumberOfProspectsToFollowUp(StateProspect stateProspect, String email) {
@@ -132,6 +139,16 @@ public class PartnerService {
         return this.partnerRepository.findByStateProspectIsAndUserEmailIs(StateProspect.ENDED, email);
     }
 
+    public List<Partner> getAllCustomerForMap() {
+        StateProspect stateProspect2= null;
+                    return this.partnerRepository.findCustomer(StateProspect.ENDED,stateProspect2);
+    }
+    public List<MapCustomerDto> getAllMapCustomeDto(){
+        List<Partner> partners= getAllCustomerForMap();
+        List<MapCustomerDto> partnersDto = new ArrayList<>();
+        partners.forEach(e->partnersDto.add(e.toMapCustomerDto()));
+        return partnersDto;
+    }
     public List<Partner> getAllbyCompany(Long id){
         return this.partnerRepository.findByCompanyId(id);
     }

@@ -11,7 +11,7 @@ public class CreateUser {
     @NotNull
     private String email;
     @NotNull
-    @Size(min=1, message="password don't work")
+    @Size(min=2, message="password don't work")
     private String password;
 
     private MultipartFile pictureFile;

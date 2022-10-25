@@ -20,7 +20,7 @@
 
     <title>Document</title>
 </head>
-<body class="container-fluid d-flex flex-row p-0" style="height: 100%;" >
+<body class="container-fluid d-flex flex-row p-0" style="min-height: 100%;" >
 
 <section class=" text-center d-flex flex-column justify-content-center align-middle col-md-2  "
          style="background-color:
@@ -34,7 +34,8 @@
         <form:form method="post" action="${pageContext.request.contextPath}/signin" class="row">
 
             <div class="col-12 d-flex flex-column align-items-center mt-5">
-                <img src="https://i.postimg.cc/jSTDLtq3/logo-creasy.png" alt="Logo">
+                <img src="https://i.postimg.cc/jSTDLtq3/logo-creasy.png" class="img-fluid" style="height:
+                        200px;width: 300px; object-fit: scale-down" alt="Logo">
                 <h1 >Welcome</h1>
                 <p style="color: #C3C3C3;">Log in to your account to continue</p>
             </div>

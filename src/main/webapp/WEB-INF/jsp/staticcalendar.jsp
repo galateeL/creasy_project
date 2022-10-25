@@ -56,8 +56,8 @@ $(document).ready(function() {
 
 </style>			
 </head>
-<body>
+<body style="background-color:#F1F1F1;">
 <jsp:include page="./header.jsp"/>
-	<div  class="mt-5" id='calendar'></div>
+	<div style="background-color:white;" class="mt-5" id='calendar'></div>
 </body>
 </html>

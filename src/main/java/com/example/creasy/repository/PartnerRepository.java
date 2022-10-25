@@ -55,6 +55,9 @@ public interface PartnerRepository extends CrudRepository<Partner, Long> {
     @Query("select p from Partner p where p.stateProspect = ?1 and (p.firstname like ?2% or p.lastname like ?2% or p.company.name like ?2%) and p.user.email = ?3 order by p.registerDate DESC")
     List<Partner> findCustomerNO (StateProspect stateProspect, String keywordCustomer, String email);
 
+    @Query("select p from Partner p where p.stateProspect = ?1 OR p.stateProspect =?2")
+    List<Partner> findCustomer (StateProspect stateProspect,StateProspect stateProspect2);
+
     // Tri prospect Oldest to Newest
     @Query("select p from Partner p where p.stateProspect <> ?1 and (p.firstname like ?2% or p.lastname like ?2% or p.company.name like ?2%) and p.user.email = ?3 order by p.registerDate DESC")
     List<Partner>  findProspectNO (StateProspect stateProspect, String keywordProspect,String email);

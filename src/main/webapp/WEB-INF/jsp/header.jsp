@@ -1,4 +1,5 @@
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <header>
@@ -62,10 +63,14 @@
                         </a>
                     </li>
                     </li>
-                    <li class="nav-item d-flex justify-content-center align-items-center px-4 me-2">
-                        <a class="nav-link" style="color: #f7526a;" href="#">Logout</a>
-                    </li>
-
+                    <sec:authorize access="isAuthenticated()">
+                        <li class="nav-item d-flex justify-content-center align-items-center px-4 me-2">
+                            <form:form action="/logout" method="post">
+                                <button style="color: #f7526a; border:none;background-color:#F8F9FA  " type="submit">
+                                    Logout</button>
+                            </form:form>
+                        </li>
+                    </sec:authorize>
                 </ul>
             </div>
         </div>
