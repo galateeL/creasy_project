@@ -68,7 +68,7 @@
                        href="tel:${company.phoneNumberFixr}"></a>
 
                     <a class="fa fa-envelope-o fa-3x mt-4 mt-md-0 ms-md-4 me-md-2 text-decoration-none"
-                       aria-hidden="true" href="mailto: ${company.email}"></a>
+                       aria-hidden="true" href="mailto:${company.email}"></a>
 
                     <a class="fa fa-map-marker fa-3x mt-4 mb-4 mt-md-0 mb-md-0 ms-md-4 me-md-5 text-decoration-none"
                        aria-hidden="true" href="http://maps.google.com?q=${company.latitude},${company.longitude}"
