@@ -223,7 +223,14 @@ public class PartnerController {
     @PostMapping("/edit-prospect/{id}")
     public String editProspect(EditPartner editPartner, @PathVariable Long id){
         partnerService.editPartner(id, editPartner);
-        return "redirect:/partners/details-prospect/{id}";
+
+       //return "redirect:/partners/details-prospect/{id}";
+
+        if(editPartner.getStateProspect().equals("ENDED")) {
+            return "redirect:/partners/all-customers";
+        } else {
+            return "redirect:/partners/details-prospect/{id}";
+        }
     }
 
     // Edit specific note - Display form

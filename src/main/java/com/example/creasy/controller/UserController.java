@@ -66,7 +66,7 @@ public class UserController {
     @GetMapping("/details/user")
     public String displayDetailForm(Model m, Principal p){
         m.addAttribute("command",new CreateUser());
-        if(p.getName().equals("a")  ){
+        if(p.getName().equals("laurence.rosa@rosa-formation.fr")  ){
             m.addAttribute("list","true");
         }
         List<User> userList= userService.getAllUser();
