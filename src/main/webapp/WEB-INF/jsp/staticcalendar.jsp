@@ -67,13 +67,14 @@ $(document).ready(function() {
 <body class="d-flex flex-column justify-content-between vh-100" style="background-color:#F1F1F1;">
 
 <div>
+
 <jsp:include page="./header.jsp"/>
 
 	<h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Calendar :</h1>
 
-	<div style="background-color:white;" class="mt-5" id='calendar'></div>
+	<div style="background-color:white;" class="mt-5 pt-2 mb-2" id='calendar'></div>
+	</div>
 
-</div>
 
 </div>
 <%--footer--%>
