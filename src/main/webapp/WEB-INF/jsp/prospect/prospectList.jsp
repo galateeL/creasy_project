@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -52,12 +52,15 @@
                class="btn btn-primary border-0 shadow-sm align-self-center ps-3 pe-3 mb-3 mb-md-0">Add prospect</a>
             <%---------%>
 
-            <%--                        Search prospect--%>
-            <div class="d-flex ms-md-2 col-10 col-lg-2">
+            <%--Search prospect--%>
+            <div class="ms-md-2 col-10 col-lg-2">
 
-                <input class="Search form-control shadow-sm" type="search" placeholder="Search customer" name="keywordProspect"
-                       value="${keywordProspect}" id="keywordProspect">
-                <button class="bg-transparent border-0 fa fa-search" type="submit"></button>
+                <form class="d-flex" method="GET" action="${pageContext.request.contextPath}/partners/all-prospects">
+                    <input class="Search form-control shadow-sm" type="search" placeholder="Search customer"
+                           name="keywordProspect"
+                           value="${keywordProspect}" id="keywordProspect">
+                    <button class="bg-transparent border-0 fa fa-search" type="submit"></button>
+                </form>
             </div>
         </div>
 

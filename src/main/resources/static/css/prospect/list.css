@@ -39,7 +39,7 @@ body{
 }
 
 .btn-danger:hover{
-    background: #f63c58;
+    background: #f52443;
     color: white;
     border: none;
 }
@@ -51,11 +51,6 @@ body{
 
 .btn-validate:hover{
     background: #1ec898;
-    color: white;
-}
-
-.btn-danger:hover{
-    background: #cc0000;
     color: white;
 }
 

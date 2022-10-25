@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -47,7 +47,7 @@
             <h1 class="mt-3 fw-bold ms-md-5 align-self-center">Prospect details</h1>
 
             <a class="btn mt-3 btn-secondary shadow-sm align-self-center border-0 ps-3 pe-3"
-               href="${pageContext.request.contextPath}/companies/list">Back to company list</a>
+               href="${pageContext.request.contextPath}/partners/all-prospects">Back to prospect list</a>
 
         </div>
         <%----------------------------%>
@@ -142,7 +142,7 @@
                                            placeholder="ex : 6 days" min="0" required>
 
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                <button type="submit" class="btn mt-4" style="background: #ee8d41; color: white">Add dunning
+                                <button type="submit" class="btn btn-sub mt-4">Add dunning
                                     period
                                 </button>
                             </form>
