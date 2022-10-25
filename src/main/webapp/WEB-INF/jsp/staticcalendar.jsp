@@ -20,7 +20,12 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<link rel="stylesheet" href="/css/calendar/calendar.css"/>
+
+	<link rel="icon" type="image/x-icon" href="/img/circleLogo.png">
 	<script>
 
 $(document).ready(function() {
@@ -55,12 +60,25 @@ $(document).ready(function() {
 		margin: 0 auto;
 	}
 
-</style>			
+</style>
+
+	<title>CREASY | Calendar</title>
 </head>
-<body style="background-color:#F1F1F1;">
+<body class="d-flex flex-column justify-content-between vh-100" style="background-color:#F1F1F1;">
+
+<div>
 <jsp:include page="./header.jsp"/>
+
+	<h1 class="mt-3 fw-bold text-center text-md-start ms-md-5">Calendar :</h1>
+
 	<div style="background-color:white;" class="mt-5" id='calendar'></div>
 
+</div>
+
+</div>
+<%--footer--%>
+<jsp:include page="./footer.jsp"/>
+<%----------%>
 <script src="/js/currentPage.js"></script>
 </body>
 </html>
