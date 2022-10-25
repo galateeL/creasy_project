@@ -21,7 +21,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     </style>
 
-    <title>Document</title>
+    <title>CREASY | Event Details</title>
 </head>
 <body class="vh-100" style="background-color:
 #F1F1F1;">

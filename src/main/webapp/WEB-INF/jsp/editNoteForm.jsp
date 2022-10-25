@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/editNote.css"/>
     <link rel="icon" type="image/x-icon" href="/img/circleLogo.png">
 
-    <title>CREASY | Edit note</title>
+    <title>CREASY | Edit Note</title>
 </head>
 <body class="d-flex flex-column justify-content-between vh-100">
 

@@ -11,7 +11,7 @@
 
     <link rel="icon" type="image/x-icon" href="/img/circleLogo.png">
 
-    <title>CREASY | Edit note</title>
+    <title>CREASY | Edit Event</title>
 </head>
 <body>
 
