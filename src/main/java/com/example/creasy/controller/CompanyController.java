@@ -1,9 +1,9 @@
 package com.example.creasy.controller;
 
-import com.example.creasy.repository.CompanyRepository;
-import com.example.creasy.repository.entity.Company;
-import com.example.creasy.repository.entity.Partner;
-import com.example.creasy.repository.entity.User;
+import com.example.creasy.controller.dto.CreateCompanyDto;
+import com.example.creasy.model.Company;
+import com.example.creasy.model.Partner;
+import com.example.creasy.model.User;
 import com.example.creasy.service.CompanyService;
 import com.example.creasy.service.PartnerService;
 import com.example.creasy.service.UserService;
@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.jnlp.ClipboardService;
 import java.security.Principal;
 import java.util.List;
 import java.util.Set;
@@ -71,7 +70,7 @@ public class CompanyController {
     }
 
     @PostMapping("/add")
-    public String createCompany(CreateCompany createCompany){
+    public String createCompany(CreateCompanyDto createCompany){
 
         companyService.addCompany(createCompany);
 
@@ -95,7 +94,7 @@ public class CompanyController {
     }
 
     @PostMapping("/edit/{id}")
-    public RedirectView editCompany(@PathVariable("id") Long id, CreateCompany company){
+    public RedirectView editCompany(@PathVariable("id") Long id, CreateCompanyDto company){
         companyService.editCompany(id, company );
 
         return new RedirectView(("/companies/details/" + id));

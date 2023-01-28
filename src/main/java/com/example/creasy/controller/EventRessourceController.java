@@ -1,4 +1,4 @@
-package com.example.creasy.controller.api;
+package com.example.creasy.controller;
 
 import com.example.creasy.controller.dto.EventDto;
 import com.example.creasy.service.EventService;
@@ -11,7 +11,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-public class EventRessource {
+public class EventRessourceController {
     @Autowired
     private EventService eventService;
 

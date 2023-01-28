@@ -1,9 +1,9 @@
 package com.example.creasy.service;
 
-import com.example.creasy.controller.CreateCompany;
+import com.example.creasy.controller.dto.CreateCompanyDto;
 import com.example.creasy.exception.CompanyNotFoundException;
 import com.example.creasy.repository.CompanyRepository;
-import com.example.creasy.repository.entity.Company;
+import com.example.creasy.model.Company;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,7 +36,7 @@ public class CompanyService {
     }
 
 
-    public void addCompany(CreateCompany createCompany){
+    public void addCompany(CreateCompanyDto createCompany){
 
         Company company = new Company();
         company.setActivityArea(createCompany.getActivityArea());
@@ -69,7 +69,7 @@ public class CompanyService {
         this. companyRepository.delete(company);
     }
 
-    public Company editCompany(Long id, CreateCompany editCompany){
+    public Company editCompany(Long id, CreateCompanyDto editCompany){
 
         Company company = this.companyRepository.findById(id)
                 .orElseThrow(() -> new CompanyNotFoundException(id));

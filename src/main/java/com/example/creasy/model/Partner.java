@@ -1,14 +1,11 @@
-package com.example.creasy.repository.entity;
+package com.example.creasy.model;
 
-import com.example.creasy.controller.dto.EventDto;
 import com.example.creasy.controller.dto.MapCustomerDto;
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

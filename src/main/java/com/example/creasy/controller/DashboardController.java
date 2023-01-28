@@ -1,21 +1,19 @@
 package com.example.creasy.controller;
 
-import com.example.creasy.repository.*;
-import com.example.creasy.repository.entity.*;
+import com.example.creasy.model.Company;
+import com.example.creasy.model.Partner;
+import com.example.creasy.model.StateProspect;
+import com.example.creasy.model.User;
 import com.example.creasy.service.CompanyService;
 import com.example.creasy.service.NoteService;
 import com.example.creasy.service.PartnerService;
 import com.example.creasy.service.UserService;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;

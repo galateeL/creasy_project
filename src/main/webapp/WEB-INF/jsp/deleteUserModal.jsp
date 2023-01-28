@@ -10,7 +10,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>you must reconnect if you validate.</p>
+                <p>You must reconnect if you validate.</p>
             </div>
             <div class="modal-footer">
                 <form method="post" enctype="multipart/form-data"

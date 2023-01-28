@@ -1,12 +1,10 @@
-package com.example.creasy.repository.entity;
+package com.example.creasy.model;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class User {

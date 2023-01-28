@@ -1,6 +1,6 @@
 package com.example.creasy.repository;
 
-import com.example.creasy.repository.entity.Company;
+import com.example.creasy.model.Company;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

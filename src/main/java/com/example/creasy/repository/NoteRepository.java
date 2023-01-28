@@ -1,8 +1,7 @@
 package com.example.creasy.repository;
 
-import com.example.creasy.repository.entity.Note;
-import com.example.creasy.repository.entity.Partner;
-import org.springframework.data.jpa.repository.Query;
+import com.example.creasy.model.Note;
+import com.example.creasy.model.Partner;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,15 +1,13 @@
-package com.example.creasy.repository;
+package com.example.creasy.controller.dto;
 
-import com.example.creasy.repository.entity.Company;
-import com.example.creasy.repository.entity.Partner;
-import com.example.creasy.repository.entity.StateProspect;
-import com.example.creasy.repository.entity.User;
-import org.springframework.web.multipart.MultipartFile;
+import com.example.creasy.model.Company;
+import com.example.creasy.model.Partner;
+import com.example.creasy.model.StateProspect;
+import com.example.creasy.model.User;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-public class CreatePartner {
+public class CreatePartnerDto {
 
     private String lastname;
 
@@ -35,7 +33,7 @@ public class CreatePartner {
 
 
 
-    public CreatePartner() {
+    public CreatePartnerDto() {
     }
 
     public Partner toPartner() {
@@ -54,7 +52,7 @@ public class CreatePartner {
 
     }
 
-    public CreatePartner(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company) {
+    public CreatePartnerDto(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;

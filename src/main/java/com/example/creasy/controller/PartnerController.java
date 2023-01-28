@@ -1,7 +1,7 @@
 package com.example.creasy.controller;
 
-import com.example.creasy.repository.*;
-import com.example.creasy.repository.entity.*;
+import com.example.creasy.controller.dto.*;
+import com.example.creasy.model.*;
 import com.example.creasy.service.CompanyService;
 import com.example.creasy.service.NoteService;
 import com.example.creasy.service.PartnerService;
@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.Part;
 import java.security.Principal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -110,7 +107,7 @@ public class PartnerController {
 
     // Add new note to partner - Save in DB
     @PostMapping("/{id}/add-note")
-    public String addNote(CreateNote createNote, @PathVariable Long id,Model model) {
+    public String addNote(CreateNoteDto createNote, @PathVariable Long id, Model model) {
 
         Partner partner = partnerService.findPartnerById(id);
         model.addAttribute("partner", partner);
@@ -148,7 +145,7 @@ public class PartnerController {
 
     // Add prospect - Save in DB
     @PostMapping("/add-prospect")
-    public String addProspect(Principal principal, CreateProspect createProspect) {
+    public String addProspect(Principal principal, CreateProspectDto createProspect) {
 
         User user = userService.getUserByMail(principal.getName());
 
@@ -168,7 +165,7 @@ public class PartnerController {
 
     // Add customer - Save in DB
     @PostMapping("/add-customer")
-    public String addCustomer(Principal principal, CreateCustomer createCustomer) {
+    public String addCustomer(Principal principal, CreateCustomerDto createCustomer) {
 
         User user = userService.getUserByMail(principal.getName());
 
@@ -203,7 +200,7 @@ public class PartnerController {
 
     // Edit specific customer
     @PostMapping("/edit-customer/{id}")
-    public String editCustomer(EditPartner editPartner, @PathVariable Long id){
+    public String editCustomer(EditPartnerDto editPartner, @PathVariable Long id){
         partnerService.editPartner(id, editPartner);
         return "redirect:/partners/details-customer/{id}";
     }
@@ -223,7 +220,7 @@ public class PartnerController {
 
     // Edit specific prospect
     @PostMapping("/edit-prospect/{id}")
-    public String editProspect(EditPartner editPartner, @PathVariable Long id){
+    public String editProspect(EditPartnerDto editPartner, @PathVariable Long id){
         partnerService.editPartner(id, editPartner);
 
        return "redirect:/partners/details-prospect/{id}";
@@ -247,7 +244,7 @@ public class PartnerController {
 
     // Edit specific note
     @PostMapping("/edit-note/{id}")
-    public String editNote(EditNote editNote, @PathVariable Long id){
+    public String editNote(EditNoteDto editNote, @PathVariable Long id){
         noteService.editNote(id, editNote);
 
         Note note = noteService.getNoteById(id);
@@ -291,7 +288,7 @@ public class PartnerController {
 
     // Add dunning period to a prospect - Save in DB
     @PostMapping("{id}/add-dunning-period")
-    public String addDunningPeriod(CreateDunning createDunning, @PathVariable Long id, Model model) {
+    public String addDunningPeriod(CreateDunningDto createDunning, @PathVariable Long id, Model model) {
 
         Partner partner = partnerService.findPartnerById(id);
         model.addAttribute("partner", partner);

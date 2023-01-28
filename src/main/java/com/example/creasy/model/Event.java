@@ -1,4 +1,4 @@
-package com.example.creasy.repository.entity;
+package com.example.creasy.model;
 
 import com.example.creasy.controller.dto.EventDto;
 import org.hibernate.annotations.OnDelete;

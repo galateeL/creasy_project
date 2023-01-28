@@ -77,7 +77,7 @@
                                     <button type="button"
                                             class=" mb-5 btn btn-lg rounded-3 mt-3" style=" background-color: #F7526A; color: white;"
                                             data-bs-toggle="modal" data-bs-target="#DeleteUser">
-                                        Delete my accoun
+                                        Delete my account
                                     </button>
                                 </div>
                             </c:if>

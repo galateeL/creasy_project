@@ -1,25 +1,27 @@
+
 package com.example.creasy.controller.dto;
 
-import com.example.creasy.repository.entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class UpdateUser {
+public class CreateUserDto {
     private Long id;
     @NotNull
     private String email;
     @NotNull
-    @Size(min=1, message="password don't work")
+    @Size(min=2, message="password don't work")
     private String password;
 
-    private String lastName;
     private MultipartFile pictureFile;
+    private String lastName;
+
     private String firstName;
+
     private String pictureUrl;
 
-    public UpdateUser() {
+    public CreateUserDto() {
     }
 
     public MultipartFile getPictureFile() {

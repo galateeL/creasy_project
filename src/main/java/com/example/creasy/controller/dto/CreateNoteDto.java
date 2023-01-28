@@ -1,12 +1,12 @@
-package com.example.creasy.repository;
+package com.example.creasy.controller.dto;
 
-import com.example.creasy.repository.entity.Note;
-import com.example.creasy.repository.entity.Partner;
+import com.example.creasy.model.Note;
+import com.example.creasy.model.Partner;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
-public class CreateNote {
+public class CreateNoteDto {
 
     private String exchange;
 
@@ -15,7 +15,7 @@ public class CreateNote {
 
 
 
-    public CreateNote() {
+    public CreateNoteDto() {
     }
 
     public Note toNote() {
@@ -25,7 +25,7 @@ public class CreateNote {
         return n;
     }
 
-    public CreateNote(String exchange, LocalDateTime registerDate, Partner partner) {
+    public CreateNoteDto(String exchange, LocalDateTime registerDate, Partner partner) {
         this.exchange = exchange;
         this.registerDate = registerDate;
     }

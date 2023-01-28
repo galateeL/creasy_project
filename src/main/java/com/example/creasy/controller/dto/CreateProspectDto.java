@@ -1,15 +1,13 @@
-package com.example.creasy.repository;
+package com.example.creasy.controller.dto;
 
-import com.example.creasy.repository.entity.Company;
-import com.example.creasy.repository.entity.Partner;
-import com.example.creasy.repository.entity.StateProspect;
-import com.example.creasy.repository.entity.User;
+import com.example.creasy.model.Company;
+import com.example.creasy.model.Partner;
+import com.example.creasy.model.StateProspect;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-public class CreateCustomer {
+public class CreateProspectDto {
 
     private String lastname;
 
@@ -27,19 +25,20 @@ public class CreateCustomer {
 
     private String positionHeld;
 
+
     private StateProspect stateProspect;
 
     private Company company;
 
     private LocalDateTime registerDate;
 
-    private User user;
 
 
-    public CreateCustomer() {
+
+    public CreateProspectDto() {
     }
 
-    public Partner toCustomer() {
+    public Partner toProspect() {
         Partner p = new Partner();
         p.setFirstname(this.firstname);
         p.setLastname(this.lastname);
@@ -55,7 +54,7 @@ public class CreateCustomer {
 
     }
 
-    public CreateCustomer(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company) {
+    public CreateProspectDto(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
@@ -63,9 +62,11 @@ public class CreateCustomer {
         this.fixedPhoneNumber = fixedPhoneNumber;
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
-        this.stateProspect = StateProspect.ENDED;
+        this.stateProspect = stateProspect;
         this.company = company;
+
     }
+
 
     public MultipartFile getPictureFile() {
         return pictureFile;
@@ -73,14 +74,6 @@ public class CreateCustomer {
 
     public void setPictureFile(MultipartFile pictureFile) {
         this.pictureFile = pictureFile;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public LocalDateTime getRegisterDate() {
@@ -157,12 +150,10 @@ public class CreateCustomer {
     }
 
     public StateProspect getStateProspect() {
-
         return stateProspect;
     }
 
     public void setStateProspect(StateProspect stateProspect) {
-
         this.stateProspect = stateProspect;
     }
 }

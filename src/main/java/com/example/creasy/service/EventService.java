@@ -1,20 +1,15 @@
 package com.example.creasy.service;
 
-import com.example.creasy.controller.dto.CreateEvent;
+import com.example.creasy.controller.dto.CreateEventDto;
 import com.example.creasy.controller.dto.EventDto;
 import com.example.creasy.exception.NoteNotFoundException;
-import com.example.creasy.repository.CreateNote;
-import com.example.creasy.repository.EditNote;
 import com.example.creasy.repository.EventRepository;
 import com.example.creasy.repository.UserRepository;
-import com.example.creasy.repository.entity.Event;
-import com.example.creasy.repository.entity.Note;
-import com.example.creasy.repository.entity.Partner;
-import com.example.creasy.repository.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.creasy.model.Event;
+import com.example.creasy.model.Partner;
+import com.example.creasy.model.User;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +44,7 @@ public class EventService {
                 .orElseThrow(() -> new NoteNotFoundException(id));
     }
 
-    public void addEvent(CreateEvent createEvent, Partner partner,User user){
+    public void addEvent(CreateEventDto createEvent, Partner partner, User user){
 
         Event event = new Event();
         event.setTitle(createEvent.getTitle());
@@ -67,7 +62,7 @@ public class EventService {
         this. eventRepository.delete(event);
     }
 
-    public Event editEvent(Long id, CreateEvent createEvent){
+    public Event editEvent(Long id, CreateEventDto createEvent){
 
         Event event = this.eventRepository
                 .findById(id)

@@ -1,8 +1,8 @@
 package com.example.creasy.controller;
 
-import com.example.creasy.controller.dto.CreateUser;
-import com.example.creasy.controller.dto.UpdateUser;
-import com.example.creasy.repository.entity.User;
+import com.example.creasy.controller.dto.CreateUserDto;
+import com.example.creasy.controller.dto.UpdateUserDto;
+import com.example.creasy.model.User;
 import com.example.creasy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Controller
 public class UserController {
@@ -25,18 +24,18 @@ public class UserController {
 
     @GetMapping("/signin")
     public String displaySigninForm(Model m){
-        m.addAttribute("command",new CreateUser());
+        m.addAttribute("command",new CreateUserDto());
         return "signinForm";
     }
 
     @GetMapping("/signup")
     public String displayRegistrationForm(Model m){
-        m.addAttribute("createUser",new CreateUser());
+        m.addAttribute("createUser",new CreateUserDto());
         return "signUpView";
     }
 
     @PostMapping("/signup")
-    public String signUp(@Valid CreateUser createUser, BindingResult result,Model m){
+    public String signUp(@Valid CreateUserDto createUser, BindingResult result, Model m){
         if(result.hasErrors()){
             m.addAttribute("createUser",createUser);
             return "signUpView";
@@ -56,7 +55,7 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String editContactForm(@Valid UpdateUser updateUser, BindingResult result, Model m){
+    public String editContactForm(@Valid UpdateUserDto updateUser, BindingResult result, Model m){
         if(result.hasErrors()){
             m.addAttribute("updateUser",updateUser);
             return "editUser";
@@ -68,7 +67,7 @@ public class UserController {
 
     @GetMapping("/details/user")
     public String displayDetailForm(Model m, Principal p){
-        m.addAttribute("command",new CreateUser());
+        m.addAttribute("command",new CreateUserDto());
 
         if(p.getName().equals("laurence.rosa@rosa-formation.fr")  ){
             m.addAttribute("list","true");

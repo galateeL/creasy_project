@@ -1,17 +1,13 @@
 package com.example.creasy;
 
 
+import com.example.creasy.model.*;
 import com.example.creasy.repository.*;
 
 import com.example.creasy.repository.CompanyRepository;
-import com.example.creasy.repository.entity.Company;
 
 
-import com.example.creasy.repository.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.example.creasy.repository.entity.Partner;
-import com.example.creasy.repository.entity.StateProspect;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

@@ -1,6 +1,6 @@
 package com.example.creasy.repository;
 
-import com.example.creasy.repository.entity.User;
+import com.example.creasy.model.User;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

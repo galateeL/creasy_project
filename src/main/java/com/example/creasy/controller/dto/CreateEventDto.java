@@ -2,14 +2,10 @@ package com.example.creasy.controller.dto;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 
-public class CreateEvent {
+public class CreateEventDto {
 
     private Long id;
 
@@ -22,7 +18,7 @@ public class CreateEvent {
     private LocalDateTime finish;
     private String address;
 
-    public CreateEvent() {
+    public CreateEventDto() {
         super();
         // TODO Auto-generated constructor stub
     }

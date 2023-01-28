@@ -1,14 +1,13 @@
 package com.example.creasy.service;
 
 import com.example.creasy.exception.NoteNotFoundException;
-import com.example.creasy.repository.CreateNote;
-import com.example.creasy.repository.EditNote;
+import com.example.creasy.controller.dto.CreateNoteDto;
+import com.example.creasy.controller.dto.EditNoteDto;
 import com.example.creasy.repository.NoteRepository;
-import com.example.creasy.repository.entity.Note;
-import com.example.creasy.repository.entity.Partner;
+import com.example.creasy.model.Note;
+import com.example.creasy.model.Partner;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class NoteService {
                 .orElseThrow(() -> new NoteNotFoundException(id));
     }
 
-    public void addNote(CreateNote createNote, Partner partner){
+    public void addNote(CreateNoteDto createNote, Partner partner){
 
         Note note = new Note();
         note.setExchange(createNote.getExchange());
@@ -50,7 +49,7 @@ public class NoteService {
         this. noteRepository.delete(note);
     }
 
-    public Note editNote(Long id, EditNote editNote){
+    public Note editNote(Long id, EditNoteDto editNote){
 
         Note note = this.noteRepository
                 .findById(id)

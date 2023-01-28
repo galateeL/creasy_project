@@ -1,12 +1,10 @@
-package com.example.creasy.repository;
+package com.example.creasy.controller.dto;
 
-import com.example.creasy.repository.entity.StateProspect;
-import org.springframework.format.annotation.DateTimeFormat;
+import com.example.creasy.model.StateProspect;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class CreateDunning {
+public class CreateDunningDto {
 
     private int dunningPeriod;
 
@@ -16,10 +14,10 @@ public class CreateDunning {
     private StateProspect stateProspect;
 
 
-    public CreateDunning() {
+    public CreateDunningDto() {
     }
 
-    public CreateDunning(int dunningPeriod, LocalDateTime registerDateDunning, StateProspect stateProspect) {
+    public CreateDunningDto(int dunningPeriod, LocalDateTime registerDateDunning, StateProspect stateProspect) {
         this.dunningPeriod = dunningPeriod;
         this.registerDateDunning = registerDateDunning;
         this.stateProspect = stateProspect;

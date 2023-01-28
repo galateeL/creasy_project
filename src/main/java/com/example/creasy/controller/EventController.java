@@ -1,8 +1,11 @@
 package com.example.creasy.controller;
 
 
-import com.example.creasy.controller.dto.CreateEvent;
-import com.example.creasy.repository.entity.*;
+import com.example.creasy.controller.dto.CreateEventDto;
+import com.example.creasy.model.Event;
+import com.example.creasy.model.Partner;
+import com.example.creasy.model.StateProspect;
+import com.example.creasy.model.User;
 import com.example.creasy.service.EventService;
 import com.example.creasy.service.PartnerService;
 import com.example.creasy.service.UserService;
@@ -12,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 class EventController {
@@ -28,7 +30,7 @@ class EventController {
 	private UserService userService;
 
 	@PostMapping("/{id}/add-event")
-	public String addEvent( Principal p,CreateEvent createEvent, @PathVariable Long id, Model model) {
+	public String addEvent(Principal p, CreateEventDto createEvent, @PathVariable Long id, Model model) {
 		User user=  userService.getUserByMail(p.getName());
 
 		Partner partner = partnerService.findPartnerById(id);
@@ -61,7 +63,7 @@ class EventController {
 
 	// Edit specific note
 	@PostMapping("/edit-event/{id}")
-	public String editNote(CreateEvent createEvent, @PathVariable Long id){
+	public String editNote(CreateEventDto createEvent, @PathVariable Long id){
 		eventService.editEvent(id, createEvent);
 
 		Event event = eventService.getEventById(id);

@@ -1,7 +1,6 @@
-package com.example.creasy.repository.entity;
+package com.example.creasy.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

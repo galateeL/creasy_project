@@ -1,12 +1,10 @@
 package com.example.creasy.service;
 
-import com.example.creasy.controller.dto.CreateUser;
-import com.example.creasy.controller.dto.UpdateUser;
+import com.example.creasy.controller.dto.CreateUserDto;
+import com.example.creasy.controller.dto.UpdateUserDto;
 import com.example.creasy.exception.UserNotFoundException;
 import com.example.creasy.repository.UserRepository;
-import com.example.creasy.repository.entity.Company;
-import com.example.creasy.repository.entity.Partner;
-import com.example.creasy.repository.entity.User;
+import com.example.creasy.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,7 +25,7 @@ public class UserService {
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
     }
-    public void register(CreateUser createUser){
+    public void register(CreateUserDto createUser){
         MultipartFile picture = createUser.getPictureFile();
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -47,7 +45,7 @@ public class UserService {
         this.userRepository.save(newUser);
     }
 
-    public void update(UpdateUser updateUser){
+    public void update(UpdateUserDto updateUser){
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 

@@ -1,11 +1,17 @@
-package com.example.creasy.controller;
+package com.example.creasy.model;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.MultipartFile;
-
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
-public class CreateCompany {
+@Entity
+public class Company {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String activityArea;
 
@@ -14,8 +20,6 @@ public class CreateCompany {
     private String city;
 
     private String email;
-
-    private MultipartFile logoFile;
 
     private String logo;
 
@@ -36,16 +40,43 @@ public class CreateCompany {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate creationDate;
 
-    public CreateCompany() {
+    @OneToMany(mappedBy = "company")
+    private List<Partner> partnerList;
 
+
+    public Company() {
     }
 
-    public MultipartFile getLogoFile() {
-        return logoFile;
+    public Company(String activityArea, String address, String city, String email, String logo, String name, String phoneNumberFixr, String postalCode, String siret, String webSite, String latitude, String longitude, LocalDate creationDate) {
+        this.activityArea = activityArea;
+        this.address = address;
+        this.city = city;
+        this.email = email;
+        this.logo = logo;
+        this.name = name;
+        this.phoneNumberFixr = phoneNumberFixr;
+        this.postalCode = postalCode;
+        this.siret = siret;
+        this.webSite = webSite;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.creationDate = creationDate;
     }
 
-    public void setLogoFile(MultipartFile logoFile) {
-        this.logoFile = logoFile;
+    public Company(String activityArea, String address, String city, String email, String logo, String name, String phoneNumberFixr, String postalCode, String siret, String webSite, String latitude, String longitude, List<Partner> partnerList) {
+        this.activityArea = activityArea;
+        this.address = address;
+        this.city = city;
+        this.email = email;
+        this.logo = logo;
+        this.name = name;
+        this.phoneNumberFixr = phoneNumberFixr;
+        this.postalCode = postalCode;
+        this.siret = siret;
+        this.webSite = webSite;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.partnerList = partnerList;
     }
 
     public LocalDate getCreationDate() {
@@ -54,6 +85,14 @@ public class CreateCompany {
 
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public List<Partner> getPartnerList() {
+        return partnerList;
+    }
+
+    public void setPartnerList(List<Partner> partnerList) {
+        this.partnerList = partnerList;
     }
 
     public String getLatitude() {
@@ -70,6 +109,14 @@ public class CreateCompany {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getActivityArea() {
@@ -126,6 +173,7 @@ public class CreateCompany {
     public void setPhoneNumberFixr(String phoneNumberFixr) {
         this.phoneNumberFixr = phoneNumberFixr;
     }
+
     public String getPostalCode() {
         return postalCode;
     }

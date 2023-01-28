@@ -1,12 +1,11 @@
-package com.example.creasy.repository;
+package com.example.creasy.controller.dto;
 
-import com.example.creasy.repository.entity.Company;
-import com.example.creasy.repository.entity.User;
+import com.example.creasy.model.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
-public class EditPartner {
+public class EditPartnerDto {
 
     private int id;
 
@@ -44,10 +43,10 @@ public class EditPartner {
 
 
 
-    public EditPartner() {
+    public EditPartnerDto() {
     }
 
-    public EditPartner(int id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, String stateProspect, String companyId) {
+    public EditPartnerDto(int id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, String stateProspect, String companyId) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;

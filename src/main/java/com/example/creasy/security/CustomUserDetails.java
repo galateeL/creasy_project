@@ -1,7 +1,7 @@
 package com.example.creasy.security;
 
 
-import com.example.creasy.repository.entity.User;
+import com.example.creasy.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

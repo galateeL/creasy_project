@@ -1,4 +1,4 @@
-package com.example.creasy.repository.entity;
+package com.example.creasy.model;
 
 public enum StateProspect {
 

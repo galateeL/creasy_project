@@ -1,23 +1,17 @@
 package com.example.creasy.service;
 
-import com.example.creasy.controller.dto.EventDto;
-import com.example.creasy.controller.dto.MapCustomerDto;
+import com.example.creasy.controller.dto.*;
 import com.example.creasy.exception.PartnerNotFoundException;
 import com.example.creasy.repository.*;
-import com.example.creasy.repository.entity.Event;
-import com.example.creasy.repository.entity.Partner;
-import com.example.creasy.repository.entity.StateProspect;
-import com.example.creasy.repository.entity.User;
-import org.springframework.security.core.parameters.P;
+import com.example.creasy.model.Partner;
+import com.example.creasy.model.StateProspect;
+import com.example.creasy.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.Part;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class PartnerService {
@@ -165,7 +159,7 @@ public class PartnerService {
                 .orElseThrow(() -> new PartnerNotFoundException(id));
     }
 
-    public void createProspect(CreateProspect createProspect, User user) {
+    public void createProspect(CreateProspectDto createProspect, User user) {
 
         Partner prospect = new Partner();
         prospect.setFirstname(createProspect.getFirstname());
@@ -192,7 +186,7 @@ public class PartnerService {
 
     }
 
-    public void createCustomer(CreateCustomer createCustomer, User user) {
+    public void createCustomer(CreateCustomerDto createCustomer, User user) {
 
         Partner customer = new Partner();
         customer.setFirstname(createCustomer.getFirstname());
@@ -223,7 +217,7 @@ public class PartnerService {
         this.partnerRepository.deleteById(id);
     }
 
-    public void editPartner(Long id, EditPartner editPartner) {
+    public void editPartner(Long id, EditPartnerDto editPartner) {
         Partner partner = this.partnerRepository
                 .findById(id)
                 .orElseThrow(() -> new PartnerNotFoundException(id));
@@ -255,7 +249,7 @@ public class PartnerService {
     }
 
 
-    public void addDunningPeriod(Long id, CreateDunning createDunning) {
+    public void addDunningPeriod(Long id, CreateDunningDto createDunning) {
         Partner partner = this.partnerRepository
                 .findById(id)
                 .orElseThrow(() -> new PartnerNotFoundException(id));
