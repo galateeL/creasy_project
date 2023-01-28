@@ -25,7 +25,7 @@ public class CreateNoteDto {
         return n;
     }
 
-    public CreateNoteDto(String exchange, LocalDateTime registerDate, Partner partner) {
+    public CreateNoteDto(String exchange, LocalDateTime registerDate) {
         this.exchange = exchange;
         this.registerDate = registerDate;
     }

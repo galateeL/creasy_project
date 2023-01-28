@@ -45,7 +45,6 @@ class Event {
 	public Event(  String description, LocalDateTime start, LocalDateTime finish,String address,
 				Partner partner,User userById) {
 		super();
-		this.id = id;
 		this.description = description;
 		this.start = start;
 		this.finish = finish;

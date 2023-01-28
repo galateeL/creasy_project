@@ -4,8 +4,6 @@ import com.example.creasy.model.Company;
 import com.example.creasy.model.Partner;
 import com.example.creasy.model.StateProspect;
 import com.example.creasy.model.User;
-import com.example.creasy.service.CompanyService;
-import com.example.creasy.service.NoteService;
 import com.example.creasy.service.PartnerService;
 import com.example.creasy.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -23,17 +21,11 @@ import java.util.stream.Collectors;
 public class DashboardController {
     private PartnerService partnerService;
 
-    private CompanyService companyService;
-
-    private NoteService noteService;
-
     private UserService userService;
 
-    public DashboardController(PartnerService partnerService, CompanyService companyService, NoteService noteService, UserService userService) {
+    public DashboardController(PartnerService partnerService, UserService userService) {
 
         this.partnerService = partnerService;
-        this.companyService = companyService;
-        this.noteService = noteService;
         this.userService = userService;
     }
 
@@ -43,18 +35,18 @@ public class DashboardController {
     public String displayDashboard(Principal principal, Model model) {
 
         User user = userService.getUserByMail(principal.getName());
-        List<Partner> prospectList = partnerService.findAllProspectsByList(StateProspect.ENDED,StateProspect.TO_FOLLOW_UP , user.getEmail());
+        List<Partner> prospectList = partnerService.findAllProspectsByList(user.getEmail());
         partnerService.setToFollowUpIfNecessary(prospectList);
 
         // Number of prospects with specific state by user
 
-        int prospectsToFollowUp = partnerService.findNumberOfProspectsToFollowUp(StateProspect.TO_FOLLOW_UP, principal.getName());
+        int prospectsToFollowUp = partnerService.findNumberOfProspectsToFollowUp(principal.getName());
         model.addAttribute("prospectsToFollowUp", prospectsToFollowUp);
 
-        int prospectsNotStarted = partnerService.findNumberOfProspectsInNotStarted(StateProspect.NOT_STARTED, principal.getName());
+        int prospectsNotStarted = partnerService.findNumberOfProspectsInNotStarted(principal.getName());
         model.addAttribute("prospectsNotStarted", prospectsNotStarted);
 
-        int prospectsInProgress = partnerService.findNumberOfProspectsInProgress(StateProspect.IN_PROGRESS, principal.getName());
+        int prospectsInProgress = partnerService.findNumberOfProspectsInProgress(principal.getName());
         model.addAttribute("prospectsInProgress", prospectsInProgress);
 
         // Number of customers by user

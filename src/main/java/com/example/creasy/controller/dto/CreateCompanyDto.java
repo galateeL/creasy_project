@@ -36,10 +36,6 @@ public class CreateCompanyDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate creationDate;
 
-    public CreateCompanyDto() {
-
-    }
-
     public MultipartFile getLogoFile() {
         return logoFile;
     }

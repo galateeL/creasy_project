@@ -8,7 +8,6 @@ public class CreateDunningDto {
 
     private int dunningPeriod;
 
-    //@DateTimeFormat(pattern = "dd.MM.yyyy")
     private LocalDateTime registerDateDunning;
 
     private StateProspect stateProspect;

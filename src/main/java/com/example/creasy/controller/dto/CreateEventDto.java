@@ -20,7 +20,6 @@ public class CreateEventDto {
 
     public CreateEventDto() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     public String getDescription() {

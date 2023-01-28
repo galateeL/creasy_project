@@ -64,7 +64,7 @@ class EventController {
 	// Edit specific note
 	@PostMapping("/edit-event/{id}")
 	public String editNote(CreateEventDto createEvent, @PathVariable Long id){
-		eventService.editEvent(id, createEvent);
+		eventService.editEvent(id);
 
 		Event event = eventService.getEventById(id);
 		Partner partner = event.getPartner();

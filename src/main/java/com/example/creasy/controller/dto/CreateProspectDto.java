@@ -54,7 +54,7 @@ public class CreateProspectDto {
 
     }
 
-    public CreateProspectDto(String lastname, String firstname, String email, String address, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company) {
+    public CreateProspectDto(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;

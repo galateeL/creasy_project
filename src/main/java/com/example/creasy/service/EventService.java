@@ -62,7 +62,7 @@ public class EventService {
         this. eventRepository.delete(event);
     }
 
-    public Event editEvent(Long id, CreateEventDto createEvent){
+    public Event editEvent(Long id){
 
         Event event = this.eventRepository
                 .findById(id)

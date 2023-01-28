@@ -47,23 +47,23 @@ public class PartnerService {
 
 
     // Find number of prospects with TO_FOLLOW_UP state
-    public int findNumberOfProspectsToFollowUp(StateProspect stateProspect, String email) {
+    public int findNumberOfProspectsToFollowUp(String email) {
         return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.TO_FOLLOW_UP, email);
     }
 
     // Find number of prospects with IN_PROGRESS state
-    public int findNumberOfProspectsInProgress(StateProspect stateProspect, String email) {
+    public int findNumberOfProspectsInProgress(String email) {
         return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.IN_PROGRESS, email);
     }
 
     // Find number of prospects with NOT_STARTED state
-    public int findNumberOfProspectsInNotStarted(StateProspect stateProspect, String email) {
+    public int findNumberOfProspectsInNotStarted(String email) {
         return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.NOT_STARTED, email);
     }
 
 
 
-    public List<Partner> findAllProspectsByList (StateProspect stateProspect1, StateProspect stateProspect2, String email){
+    public List<Partner> findAllProspectsByList (String email){
         return this.partnerRepository.findProspectsListByUser(StateProspect.ENDED, StateProspect.TO_FOLLOW_UP, email);
     }
 

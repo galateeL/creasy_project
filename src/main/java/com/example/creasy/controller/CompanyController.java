@@ -5,7 +5,6 @@ import com.example.creasy.model.Company;
 import com.example.creasy.model.Partner;
 import com.example.creasy.model.User;
 import com.example.creasy.service.CompanyService;
-import com.example.creasy.service.PartnerService;
 import com.example.creasy.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +21,10 @@ import java.util.stream.Collectors;
 public class CompanyController {
 
     private CompanyService companyService;
-    private PartnerService partnerService;
     private UserService userService;
 
-    public CompanyController(CompanyService companyService, PartnerService partnerService, UserService userService) {
+    public CompanyController(CompanyService companyService, UserService userService) {
         this.companyService = companyService;
-        this.partnerService = partnerService;
         this.userService = userService;
     }
 
