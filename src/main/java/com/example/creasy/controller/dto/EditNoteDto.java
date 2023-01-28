@@ -5,7 +5,6 @@ public class EditNoteDto {
     private String exchange;
 
 
-
     public EditNoteDto() {
     }
 

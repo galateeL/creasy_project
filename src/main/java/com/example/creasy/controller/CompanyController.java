@@ -33,7 +33,7 @@ public class CompanyController {
 
         User user = userService.getUserByMail(principal.getName());
         List <Partner> partnerList = user.getPartnerList();
-        Set<Company> companySet = partnerList.stream().map(partner -> partner.getCompany())
+        Set<Company> companySet = partnerList.stream().map(Partner::getCompany)
                 .collect(Collectors.toSet());
 
         if(searchValue != null){
@@ -51,7 +51,7 @@ public class CompanyController {
 
         User user = userService.getUserByMail(principal.getName());
         List <Partner> partnerList = user.getPartnerList();
-        partnerList.removeIf(partner -> partner.getCompany().getId() != id);
+        partnerList.removeIf(partner -> !partner.getCompany().getId().equals(id));
 
         Company company = companyService.getCompanyById(id);
 

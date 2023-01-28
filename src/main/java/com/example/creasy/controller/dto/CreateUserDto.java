@@ -21,9 +21,6 @@ public class CreateUserDto {
 
     private String pictureUrl;
 
-    public CreateUserDto() {
-    }
-
     public MultipartFile getPictureFile() {
         return pictureFile;
     }

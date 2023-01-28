@@ -23,9 +23,7 @@ import java.util.List;
 @RequestMapping("/partners")
 public class PartnerController {
     private PartnerService partnerService;
-
     private CompanyService companyService;
-
     private NoteService noteService;
     private UserService userService;
 
@@ -38,6 +36,11 @@ public class PartnerController {
         this.userService = userService;
 
     }
+
+    private static final String PARTNER_VALUE = "partner";
+    private static final String COMPANIES_VALUE = "companies";
+    private static final String REDIRECT_DETAILS_CUSTOMER = "redirect:/partners/details-customer/{id}";
+    private static final String REDIRECT_DETAILS_PROSPECT = "redirect:/partners/details-prospect/{id}";
 
     // Display prospects
     @GetMapping("/all-prospects")
@@ -70,7 +73,7 @@ public class PartnerController {
     @GetMapping("/details-prospect/{id}")
     public String displaySpecificProspect(Model model, @PathVariable Long id){
         Partner partner = partnerService.findPartnerById(id);
-        model.addAttribute("partner", partner);
+        model.addAttribute(PARTNER_VALUE, partner);
 
         List<Note> noteList  = noteService.getAllNotesByPartner(partner);
         model.addAttribute("notes", noteList);
@@ -85,7 +88,7 @@ public class PartnerController {
     public String displaySpecificCustomer(Model model, @PathVariable Long id){
 
         Partner partner = partnerService.findPartnerById(id);
-        model.addAttribute("partner", partner);
+        model.addAttribute(PARTNER_VALUE, partner);
 
 
         List<Note> noteList  = noteService.getAllNotesByPartner(partner);
@@ -101,13 +104,13 @@ public class PartnerController {
     public String addNote(CreateNoteDto createNote, @PathVariable Long id, Model model) {
 
         Partner partner = partnerService.findPartnerById(id);
-        model.addAttribute("partner", partner);
+        model.addAttribute(PARTNER_VALUE, partner);
 
         noteService.addNote(createNote, partner);
         if(partner.getStateProspect() == StateProspect.ENDED) {
-            return "redirect:/partners/details-customer/{id}";
+            return REDIRECT_DETAILS_CUSTOMER;
         } else {
-            return "redirect:/partners/details-prospect/{id}";
+            return REDIRECT_DETAILS_PROSPECT;
         }
 
     }
@@ -129,7 +132,7 @@ public class PartnerController {
 
         List<Company> companyList  = companyService.getAllCompany();
         model.addAttribute("stateProspects", stateProspectList);
-        model.addAttribute("companies", companyList);
+        model.addAttribute(COMPANIES_VALUE, companyList);
         return "prospect/addProspect";
     }
 
@@ -148,7 +151,7 @@ public class PartnerController {
    @GetMapping("/add-customer")
     public String displayAddCustomerForm(Model model) {
       List<Company> companyList  = companyService.getAllCompany();
-      model.addAttribute("companies", companyList);
+      model.addAttribute(COMPANIES_VALUE, companyList);
         return "customer/addCustomer";
    }
 
@@ -184,7 +187,7 @@ public class PartnerController {
         Partner customer = partnerService.findPartnerById(id);
         model.addAttribute("customer", customer);
         List<Company> companyList  = companyService.getAllCompany();
-        model.addAttribute("companies", companyList);
+        model.addAttribute(COMPANIES_VALUE, companyList);
         return "customer/editCustomer";
     }
 
@@ -192,7 +195,7 @@ public class PartnerController {
     @PostMapping("/edit-customer/{id}")
     public String editCustomer(EditPartnerDto editPartner, @PathVariable Long id){
         partnerService.editPartner(id, editPartner);
-        return "redirect:/partners/details-customer/{id}";
+        return REDIRECT_DETAILS_CUSTOMER;
     }
 
     // Edit specific prospect - Display form
@@ -201,7 +204,7 @@ public class PartnerController {
         Partner prospect = partnerService.findPartnerById(id);
         model.addAttribute("prospect", prospect);
         List<Company> companyList  = companyService.getAllCompany();
-        model.addAttribute("companies", companyList);
+        model.addAttribute(COMPANIES_VALUE, companyList);
         StateProspect[] stateProspectsArray = StateProspect.values();
         List<StateProspect> stateProspectList = Arrays.asList(stateProspectsArray);
         model.addAttribute("stateProspects", stateProspectList);
@@ -213,7 +216,7 @@ public class PartnerController {
     public String editProspect(EditPartnerDto editPartner, @PathVariable Long id){
         partnerService.editPartner(id, editPartner);
 
-       return "redirect:/partners/details-prospect/{id}";
+       return REDIRECT_DETAILS_PROSPECT;
 
     }
 
@@ -223,7 +226,7 @@ public class PartnerController {
         Note note = noteService.getNoteById(id);
         Partner partner = note.getPartner();
         model.addAttribute("note", note);
-        model.addAttribute("partner", partner);
+        model.addAttribute(PARTNER_VALUE, partner);
         return "editNoteForm";
     }
 
@@ -249,7 +252,7 @@ public class PartnerController {
         Note note = noteService.getNoteById(id);
 
         Partner partner = note.getPartner();
-        model.addAttribute("partner", partner);
+        model.addAttribute(PARTNER_VALUE, partner);
         model.addAttribute("note", note);
 
         return "deleteNoteForm";
@@ -276,15 +279,15 @@ public class PartnerController {
     public String addDunningPeriod(CreateDunningDto createDunning, @PathVariable Long id, Model model) {
 
         Partner partner = partnerService.findPartnerById(id);
-        model.addAttribute("partner", partner);
+        model.addAttribute(PARTNER_VALUE, partner);
 
         partnerService.addDunningPeriod(partner.getId(), createDunning);
 
 
         if (partner.getStateProspect() == StateProspect.ENDED) {
-            return "redirect:/partners/details-customer/{id}";
+            return REDIRECT_DETAILS_CUSTOMER;
         } else {
-            return "redirect:/partners/details-prospect/{id}";
+            return REDIRECT_DETAILS_PROSPECT;
         }
 
     }

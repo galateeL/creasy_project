@@ -18,8 +18,9 @@ import java.security.Principal;
 
 @Controller
 class EventController {
-	
 
+	private static final String PARTNER_VALUE = "partner";
+	private static final String EVENT_VALUE = "event";
 	@Autowired
 	private PartnerService partnerService;
 
@@ -34,7 +35,7 @@ class EventController {
 		User user=  userService.getUserByMail(p.getName());
 
 		Partner partner = partnerService.findPartnerById(id);
-		model.addAttribute("partner", partner);
+		model.addAttribute(PARTNER_VALUE, partner);
 
 		eventService.addEvent(createEvent, partner,user);
 		if(partner.getStateProspect() == StateProspect.ENDED) {
@@ -48,7 +49,7 @@ class EventController {
 	public String displaySpecificCustomer(Model model, @PathVariable Long id){
 
 		Event event  = eventService.getEventById(id);
-		model.addAttribute("event", event);
+		model.addAttribute(EVENT_VALUE, event);
 		return "detailEvenement";
 	}
 	// Edit specific note - Display form
@@ -56,8 +57,8 @@ class EventController {
 	public String displayEditEventForm (Model model, @PathVariable Long id) {
 		Event event = eventService.getEventById(id);
 		Partner partner = event.getPartner();
-		model.addAttribute("event", event);
-		model.addAttribute("partner", partner);
+		model.addAttribute(EVENT_VALUE, event);
+		model.addAttribute(PARTNER_VALUE, partner);
 		return "editEventForm";
 	}
 
@@ -83,8 +84,8 @@ class EventController {
 		Event event = eventService.getEventById(id);
 
 		Partner partner = event.getPartner();
-		model.addAttribute("partner", partner);
-		model.addAttribute("event", event);
+		model.addAttribute(PARTNER_VALUE, partner);
+		model.addAttribute(EVENT_VALUE, event);
 
 		return "deleteEventForm";
 	}

@@ -88,8 +88,7 @@ public class CompanyService {
         company.setCreationDate(editCompany.getCreationDate());
 
         MultipartFile picture = editCompany.getLogoFile();
-        if (picture == null || picture.isEmpty()) {
-        } else {
+        if (picture != null && !(picture.isEmpty())) {
             storageService.store(picture);
             company.setLogo("http://localhost:8080/images/" + picture.getOriginalFilename());
         }

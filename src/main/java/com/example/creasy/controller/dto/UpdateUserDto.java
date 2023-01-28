@@ -18,9 +18,6 @@ public class UpdateUserDto {
     private String firstName;
     private String pictureUrl;
 
-    public UpdateUserDto() {
-    }
-
     public MultipartFile getPictureFile() {
         return pictureFile;
     }

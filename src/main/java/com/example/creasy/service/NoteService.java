@@ -25,7 +25,7 @@ public class NoteService {
     }
 
     public List<Note> getAllNotesByPartner(Partner partner){
-        return (List<Note>) this.noteRepository.getAllByPartnerOrderByRegisterDateDesc(partner);
+        return this.noteRepository.getAllByPartnerOrderByRegisterDateDesc(partner);
 
     }
 

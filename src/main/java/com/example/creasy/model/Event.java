@@ -15,7 +15,6 @@ class Event {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private String title;
 	private String description;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
@@ -55,7 +54,6 @@ class Event {
 	
 	public Event() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public EventDto toEventDto() {

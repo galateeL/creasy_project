@@ -1,6 +1,4 @@
 package com.example.creasy.security;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -18,10 +16,8 @@ import org.springframework.security.web.authentication.logout.HttpStatusReturnin
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    @Autowired
-    private CustomLogoutHandler logoutHandler;
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, CustomLogoutHandler logoutHandler) throws Exception {
 
 
         http.authorizeHttpRequests()
@@ -70,6 +66,6 @@ public class WebSecurityConfig {
     }
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){
-        return (web) -> web.ignoring().antMatchers("/css/**","/js/**","/favicon/ico");
+        return web -> web.ignoring().antMatchers("/css/**","/js/**","/favicon/ico");
     }
 }

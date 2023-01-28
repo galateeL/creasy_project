@@ -1,7 +1,6 @@
 package com.example.creasy.controller.dto;
 
 import com.example.creasy.model.Note;
-import com.example.creasy.model.Partner;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;

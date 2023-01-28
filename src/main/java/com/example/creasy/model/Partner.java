@@ -12,6 +12,8 @@ import java.util.List;
 @Entity
 public class Partner {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -53,75 +55,6 @@ public class Partner {
 
     private LocalDateTime registerDate;
 
-    public Partner() {
-    }
-
-
-    public Partner(Long id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, LocalDateTime registerDate) {
-        this.id = id;
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.stateProspect = stateProspect;
-        this.registerDate = registerDate;
-    }
-
-    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, LocalDateTime registerDate) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.stateProspect = stateProspect;
-        this.registerDate = registerDate;
-    }
-
-    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company, LocalDateTime registerDate) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.stateProspect = stateProspect;
-        this.company = company;
-        this.registerDate = registerDate;
-    }
-
-    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company, List<Note> noteList, LocalDateTime registerDate) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.stateProspect = stateProspect;
-        this.company = company;
-        this.noteList = noteList;
-        this.registerDate = registerDate;
-    }
-
-    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company, User user, LocalDateTime registerDate) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.stateProspect = stateProspect;
-        this.company = company;
-        this.user = user;
-        this.registerDate = registerDate;
-    }
     public MapCustomerDto toMapCustomerDto() {
         MapCustomerDto mapCustomerDto = new MapCustomerDto();
         mapCustomerDto.setFirstName(this.firstname);
@@ -129,27 +62,8 @@ public class Partner {
         mapCustomerDto.setLatitude(this.company.getLatitude());
         mapCustomerDto.setLongitude(this.company.getLongitude());
 
-
         return mapCustomerDto;
     }
-
-    public Partner(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, int dunningPeriod, LocalDateTime dunningRegisterDate, StateProspect stateProspect, Company company, User user, List<Note> noteList, LocalDateTime registerDate) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.dunningPeriod = dunningPeriod;
-        this.dunningRegisterDate = dunningRegisterDate;
-        this.stateProspect = stateProspect;
-        this.company = company;
-        this.user = user;
-        this.noteList = noteList;
-        this.registerDate = registerDate;
-    }
-
 
     public int getDunningPeriod() {
         return dunningPeriod;

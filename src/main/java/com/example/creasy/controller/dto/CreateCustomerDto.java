@@ -35,9 +35,6 @@ public class CreateCustomerDto {
     private User user;
 
 
-    public CreateCustomerDto() {
-    }
-
     public Partner toCustomer() {
         Partner p = new Partner();
         p.setFirstname(this.firstname);
@@ -52,18 +49,6 @@ public class CreateCustomerDto {
 
         return p;
 
-    }
-
-    public CreateCustomerDto(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, Company company) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.stateProspect = StateProspect.ENDED;
-        this.company = company;
     }
 
     public MultipartFile getPictureFile() {

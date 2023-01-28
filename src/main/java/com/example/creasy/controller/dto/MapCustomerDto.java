@@ -7,12 +7,6 @@ public class MapCustomerDto {
     private long id;
     String firstName;
 
-    public MapCustomerDto() {
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.firstName = firstName;
-
-    }
 
     public long getId() {
         return id;

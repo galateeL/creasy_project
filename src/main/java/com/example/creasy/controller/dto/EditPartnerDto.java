@@ -39,27 +39,6 @@ public class EditPartnerDto {
 
     private LocalDateTime dunningRegisterDate;
 
-
-
-
-    public EditPartnerDto() {
-    }
-
-    public EditPartnerDto(int id, String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, String stateProspect, String companyId) {
-        this.id = id;
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.stateProspect = stateProspect;
-        this.companyId = companyId;
-    }
-
-
-
     public int getDunningPeriod() {
         return dunningPeriod;
     }

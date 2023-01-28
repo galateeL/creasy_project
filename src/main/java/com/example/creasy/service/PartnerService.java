@@ -1,6 +1,7 @@
 package com.example.creasy.service;
 
 import com.example.creasy.controller.dto.*;
+import com.example.creasy.exception.CompanyNotFoundException;
 import com.example.creasy.exception.PartnerNotFoundException;
 import com.example.creasy.repository.*;
 import com.example.creasy.model.Partner;
@@ -19,6 +20,8 @@ public class PartnerService {
     private PartnerRepository partnerRepository;
     private CompanyRepository companyRepository;
     private StorageService storageService;
+
+    private static final String IMAGE_VALUE = "http://localhost:8080/images/";
 
 
     public PartnerService(PartnerRepository partnerRepository, CompanyRepository companyRepository, StorageService storageService) {
@@ -149,14 +152,9 @@ public class PartnerService {
 
 
     public Partner findPartnerById(Long id) {
-        return this.partnerRepository.findById(id).get();
-    }
-
-
-    public Partner getPartner(Long id) {
         return this.partnerRepository
                 .findById(id)
-                .orElseThrow(() -> new PartnerNotFoundException(id));
+                .orElseThrow(()-> new PartnerNotFoundException(id));
     }
 
     public void createProspect(CreateProspectDto createProspect, User user) {
@@ -179,7 +177,7 @@ public class PartnerService {
             prospect.setPictureUrl(createProspect.getPictureUrl());
         } else {
             storageService.store(picture);
-            prospect.setPictureUrl("http://localhost:8080/images/" + picture.getOriginalFilename());
+            prospect.setPictureUrl(IMAGE_VALUE + picture.getOriginalFilename());
         }
 
         this.partnerRepository.save(prospect);
@@ -206,7 +204,7 @@ public class PartnerService {
             customer.setPictureUrl(createCustomer.getPictureUrl());
         } else {
             storageService.store(picture);
-            customer.setPictureUrl("http://localhost:8080/images/" + picture.getOriginalFilename());
+            customer.setPictureUrl(IMAGE_VALUE + picture.getOriginalFilename());
         }
 
         this.partnerRepository.save(customer);
@@ -233,14 +231,15 @@ public class PartnerService {
             partner.setStateProspect(stateProspect);
         }
         if(editPartner.getCompanyId() != null ) {
-            partner.setCompany(companyRepository.findById(Long.parseLong(editPartner.getCompanyId())).get());
+            partner.setCompany(companyRepository
+                    .findById(Long.parseLong(editPartner.getCompanyId()))
+                    .orElseThrow(() -> new CompanyNotFoundException(id)));
         }
 
         MultipartFile picture = editPartner.getPictureFile();
-        if (picture == null || picture.isEmpty()) {
-        } else {
+        if (picture != null && !picture.isEmpty()) {
             storageService.store(picture);
-            partner.setPictureUrl("http://localhost:8080/images/" + picture.getOriginalFilename());
+            partner.setPictureUrl(IMAGE_VALUE + picture.getOriginalFilename());
         }
 
         this.partnerRepository.save(partner);

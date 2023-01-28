@@ -2,7 +2,6 @@ package com.example.creasy.controller;
 
 import com.example.creasy.model.Company;
 import com.example.creasy.model.Partner;
-import com.example.creasy.model.StateProspect;
 import com.example.creasy.model.User;
 import com.example.creasy.service.PartnerService;
 import com.example.creasy.service.UserService;
@@ -59,7 +58,7 @@ public class DashboardController {
 
         // Number of companies by user
         List <Partner> partnerList = user.getPartnerList();
-        Set<Company> companySet = partnerList.stream().map(partner -> partner.getCompany())
+        Set<Company> companySet = partnerList.stream().map(Partner::getCompany)
                 .collect(Collectors.toSet());
 
         int companiesByUser = companySet.size();

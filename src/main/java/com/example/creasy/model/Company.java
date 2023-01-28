@@ -43,42 +43,6 @@ public class Company {
     @OneToMany(mappedBy = "company")
     private List<Partner> partnerList;
 
-
-    public Company() {
-    }
-
-    public Company(String activityArea, String address, String city, String email, String logo, String name, String phoneNumberFixr, String postalCode, String siret, String webSite, String latitude, String longitude, LocalDate creationDate) {
-        this.activityArea = activityArea;
-        this.address = address;
-        this.city = city;
-        this.email = email;
-        this.logo = logo;
-        this.name = name;
-        this.phoneNumberFixr = phoneNumberFixr;
-        this.postalCode = postalCode;
-        this.siret = siret;
-        this.webSite = webSite;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.creationDate = creationDate;
-    }
-
-    public Company(String activityArea, String address, String city, String email, String logo, String name, String phoneNumberFixr, String postalCode, String siret, String webSite, String latitude, String longitude, List<Partner> partnerList) {
-        this.activityArea = activityArea;
-        this.address = address;
-        this.city = city;
-        this.email = email;
-        this.logo = logo;
-        this.name = name;
-        this.phoneNumberFixr = phoneNumberFixr;
-        this.postalCode = postalCode;
-        this.siret = siret;
-        this.webSite = webSite;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.partnerList = partnerList;
-    }
-
     public LocalDate getCreationDate() {
         return creationDate;
     }

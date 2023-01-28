@@ -32,10 +32,6 @@ public class CreatePartnerDto {
     private User user;
 
 
-
-    public CreatePartnerDto() {
-    }
-
     public Partner toPartner() {
         Partner p = new Partner();
         p.setFirstname(this.firstname);
@@ -50,17 +46,6 @@ public class CreatePartnerDto {
 
         return p;
 
-    }
-
-    public CreatePartnerDto(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.stateProspect = stateProspect;
     }
 
     public LocalDateTime getRegisterDate() {

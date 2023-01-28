@@ -19,6 +19,8 @@ import java.util.List;
 @Controller
 public class UserController {
 
+    private static final String PARTNER_SIGN_IN =  "redirect:/signin";
+
     @Autowired
     private UserService userService;
 
@@ -41,7 +43,7 @@ public class UserController {
             return "signUpView";
         }else{
             userService.register(createUser);
-            return "redirect:/signin";
+            return PARTNER_SIGN_IN;
         }
     }
     @GetMapping("/edit/{mail}")
@@ -61,7 +63,7 @@ public class UserController {
             return "editUser";
         }else{
             userService.update(updateUser);
-            return "redirect:/signin";
+            return PARTNER_SIGN_IN;
         }
     }
 
@@ -81,7 +83,7 @@ public class UserController {
     @PostMapping("/delete/user")
     public String delete(Principal p){
         userService.deleteUser(p.getName());
-        return "redirect:/signin";
+        return PARTNER_SIGN_IN;
     }
 
     @GetMapping("/delete/user/{mail}")

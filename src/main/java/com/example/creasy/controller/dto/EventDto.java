@@ -29,7 +29,6 @@ public class EventDto {
 
 	public EventDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getDescription() {

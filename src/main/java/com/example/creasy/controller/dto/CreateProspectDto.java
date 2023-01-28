@@ -33,11 +33,6 @@ public class CreateProspectDto {
     private LocalDateTime registerDate;
 
 
-
-
-    public CreateProspectDto() {
-    }
-
     public Partner toProspect() {
         Partner p = new Partner();
         p.setFirstname(this.firstname);
@@ -53,20 +48,6 @@ public class CreateProspectDto {
         return p;
 
     }
-
-    public CreateProspectDto(String lastname, String firstname, String email, String pictureUrl, String fixedPhoneNumber, String mobilePhoneNumber, String positionHeld, StateProspect stateProspect, Company company) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.pictureUrl = pictureUrl;
-        this.fixedPhoneNumber = fixedPhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.positionHeld = positionHeld;
-        this.stateProspect = stateProspect;
-        this.company = company;
-
-    }
-
 
     public MultipartFile getPictureFile() {
         return pictureFile;

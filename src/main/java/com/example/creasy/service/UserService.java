@@ -18,10 +18,6 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private StorageService storageService;
-
-    public User findUserById(Long id) {
-        return this.userRepository.findById(id).get();
-    }
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
     }
@@ -36,7 +32,7 @@ public class UserService {
         newUser.setFirstName(createUser.getFirstName());
         newUser.setLastName(createUser.getLastName());
 
-        if(picture.isEmpty() || picture == null){
+        if(picture == null || picture.isEmpty()){
             newUser.setPictureUrl(createUser.getPictureUrl());
         }else{
             storageService.store(picture);
@@ -49,16 +45,16 @@ public class UserService {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        User user = userRepository.findById(updateUser.getId()).get();
+        User user = userRepository
+                .findById(updateUser.getId())
+                .orElseThrow(() -> new UserNotFoundException(updateUser.getId()));
 
         user.setEmail(updateUser.getEmail());
         user.setFirstName(updateUser.getFirstName());
         user.setLastName(updateUser.getLastName());
         user.setId(updateUser.getId());
         MultipartFile picture = updateUser.getPictureFile();
-        if(picture.isEmpty() || picture == null){
-
-        }else{
+        if(picture != null && !picture.isEmpty()){
             storageService.store(picture);
             user.setPictureUrl("http://localhost:8080/images/"+ picture.getOriginalFilename());
         }
