@@ -56,8 +56,6 @@ public class NoteService {
                 .orElseThrow(() -> new NoteNotFoundException(id));
 
         note.setExchange(editNote.getExchange());
-       // note.setRegisterDate(LocalDateTime.now());
-       // note.setPartner(editNote.getPartner());
 
         return this.noteRepository.save(note);
 

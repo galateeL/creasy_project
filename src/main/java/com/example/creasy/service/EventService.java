@@ -68,9 +68,6 @@ public class EventService {
                 .findById(id)
                 .orElseThrow(() -> new NoteNotFoundException(id));
 
-        // note.setRegisterDate(LocalDateTime.now());
-        // note.setPartner(editNote.getPartner());
-
         return this.eventRepository.save(event);
 
     }

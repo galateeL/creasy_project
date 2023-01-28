@@ -25,7 +25,6 @@ public class EditPartnerDto {
 
     private String positionHeld;
 
-    //private boolean isClient;
 
     private String stateProspect;
 
@@ -55,7 +54,6 @@ public class EditPartnerDto {
         this.fixedPhoneNumber = fixedPhoneNumber;
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.positionHeld = positionHeld;
-        //this.isClient = isClient;
         this.stateProspect = stateProspect;
         this.companyId = companyId;
     }

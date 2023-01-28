@@ -39,15 +39,6 @@ public class PartnerController {
 
     }
 
-    // Display all partners
-//    @GetMapping("/all")
-//    public String displayAllPartners(Model model) {
-//        List<Partner> partnerList = partnerService.getAllPartner();
-//        model.addAttribute("partners", partnerList);
-//        return "partnerListView";
-//
-//    }
-
     // Display prospects
     @GetMapping("/all-prospects")
     public String displayAllProspects(Principal principal, Model model, @Param("keywordProspect") String keywordProspect, @Param("sort") String sort, @Param("state") String state) {
@@ -127,7 +118,6 @@ public class PartnerController {
     @GetMapping("/add-prospect")
     public String displayAddProspectForm(Model model) {
        StateProspect[] stateProspectsArray = StateProspect.values();
-       // List<StateProspect> stateProspectList = Arrays.asList(stateProspectsArray);
 
       List <StateProspect> stateProspectList = new ArrayList<>();
       for(StateProspect stateProspect : stateProspectsArray){
@@ -225,11 +215,6 @@ public class PartnerController {
 
        return "redirect:/partners/details-prospect/{id}";
 
-//        if(editPartner.getStateProspect().equals("ENDED")) {
-//            return "redirect:/partners/all-customers";
-//        } else {
-//            return "redirect:/partners/details-prospect/{id}";
-//        }
     }
 
     // Edit specific note - Display form
