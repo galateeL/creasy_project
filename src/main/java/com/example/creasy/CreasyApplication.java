@@ -232,7 +232,7 @@ public class CreasyApplication implements CommandLineRunner {
         client1.setStateProspect(StateProspect.ENDED);
         client1.setCompany(berny);
         client1.setUser(rosa);
-        client1.setRegisterDate(LocalDateTime.now());
+        client1.setRegisterDate(LocalDateTime.of(2020, 02, 04, 10, 13));
         partnerRepository.save(client1);
 
         Partner client2 = new Partner();

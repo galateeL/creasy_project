@@ -3,6 +3,7 @@ package com.example.creasy.service;
 import com.example.creasy.controller.dto.*;
 import com.example.creasy.exception.CompanyNotFoundException;
 import com.example.creasy.exception.PartnerNotFoundException;
+import com.example.creasy.model.SortType;
 import com.example.creasy.repository.*;
 import com.example.creasy.model.Partner;
 import com.example.creasy.model.StateProspect;
@@ -12,7 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import static com.example.creasy.model.SortType.ORDER_BY_LASTNAME_DESC;
 
 @Service
 public class PartnerService {
@@ -22,7 +26,6 @@ public class PartnerService {
     private StorageService storageService;
 
     private static final String IMAGE_VALUE = "http://localhost:8080/images/";
-
 
     public PartnerService(PartnerRepository partnerRepository, CompanyRepository companyRepository, StorageService storageService) {
         this.partnerRepository = partnerRepository;
@@ -71,18 +74,21 @@ public class PartnerService {
     }
 
 
-
-
     public List <Partner> getAllProspectFromKeyword(String keywordProspect, String sort, String email) {
+
         if(sort != null) {
-            if(sort.equals("ZA")){
-                return this.partnerRepository.findProspectZA(StateProspect.ENDED, keywordProspect, email);
-            } else if (sort.equals("AZ")) {
-                return this.partnerRepository.findProspectAZ(StateProspect.ENDED, keywordProspect, email);
-            } else if (sort.equals("ON")) {
-                return this.partnerRepository.findProspectON(StateProspect.ENDED, keywordProspect, email);
-            } else if (sort.equals("NO" )) {
-                return this.partnerRepository.findProspectNO(StateProspect.ENDED, keywordProspect, email);
+
+            SortType sortType = SortType.fromValue(sort);
+
+            switch (sortType) {
+                case ORDER_BY_LASTNAME_DESC:
+                    return this.partnerRepository.findProspectZA(StateProspect.ENDED, keywordProspect, email);
+                case ORDER_BY_LASTNAME_ASC:
+                    return this.partnerRepository.findProspectAZ(StateProspect.ENDED, keywordProspect, email);
+                case ORDER_BY_REGISTER_DATE_DESC:
+                    return this.partnerRepository.findProspectON(StateProspect.ENDED, keywordProspect, email);
+                case ORDER_BY_REGISTER_DATE_ASC:
+                    return this.partnerRepository.findProspectNO(StateProspect.ENDED, keywordProspect, email);
             }
         }
 
@@ -90,22 +96,32 @@ public class PartnerService {
     }
 
 
+    public List <Partner> getAllProspectBySort(String sort, String email) {
+
+        SortType sortType = SortType.fromValue(sort);
+
+        switch (sortType) {
+            case ORDER_BY_LASTNAME_DESC :
+                return this.partnerRepository.findByStateProspectIsNotOrderByLastnameDesc(StateProspect.ENDED, email);
+            case ORDER_BY_LASTNAME_ASC:
+                return this.partnerRepository.findByStateProspectIsNotOrderByLastnameAsc(StateProspect.ENDED, email);
+            case  ORDER_BY_REGISTER_DATE_DESC:
+                return this.partnerRepository.findByStateProspectIsNotOrderByRegisterDateAsc(StateProspect.ENDED, email);
+            case ORDER_BY_REGISTER_DATE_ASC:
+                return this.partnerRepository.findByStateProspectIsNotOrderByRegisterDateDesc(StateProspect.ENDED, email);
+        }
+
+        return Collections.emptyList();
+    }
+
     public List<Partner> getAllProspect(String keywordProspect, String sort, String email) {
+
         if(keywordProspect != null && !keywordProspect.isEmpty()) {
             return getAllProspectFromKeyword(keywordProspect, sort, email);
-
         }
 
         if(sort != null) {
-            if(sort.equals("ZA")){
-                return this.partnerRepository.findByStateProspectIsNotOrderByLastnameDesc(StateProspect.ENDED, email);
-            } else if (sort.equals("AZ")) {
-                return this.partnerRepository.findByStateProspectIsNotOrderByLastnameAsc(StateProspect.ENDED, email);
-            } else if (sort.equals( "ON")) {
-                return this.partnerRepository.findByStateProspectIsNotOrderByRegisterDateAsc(StateProspect.ENDED, email);
-            } else if (sort.equals("NO" )) {
-                return this.partnerRepository.findByStateProspectIsNotOrderByRegisterDateDesc(StateProspect.ENDED, email);
-            }
+            return getAllProspectBySort(sort, email);
         }
 
         return this.partnerRepository.findByStateProspectIsNotAndUserEmailIs(StateProspect.ENDED, email);
@@ -113,21 +129,44 @@ public class PartnerService {
 
 
     public List<Partner> getAllCustomerFromKeyword(String keywordCustomer, String sort, String email) {
+
         if(sort != null) {
-            if(sort.equals("ZA")){
-                return this.partnerRepository.findCustomerZA(StateProspect.ENDED, keywordCustomer, email);
-            } else if (sort.equals("AZ")) {
-                return this.partnerRepository.findCustomerAZ(StateProspect.ENDED, keywordCustomer, email);
-            } else if (sort.equals("ON")) {
-                return this.partnerRepository.findCustomerON(StateProspect.ENDED, keywordCustomer, email);
-            } else if (sort.equals("NO" )) {
-                return this.partnerRepository.findCustomerNO(StateProspect.ENDED, keywordCustomer, email);
+
+            SortType sortType = SortType.fromValue(sort);
+
+            switch (sortType){
+                case ORDER_BY_LASTNAME_DESC:
+                    return this.partnerRepository.findCustomerZA(StateProspect.ENDED, keywordCustomer, email);
+                case ORDER_BY_LASTNAME_ASC:
+                    return this.partnerRepository.findCustomerAZ(StateProspect.ENDED, keywordCustomer, email);
+                case ORDER_BY_REGISTER_DATE_DESC:
+                    return this.partnerRepository.findCustomerON(StateProspect.ENDED, keywordCustomer, email);
+                case ORDER_BY_REGISTER_DATE_ASC:
+                    return this.partnerRepository.findCustomerNO(StateProspect.ENDED, keywordCustomer, email);
             }
+
         }
         return this.partnerRepository.findCustomerByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordCustomer, email);
     }
 
+    public List <Partner> getAllCustomerBySort(String sort, String email) {
 
+        SortType sortType = SortType.fromValue(sort);
+
+        switch (sortType) {
+            case ORDER_BY_LASTNAME_DESC :
+                return this.partnerRepository.findByStateProspectIsOrderByLastnameDesc(StateProspect.ENDED, email);
+            case ORDER_BY_LASTNAME_ASC:
+                return this.partnerRepository.findByStateProspectIsOrderByLastnameAsc(StateProspect.ENDED, email);
+            case ORDER_BY_REGISTER_DATE_DESC:
+                return this.partnerRepository.findByStateProspectIsOrderByRegisterDateAsc(StateProspect.ENDED, email);
+            case ORDER_BY_REGISTER_DATE_ASC:
+                return this.partnerRepository.findByStateProspectIsOrderByRegisterDateDesc(StateProspect.ENDED, email);
+        }
+
+        // This should never happen
+        return Collections.emptyList();
+    }
 
 
     public List<Partner> getAllCustomer(String keywordCustomer, String sort, String email) {
@@ -136,15 +175,7 @@ public class PartnerService {
         }
 
         if(sort != null) {
-            if(sort.equals("ZA")){
-                return this.partnerRepository.findByStateProspectIsOrderByLastnameDesc(StateProspect.ENDED, email);
-            } else if (sort.equals("AZ")) {
-                return this.partnerRepository.findByStateProspectIsOrderByLastnameAsc(StateProspect.ENDED, email);
-            } else if (sort.equals( "ON")) {
-                return this.partnerRepository.findByStateProspectIsOrderByRegisterDateAsc(StateProspect.ENDED, email);
-            } else if (sort.equals("NO" )) {
-                return this.partnerRepository.findByStateProspectIsOrderByRegisterDateDesc(StateProspect.ENDED, email);
-            }
+            return  getAllCustomerBySort(sort, email);
         }
 
         return this.partnerRepository.findByStateProspectIsAndUserEmailIs(StateProspect.ENDED, email);
