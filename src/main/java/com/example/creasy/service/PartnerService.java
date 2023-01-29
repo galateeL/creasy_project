@@ -72,21 +72,28 @@ public class PartnerService {
 
 
 
+
+    public List <Partner> getAllProspectFromKeyword(String keywordProspect, String sort, String email) {
+        if(sort != null) {
+            if(sort.equals("ZA")){
+                return this.partnerRepository.findProspectZA(StateProspect.ENDED, keywordProspect, email);
+            } else if (sort.equals("AZ")) {
+                return this.partnerRepository.findProspectAZ(StateProspect.ENDED, keywordProspect, email);
+            } else if (sort.equals("ON")) {
+                return this.partnerRepository.findProspectON(StateProspect.ENDED, keywordProspect, email);
+            } else if (sort.equals("NO" )) {
+                return this.partnerRepository.findProspectNO(StateProspect.ENDED, keywordProspect, email);
+            }
+        }
+
+        return this.partnerRepository.findProspectByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordProspect, email);
+    }
+
+
     public List<Partner> getAllProspect(String keywordProspect, String sort, String email) {
         if(keywordProspect != null && !keywordProspect.isEmpty()) {
-            if(sort != null) {
-                if(sort.equals("ZA")){
-                    return this.partnerRepository.findProspectZA(StateProspect.ENDED, keywordProspect, email);
-                } else if (sort.equals("AZ")) {
-                    return this.partnerRepository.findProspectAZ(StateProspect.ENDED, keywordProspect, email);
-                } else if (sort.equals("ON")) {
-                    return this.partnerRepository.findProspectON(StateProspect.ENDED, keywordProspect, email);
-                } else if (sort.equals("NO" )) {
-                    return this.partnerRepository.findProspectNO(StateProspect.ENDED, keywordProspect, email);
-                }
-            }
+            return getAllProspectFromKeyword(keywordProspect, sort, email);
 
-            return this.partnerRepository.findProspectByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordProspect, email);
         }
 
         if(sort != null) {
@@ -105,20 +112,27 @@ public class PartnerService {
     }
 
 
+    public List<Partner> getAllCustomerFromKeyword(String keywordCustomer, String sort, String email) {
+        if(sort != null) {
+            if(sort.equals("ZA")){
+                return this.partnerRepository.findCustomerZA(StateProspect.ENDED, keywordCustomer, email);
+            } else if (sort.equals("AZ")) {
+                return this.partnerRepository.findCustomerAZ(StateProspect.ENDED, keywordCustomer, email);
+            } else if (sort.equals("ON")) {
+                return this.partnerRepository.findCustomerON(StateProspect.ENDED, keywordCustomer, email);
+            } else if (sort.equals("NO" )) {
+                return this.partnerRepository.findCustomerNO(StateProspect.ENDED, keywordCustomer, email);
+            }
+        }
+        return this.partnerRepository.findCustomerByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordCustomer, email);
+    }
+
+
+
+
     public List<Partner> getAllCustomer(String keywordCustomer, String sort, String email) {
         if(keywordCustomer != null && !keywordCustomer.isEmpty()) {
-            if(sort != null) {
-                if(sort.equals("ZA")){
-                    return this.partnerRepository.findCustomerZA(StateProspect.ENDED, keywordCustomer, email);
-                } else if (sort.equals("AZ")) {
-                    return this.partnerRepository.findCustomerAZ(StateProspect.ENDED, keywordCustomer, email);
-                } else if (sort.equals("ON")) {
-                    return this.partnerRepository.findCustomerON(StateProspect.ENDED, keywordCustomer, email);
-                } else if (sort.equals("NO" )) {
-                    return this.partnerRepository.findCustomerNO(StateProspect.ENDED, keywordCustomer, email);
-                }
-            }
-            return this.partnerRepository.findCustomerByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordCustomer, email);
+           return getAllCustomerFromKeyword(keywordCustomer, sort, email);
         }
 
         if(sort != null) {
@@ -135,6 +149,8 @@ public class PartnerService {
 
         return this.partnerRepository.findByStateProspectIsAndUserEmailIs(StateProspect.ENDED, email);
     }
+
+
 
     public List<Partner> getAllCustomerForMap() {
         StateProspect stateProspect2= null;
