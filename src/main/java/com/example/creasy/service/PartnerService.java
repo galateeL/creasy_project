@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.example.creasy.model.SortType.ORDER_BY_LASTNAME_DESC;
 
 @Service
 public class PartnerService {
@@ -37,20 +36,15 @@ public class PartnerService {
         return (List<Partner>) this.partnerRepository.findAll();
     }
 
-
-
     // Find all prospects by user
     public int findAllProspectsByUser(String email){
         return this.partnerRepository.findNumberProspectsByUserEmail(StateProspect.ENDED, email);
     }
 
-
     // Find all customers by user
     public int findAllCustomersByUser(String email){
         return this.partnerRepository.findNumberCustomersByUserEmail(StateProspect.ENDED, email);
     }
-
-
 
     // Find number of prospects with TO_FOLLOW_UP state
     public int findNumberOfProspectsToFollowUp(String email) {
@@ -68,31 +62,13 @@ public class PartnerService {
     }
 
 
-
     public List<Partner> findAllProspectsByList (String email){
         return this.partnerRepository.findProspectsListByUser(StateProspect.ENDED, StateProspect.TO_FOLLOW_UP, email);
     }
 
 
-    public List <Partner> getAllProspectFromKeyword(String keywordProspect, String sort, String email) {
-
-        if(sort != null) {
-
-            SortType sortType = SortType.fromValue(sort);
-
-            switch (sortType) {
-                case ORDER_BY_LASTNAME_DESC:
-                    return this.partnerRepository.findProspectZA(StateProspect.ENDED, keywordProspect, email);
-                case ORDER_BY_LASTNAME_ASC:
-                    return this.partnerRepository.findProspectAZ(StateProspect.ENDED, keywordProspect, email);
-                case ORDER_BY_REGISTER_DATE_DESC:
-                    return this.partnerRepository.findProspectON(StateProspect.ENDED, keywordProspect, email);
-                case ORDER_BY_REGISTER_DATE_ASC:
-                    return this.partnerRepository.findProspectNO(StateProspect.ENDED, keywordProspect, email);
-            }
-        }
-
-        return this.partnerRepository.findProspectByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordProspect, email);
+    public List <Partner> getAllProspectFromKeyword(String keywordProspect, String email) {
+        return this.partnerRepository.findProspectByKeyword(StateProspect.getProspectStates(), keywordProspect, email);
     }
 
 
@@ -102,51 +78,35 @@ public class PartnerService {
 
         switch (sortType) {
             case ORDER_BY_LASTNAME_DESC :
-                return this.partnerRepository.findByStateProspectIsNotOrderByLastnameDesc(StateProspect.ENDED, email);
+                return this.partnerRepository.findProspectOrderByLastnameDesc(StateProspect.getProspectStates(), email);
             case ORDER_BY_LASTNAME_ASC:
-                return this.partnerRepository.findByStateProspectIsNotOrderByLastnameAsc(StateProspect.ENDED, email);
+                return this.partnerRepository.findProspectOrderByLastnameAsc(StateProspect.getProspectStates(), email);
             case  ORDER_BY_REGISTER_DATE_DESC:
-                return this.partnerRepository.findByStateProspectIsNotOrderByRegisterDateAsc(StateProspect.ENDED, email);
+                return this.partnerRepository.findProspectOrderByRegisterDateAsc(StateProspect.getProspectStates(), email);
             case ORDER_BY_REGISTER_DATE_ASC:
-                return this.partnerRepository.findByStateProspectIsNotOrderByRegisterDateDesc(StateProspect.ENDED, email);
+                return this.partnerRepository.findProspectOrderByRegisterDateDesc(StateProspect.getProspectStates(), email);
         }
 
-        return Collections.emptyList();
+        return this.partnerRepository.findProspectsByUser(StateProspect.getProspectStates(), email);
     }
 
     public List<Partner> getAllProspect(String keywordProspect, String sort, String email) {
 
         if(keywordProspect != null && !keywordProspect.isEmpty()) {
-            return getAllProspectFromKeyword(keywordProspect, sort, email);
+            return getAllProspectFromKeyword(keywordProspect, email);
         }
 
         if(sort != null) {
             return getAllProspectBySort(sort, email);
         }
 
-        return this.partnerRepository.findByStateProspectIsNotAndUserEmailIs(StateProspect.ENDED, email);
+        return this.partnerRepository.findProspectsByUser(StateProspect.getProspectStates(), email);
     }
 
 
-    public List<Partner> getAllCustomerFromKeyword(String keywordCustomer, String sort, String email) {
+    public List<Partner> getAllCustomerFromKeyword(String keywordCustomer, String email) {
 
-        if(sort != null) {
-
-            SortType sortType = SortType.fromValue(sort);
-
-            switch (sortType){
-                case ORDER_BY_LASTNAME_DESC:
-                    return this.partnerRepository.findCustomerZA(StateProspect.ENDED, keywordCustomer, email);
-                case ORDER_BY_LASTNAME_ASC:
-                    return this.partnerRepository.findCustomerAZ(StateProspect.ENDED, keywordCustomer, email);
-                case ORDER_BY_REGISTER_DATE_DESC:
-                    return this.partnerRepository.findCustomerON(StateProspect.ENDED, keywordCustomer, email);
-                case ORDER_BY_REGISTER_DATE_ASC:
-                    return this.partnerRepository.findCustomerNO(StateProspect.ENDED, keywordCustomer, email);
-            }
-
-        }
-        return this.partnerRepository.findCustomerByStateProspectAndFirstnameOrLastnameOrCompanyName(StateProspect.ENDED, keywordCustomer, email);
+        return this.partnerRepository.findCustomerByKeyword(StateProspect.getCustomerState(), keywordCustomer, email);
     }
 
     public List <Partner> getAllCustomerBySort(String sort, String email) {
@@ -155,30 +115,29 @@ public class PartnerService {
 
         switch (sortType) {
             case ORDER_BY_LASTNAME_DESC :
-                return this.partnerRepository.findByStateProspectIsOrderByLastnameDesc(StateProspect.ENDED, email);
+                return this.partnerRepository.findCustomerOrderByLastnameDesc(StateProspect.getCustomerState(), email);
             case ORDER_BY_LASTNAME_ASC:
-                return this.partnerRepository.findByStateProspectIsOrderByLastnameAsc(StateProspect.ENDED, email);
+                return this.partnerRepository.findCustomerOrderByLastnameAsc(StateProspect.getCustomerState(), email);
             case ORDER_BY_REGISTER_DATE_DESC:
-                return this.partnerRepository.findByStateProspectIsOrderByRegisterDateAsc(StateProspect.ENDED, email);
+                return this.partnerRepository.findCustomerOrderByRegisterDateAsc(StateProspect.getCustomerState(), email);
             case ORDER_BY_REGISTER_DATE_ASC:
-                return this.partnerRepository.findByStateProspectIsOrderByRegisterDateDesc(StateProspect.ENDED, email);
+                return this.partnerRepository.findCustomerOrderByRegisterDateDesc(StateProspect.getCustomerState(), email);
         }
 
-        // This should never happen
-        return Collections.emptyList();
+        return this.partnerRepository.findCustomerByUser(StateProspect.getProspectStates(), email);
     }
 
 
     public List<Partner> getAllCustomer(String keywordCustomer, String sort, String email) {
         if(keywordCustomer != null && !keywordCustomer.isEmpty()) {
-           return getAllCustomerFromKeyword(keywordCustomer, sort, email);
+           return getAllCustomerFromKeyword(keywordCustomer, email);
         }
 
         if(sort != null) {
             return  getAllCustomerBySort(sort, email);
         }
 
-        return this.partnerRepository.findByStateProspectIsAndUserEmailIs(StateProspect.ENDED, email);
+        return this.partnerRepository.findCustomerByUser(StateProspect.getCustomerState(), email);
     }
 
 
@@ -187,6 +146,7 @@ public class PartnerService {
         StateProspect stateProspect2= null;
                     return this.partnerRepository.findCustomer(StateProspect.ENDED,stateProspect2);
     }
+
     public List<MapCustomerDto> getAllMapCustomeDto(){
         List<Partner> partners= getAllCustomerForMap();
         List<MapCustomerDto> partnersDto = new ArrayList<>();

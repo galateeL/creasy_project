@@ -23,7 +23,7 @@ public enum SortType {
                return sortType;
             }
         }
-        return null;
+        return ORDER_BY_LASTNAME_ASC;
     }
 
 
