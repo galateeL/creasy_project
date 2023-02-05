@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -48,17 +47,17 @@ public class PartnerService {
 
     // Find number of prospects with TO_FOLLOW_UP state
     public int findNumberOfProspectsToFollowUp(String email) {
-        return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.TO_FOLLOW_UP, email);
+        return this.partnerRepository.findNumberOfProspectsByState(StateProspect.TO_FOLLOW_UP, email);
     }
 
     // Find number of prospects with IN_PROGRESS state
     public int findNumberOfProspectsInProgress(String email) {
-        return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.IN_PROGRESS, email);
+        return this.partnerRepository.findNumberOfProspectsByState(StateProspect.IN_PROGRESS, email);
     }
 
     // Find number of prospects with NOT_STARTED state
     public int findNumberOfProspectsInNotStarted(String email) {
-        return this.partnerRepository.findProspectIsAndUserEmailIs(StateProspect.NOT_STARTED, email);
+        return this.partnerRepository.findNumberOfProspectsByState(StateProspect.NOT_STARTED, email);
     }
 
 
@@ -180,15 +179,10 @@ public class PartnerService {
         prospect.setUser(user);
 
         MultipartFile picture = createProspect.getPictureFile();
-        if (picture == null || picture.isEmpty()) {
-            prospect.setPictureUrl(createProspect.getPictureUrl());
-        } else {
-            storageService.store(picture);
-            prospect.setPictureUrl(IMAGE_VALUE + picture.getOriginalFilename());
-        }
+        storageService.store(picture);
 
+        prospect.setPictureUrl(IMAGE_VALUE + picture.getOriginalFilename());
         this.partnerRepository.save(prospect);
-
     }
 
     public void createCustomer(CreateCustomerDto createCustomer, User user) {

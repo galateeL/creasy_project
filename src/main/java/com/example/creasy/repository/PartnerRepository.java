@@ -60,7 +60,7 @@ public interface PartnerRepository extends CrudRepository<Partner, Long> {
 
     // Number of prospects with specific state by user
     @Query("select count(p.stateProspect) from Partner  p where p.stateProspect = ?1 and p.user.email = ?2")
-    int findProspectIsAndUserEmailIs (StateProspect stateProspect, String email);
+    int findNumberOfProspectsByState (StateProspect stateProspect, String email);
 
 
     // Numbers of customers by user

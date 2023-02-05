@@ -20,7 +20,6 @@ public class FileController {
     }
 
     @GetMapping(value = "/images/{filename:.+}", produces = {MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_PNG_VALUE , MediaType.IMAGE_JPEG_VALUE})
-
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 

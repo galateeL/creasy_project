@@ -21,6 +21,7 @@ public class StorageService {
 
     private final Path rootLocation;
 
+   // Constructeur (qui initialise ses variables)  =>  création du dossier uploads
     public StorageService() throws IOException{
         this.rootLocation = Paths.get("uploads");
         if(!rootLocation.toFile().exists()){
@@ -36,11 +37,6 @@ public class StorageService {
             Path destinationFile = this.rootLocation.resolve(
                             Paths.get(file.getOriginalFilename()))
                     .normalize().toAbsolutePath();
-            if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
-                // This is a security check
-                throw new StorageException(
-                        "Cannot store file outside current directory.");
-            }
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, destinationFile,
                         StandardCopyOption.REPLACE_EXISTING);
